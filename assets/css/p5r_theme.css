@@ -1,0 +1,798 @@
+/* ==========================================================================
+   PERSONA 5 ROYAL & SILENT HILL THEME STYLESHEET
+   Developer Portfolio - Mohammad Elsherbiny
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@400;600;800;900&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@400;500;700&display=swap');
+
+:root {
+  --p5-red: #E60012;
+  --p5-red-dark: #99000C;
+  --p5-black: #0D0D0D;
+  --p5-dark-gray: #1A1A1A;
+  --p5-card-bg: #222222;
+  --p5-white: #FFFFFF;
+  --p5-yellow: #FFD700;
+  --p5-font-display: 'Bebas Neue', 'Outfit', sans-serif;
+  --p5-font-head: 'Outfit', sans-serif;
+  --p5-font-body: 'DM Sans', sans-serif;
+  --p5-font-mono: 'Space Mono', monospace;
+  
+  --sh-fog: rgba(200, 200, 200, 0.08);
+  --sh-dark: #070908;
+  --sh-green: #33ff66;
+}
+
+/* --------------------------------------------------------------------------
+   RESET & CORE BASE
+   -------------------------------------------------------------------------- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--p5-black);
+  color: var(--p5-white);
+  font-family: var(--p5-font-body);
+  overflow-x: hidden;
+  line-height: 1.6;
+  position: relative;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* Halftone Pattern Background */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 0);
+  background-size: 16px 1px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Red Diagonal Slash Accent */
+.p5-bg-slash {
+  position: fixed;
+  top: -20vh;
+  right: -10vw;
+  width: 50vw;
+  height: 140vh;
+  background: var(--p5-red);
+  transform: rotate(-12deg);
+  opacity: 0.85;
+  pointer-events: none;
+  z-index: 0;
+  clip-path: polygon(15% 0, 100% 0, 85% 100%, 0% 100%);
+}
+
+.p5-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  position: relative;
+  z-index: 2;
+}
+
+/* --------------------------------------------------------------------------
+   TYPOGRAPHY & UTILITIES
+   -------------------------------------------------------------------------- */
+h1, h2, h3, .p5-title {
+  font-family: var(--p5-font-display);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.p5-skew-box {
+  background: var(--p5-black);
+  color: var(--p5-white);
+  padding: 8px 20px;
+  display: inline-block;
+  transform: skewX(-12deg);
+  border: 3px solid var(--p5-white);
+  box-shadow: 6px 6px 0px var(--p5-red);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.p5-skew-box > * {
+  transform: skewX(12deg);
+  display: inline-block;
+}
+
+.p5-skew-box-red {
+  background: var(--p5-red);
+  color: var(--p5-white);
+  border-color: var(--p5-black);
+  box-shadow: 6px 6px 0px var(--p5-white);
+}
+
+.p5-skew-box-yellow {
+  background: var(--p5-yellow);
+  color: var(--p5-black);
+  border-color: var(--p5-black);
+  box-shadow: 6px 6px 0px var(--p5-red);
+}
+
+.p5-badge {
+  background: var(--p5-red);
+  color: #fff;
+  font-family: var(--p5-font-mono);
+  font-weight: 700;
+  font-size: 0.85rem;
+  padding: 4px 10px;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transform: skewX(-8deg);
+}
+
+.p5-badge span {
+  transform: skewX(8deg);
+}
+
+/* --------------------------------------------------------------------------
+   NAVIGATION HEADER
+   -------------------------------------------------------------------------- */
+.p5-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: 18px 0;
+  background: rgba(13, 13, 13, 0.9);
+  backdrop-filter: blur(8px);
+  border-bottom: 3px solid var(--p5-red);
+}
+
+.p5-nav-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.p5-brand {
+  font-family: var(--p5-font-display);
+  font-size: 2rem;
+  color: var(--p5-white);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.p5-brand-star {
+  color: var(--p5-red);
+  font-size: 1.5rem;
+}
+
+.p5-nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.p5-btn-action {
+  background: var(--p5-dark-gray);
+  color: var(--p5-white);
+  border: 2px solid var(--p5-white);
+  padding: 8px 16px;
+  font-family: var(--p5-font-display);
+  font-size: 1.1rem;
+  cursor: pointer;
+  transform: skewX(-8deg);
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.p5-btn-action > * {
+  transform: skewX(8deg);
+}
+
+.p5-btn-action:hover {
+  background: var(--p5-red);
+  color: var(--p5-white);
+  border-color: var(--p5-yellow);
+  box-shadow: 4px 4px 0px var(--p5-white);
+  transform: skewX(-8deg) translateY(-2px);
+}
+
+.p5-btn-menu {
+  background: var(--p5-red);
+  border-color: var(--p5-yellow);
+}
+
+/* --------------------------------------------------------------------------
+   HERO SECTION (JOKER STANCE & CALLOUT BANNER)
+   -------------------------------------------------------------------------- */
+.p5-hero {
+  min-height: 100vh;
+  padding-top: 130px;
+  padding-bottom: 60px;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.p5-hero-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.p5-hero-tag {
+  margin-bottom: 16px;
+}
+
+.p5-hero-title {
+  font-size: clamp(3.5rem, 8vw, 6rem);
+  line-height: 0.95;
+  margin-bottom: 20px;
+  text-shadow: 4px 4px 0px var(--p5-red);
+}
+
+.p5-hero-subtitle {
+  font-size: 1.4rem;
+  color: #DDD;
+  margin-bottom: 30px;
+  max-width: 600px;
+}
+
+.p5-hero-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+/* P5 Cut-In Card */
+.p5-character-card {
+  position: relative;
+  background: #000;
+  border: 4px solid var(--p5-white);
+  box-shadow: 12px 12px 0px var(--p5-red);
+  transform: rotate(2deg) skewX(-4deg);
+  overflow: hidden;
+  padding: 24px;
+}
+
+.p5-card-header-banner {
+  background: var(--p5-red);
+  color: var(--p5-white);
+  padding: 8px 16px;
+  font-family: var(--p5-font-display);
+  font-size: 1.4rem;
+  margin: -24px -24px 20px -24px;
+  text-align: center;
+  letter-spacing: 2px;
+  border-bottom: 3px solid var(--p5-white);
+}
+
+.p5-avatar-box {
+  width: 100%;
+  aspect-ratio: 4/5;
+  background: linear-gradient(135deg, var(--p5-red) 0%, #300 100%);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 20px;
+  border: 2px solid var(--p5-white);
+}
+
+/* Stylized P5 SVG Avatar Silhouette */
+.p5-avatar-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.9;
+}
+
+.p5-avatar-callout {
+  position: relative;
+  z-index: 3;
+  background: var(--p5-black);
+  border: 2px solid var(--p5-yellow);
+  padding: 12px;
+  font-family: var(--p5-font-mono);
+  font-size: 0.85rem;
+  box-shadow: 4px 4px 0px var(--p5-red);
+}
+
+.p5-avatar-callout-title {
+  color: var(--p5-yellow);
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+/* --------------------------------------------------------------------------
+   P5 PAUSE MENU OVERLAY ("TAKE YOUR TIME")
+   -------------------------------------------------------------------------- */
+.p5-pause-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(13, 13, 13, 0.96);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.p5-pause-modal.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.p5-pause-backdrop-slash {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--p5-red) 0%, transparent 60%);
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.p5-pause-content {
+  position: relative;
+  z-index: 2;
+  width: 90%;
+  max-width: 900px;
+}
+
+.p5-pause-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+  border-bottom: 4px solid var(--p5-white);
+  padding-bottom: 16px;
+}
+
+.p5-pause-title {
+  font-size: 4rem;
+  color: var(--p5-white);
+  text-shadow: 4px 4px 0px var(--p5-red);
+}
+
+.p5-pause-close {
+  background: var(--p5-red);
+  color: var(--p5-white);
+  border: 3px solid var(--p5-white);
+  font-family: var(--p5-font-display);
+  font-size: 1.5rem;
+  padding: 8px 24px;
+  cursor: pointer;
+  transform: skewX(-12deg);
+}
+
+.p5-pause-menu-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.p5-pause-menu-item {
+  background: var(--p5-dark-gray);
+  border: 3px solid var(--p5-white);
+  padding: 16px 32px;
+  transform: skewX(-12deg);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.p5-pause-menu-item:hover {
+  background: var(--p5-red);
+  border-color: var(--p5-yellow);
+  transform: skewX(-12deg) scale(1.04) translateX(16px);
+  box-shadow: 8px 8px 0px var(--p5-white);
+}
+
+.p5-pause-item-label {
+  font-family: var(--p5-font-display);
+  font-size: 2.2rem;
+  color: var(--p5-white);
+  transform: skewX(12deg);
+  letter-spacing: 2px;
+}
+
+.p5-pause-item-sub {
+  font-family: var(--p5-font-mono);
+  font-size: 1rem;
+  color: var(--p5-yellow);
+  transform: skewX(12deg);
+}
+
+/* --------------------------------------------------------------------------
+   JOKER CLI COMMAND PALETTE
+   -------------------------------------------------------------------------- */
+.joker-cli-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(6px);
+  z-index: 9998;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 15vh;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.joker-cli-modal.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.joker-cli-box {
+  background: var(--p5-black);
+  border: 3px solid var(--p5-red);
+  box-shadow: 0 0 30px rgba(230, 0, 18, 0.4), 8px 8px 0px var(--p5-white);
+  width: 90%;
+  max-width: 650px;
+  transform: skewX(-6deg);
+  overflow: hidden;
+}
+
+.joker-cli-box > * {
+  transform: skewX(6deg);
+}
+
+.joker-cli-input-wrapper {
+  display: flex;
+  align-items: center;
+  padding: 16px 20px;
+  border-bottom: 2px solid var(--p5-dark-gray);
+  background: #151515;
+}
+
+.joker-cli-prompt {
+  color: var(--p5-red);
+  font-family: var(--p5-font-mono);
+  font-weight: 700;
+  font-size: 1.2rem;
+  margin-right: 12px;
+}
+
+.joker-cli-input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--p5-white);
+  font-family: var(--p5-font-mono);
+  font-size: 1.1rem;
+  width: 100%;
+}
+
+.joker-cli-suggestions {
+  padding: 16px 20px;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.joker-cli-item {
+  font-family: var(--p5-font-mono);
+  font-size: 0.95rem;
+  padding: 8px 12px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  display: flex;
+  justify-content: space-between;
+  color: #CCC;
+  transition: all 0.15s ease;
+}
+
+.joker-cli-item:hover, .joker-cli-item.selected {
+  background: var(--p5-red);
+  color: var(--p5-white);
+  border-color: var(--p5-yellow);
+}
+
+.joker-cli-item-cmd {
+  font-weight: 700;
+  color: var(--p5-yellow);
+}
+
+.joker-cli-item:hover .joker-cli-item-cmd {
+  color: var(--p5-white);
+}
+
+/* --------------------------------------------------------------------------
+   SECTIONS: STATS, PALACES, CONFIDANTS, CALLING CARD
+   -------------------------------------------------------------------------- */
+.p5-section {
+  padding: 90px 0;
+  border-top: 3px solid var(--p5-dark-gray);
+  position: relative;
+}
+
+.p5-section-title-wrap {
+  margin-bottom: 50px;
+}
+
+.p5-section-title {
+  font-size: 3.5rem;
+  margin-bottom: 8px;
+}
+
+.p5-section-sub {
+  font-family: var(--p5-font-mono);
+  color: var(--p5-yellow);
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+
+/* Palaces Grid */
+.p5-palaces-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 32px;
+}
+
+.p5-palace-card {
+  background: var(--p5-dark-gray);
+  border: 3px solid var(--p5-white);
+  box-shadow: 8px 8px 0px var(--p5-red);
+  transform: rotate(-1deg);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.p5-palace-card:hover {
+  transform: rotate(0deg) translateY(-8deg) scale(1.02);
+  box-shadow: 12px 12px 0px var(--p5-yellow);
+}
+
+.p5-palace-header {
+  background: var(--p5-red);
+  color: var(--p5-white);
+  padding: 12px 20px;
+  font-family: var(--p5-font-display);
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid var(--p5-white);
+}
+
+.p5-palace-body {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.p5-palace-title {
+  font-size: 1.8rem;
+  margin-bottom: 12px;
+  color: var(--p5-white);
+}
+
+.p5-palace-desc {
+  font-size: 0.95rem;
+  color: #CCC;
+  margin-bottom: 20px;
+  flex-grow: 1;
+}
+
+.p5-palace-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.p5-palace-links {
+  display: flex;
+  gap: 12px;
+}
+
+/* Skills / Confidants Grid */
+.p5-skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.p5-skill-card {
+  background: #181818;
+  border: 2px solid var(--p5-white);
+  padding: 20px;
+  transform: skewX(-6deg);
+  box-shadow: 4px 4px 0px var(--p5-red);
+}
+
+.p5-skill-card > * {
+  transform: skewX(6deg);
+}
+
+.p5-skill-title {
+  font-size: 1.3rem;
+  color: var(--p5-yellow);
+  margin-bottom: 8px;
+}
+
+.p5-skill-level {
+  font-family: var(--p5-font-mono);
+  font-size: 0.85rem;
+  color: #AAA;
+}
+
+/* Calling Card / Contact */
+.p5-calling-card-box {
+  background: var(--p5-red);
+  color: var(--p5-white);
+  border: 5px solid var(--p5-white);
+  box-shadow: 16px 16px 0px var(--p5-black);
+  padding: 40px;
+  transform: rotate(1deg);
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.p5-calling-card-title {
+  font-size: 3.5rem;
+  margin-bottom: 16px;
+  color: var(--p5-white);
+  text-shadow: 3px 3px 0px var(--p5-black);
+}
+
+.p5-calling-card-text {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  color: #FFF;
+}
+
+.p5-calling-card-btns {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+/* --------------------------------------------------------------------------
+   SILENT HILL "DARK CORNERS" SHADERS & OVERLAYS
+   -------------------------------------------------------------------------- */
+/* Spotlight Flashlight Radial Mask */
+#sh-spotlight {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 9000;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  background: radial-gradient(circle 280px at var(--sh-x, 50%) var(--sh-y, 50%), transparent 0%, rgba(5, 7, 6, 0.95) 100%);
+}
+
+/* CRT Scanlines Overlay */
+#sh-scanlines {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 9001;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.4) 50%);
+  background-size: 100% 4px;
+}
+
+/* Fog Layer */
+#sh-fog {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 200vw;
+  height: 200vh;
+  pointer-events: none;
+  z-index: 8999;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  background-image: radial-gradient(circle, rgba(200, 200, 200, 0.08) 10%, transparent 60%);
+  animation: shFogMove 30s linear infinite;
+}
+
+@keyframes shFogMove {
+  0% { transform: translate(0, 0); }
+  50% { transform: translate(-10%, -10%); }
+  100% { transform: translate(0, 0); }
+}
+
+/* Silent Hill Mode State */
+body.silent-hill-mode {
+  background-color: var(--sh-dark) !important;
+  color: #a3b899 !important;
+}
+
+body.silent-hill-mode #sh-spotlight,
+body.silent-hill-mode #sh-scanlines,
+body.silent-hill-mode #sh-fog {
+  opacity: 1;
+}
+
+body.silent-hill-mode .p5-skew-box {
+  background: #111;
+  color: var(--sh-green);
+  border-color: var(--sh-green);
+  box-shadow: 4px 4px 0px #000;
+}
+
+body.silent-hill-mode .p5-badge {
+  background: #223322;
+  color: var(--sh-green);
+}
+
+/* Code Inspection Box */
+.sh-code-box {
+  background: #090C0A;
+  border: 2px solid #224422;
+  padding: 20px;
+  font-family: var(--p5-font-mono);
+  font-size: 0.9rem;
+  color: var(--sh-green);
+  border-radius: 4px;
+  overflow-x: auto;
+  box-shadow: 0 0 15px rgba(51, 255, 102, 0.15);
+  margin-top: 20px;
+}
+
+/* --------------------------------------------------------------------------
+   RESPONSIVE DESIGN (MOBILE & TABLET)
+   -------------------------------------------------------------------------- */
+@media (max-width: 900px) {
+  .p5-hero-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  .p5-hero-title {
+    font-size: 3.5rem;
+  }
+  .p5-pause-title {
+    font-size: 2.8rem;
+  }
+  .p5-pause-item-label {
+    font-size: 1.6rem;
+  }
+  .p5-calling-card-title {
+    font-size: 2.4rem;
+  }
+}
