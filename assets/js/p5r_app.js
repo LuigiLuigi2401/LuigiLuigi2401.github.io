@@ -247,6 +247,127 @@
     }
   }
 
+  // --------------------------------------------------------------------------
+  // LIVE CLOCK, CALENDAR & P5 DAY PHASE ENGINE
+  // --------------------------------------------------------------------------
+  function updateLiveClockAndCalendar() {
+    const dateEl = document.getElementById('p5-live-date');
+    const timeEl = document.getElementById('p5-live-time');
+    const phaseEl = document.getElementById('p5-live-phase');
+    if (!dateEl || !timeEl) return;
+
+    const now = new Date();
+    const month = (now.getMonth() + 1).toString().padStart(2, '0');
+    const day = now.getDate().toString().padStart(2, '0');
+    const dayNames = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
+    const dayName = dayNames[now.getDay()];
+    dateEl.textContent = `${month}/${day} ${dayName}`;
+
+    let hours = now.getHours();
+    const minutes = now.getMinutes().toString().padStart(2, '0');
+    const seconds = now.getSeconds().toString().padStart(2, '0');
+    const ampm = hours >= 12 ? 'PM' : 'AM';
+    const displayHours = (hours % 12 || 12).toString().padStart(2, '0');
+    timeEl.textContent = `${displayHours}:${minutes}:${seconds} ${ampm}`;
+
+    if (phaseEl) {
+      if (hours >= 6 && hours < 12) {
+        phaseEl.textContent = 'MORNING';
+      } else if (hours >= 12 && hours < 17) {
+        phaseEl.textContent = 'AFTER SCHOOL';
+      } else if (hours >= 17 && hours < 21) {
+        phaseEl.textContent = 'EVENING';
+      } else {
+        phaseEl.textContent = 'NIGHT';
+      }
+    }
+  }
+
+  setInterval(updateLiveClockAndCalendar, 1000);
+  updateLiveClockAndCalendar();
+
+  // --------------------------------------------------------------------------
+  // REAL-TIME WEATHER ENGINE (OPEN-METEO LIVE FORECAST)
+  // --------------------------------------------------------------------------
+  async function fetchLiveWeather() {
+    const weatherEl = document.getElementById('p5-live-weather');
+    const iconEl = document.getElementById('p5-weather-icon');
+    if (!weatherEl) return;
+
+    try {
+      // Alexandria / E-JUST coordinates (lat: 31.2001, lon: 29.9187)
+      const res = await fetch('https://api.open-meteo.com/v1/forecast?latitude=31.2001&longitude=29.9187&current_weather=true');
+      if (!res.ok) throw new Error('Weather API unreachable');
+      const data = await res.json();
+      const temp = Math.round(data.current_weather.temperature);
+      const code = data.current_weather.weathercode;
+
+      let weatherDesc = 'CLEAR SUNNY';
+      let iconName = 'wb_sunny';
+
+      if (code === 0) {
+        weatherDesc = 'CLEAR SUNNY';
+        iconName = 'wb_sunny';
+      } else if (code >= 1 && code <= 3) {
+        weatherDesc = 'PARTLY CLOUDY';
+        iconName = 'partly_cloudy_day';
+      } else if (code >= 45 && code <= 48) {
+        weatherDesc = 'METAVERSE MIST';
+        iconName = 'foggy';
+      } else if (code >= 51 && code <= 67) {
+        weatherDesc = 'RAINING';
+        iconName = 'water_drop';
+      } else if (code >= 71) {
+        weatherDesc = 'SNOW / FROST';
+        iconName = 'ac_unit';
+      } else if (code >= 80) {
+        weatherDesc = 'THUNDERSTORM';
+        iconName = 'thunderstorm';
+      }
+
+      weatherEl.textContent = `${temp}°C ${weatherDesc}`;
+      if (iconEl) iconEl.textContent = iconName;
+    } catch (err) {
+      console.warn('Fallback weather active:', err);
+      weatherEl.textContent = '22°C CLEAR SUNNY';
+      if (iconEl) iconEl.textContent = 'wb_sunny';
+    }
+  }
+
+  fetchLiveWeather();
+
+  // --------------------------------------------------------------------------
+  // SCROLL TO TOP & SOUND TOGGLE LISTENERS
+  // --------------------------------------------------------------------------
+  const scrollTopBtn = document.getElementById('scroll-to-top-btn');
+  const soundToggleBtn = document.getElementById('p5-sound-toggle-btn');
+
+  window.addEventListener('scroll', () => {
+    if (scrollTopBtn) {
+      if (window.scrollY > 300) {
+        scrollTopBtn.classList.remove('opacity-0', 'translate-y-4', 'pointer-events-none');
+        scrollTopBtn.classList.add('opacity-100', 'translate-y-0');
+      } else {
+        scrollTopBtn.classList.add('opacity-0', 'translate-y-4', 'pointer-events-none');
+        scrollTopBtn.classList.remove('opacity-100', 'translate-y-0');
+      }
+    }
+  });
+
+  if (scrollTopBtn) {
+    scrollTopBtn.addEventListener('click', () => {
+      soundEngine.playWhoosh();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
+  if (soundToggleBtn) {
+    soundToggleBtn.addEventListener('click', () => {
+      const isMuted = soundEngine.toggleMute();
+      soundToggleBtn.textContent = isMuted ? 'BGM: MUTED' : 'BGM: ON';
+    });
+  }
+
   // Attach hover click sound to all buttons
   document.querySelectorAll('button, .p5-btn-action, a').forEach((el) => {
     el.addEventListener('mouseenter', () => soundEngine.playClick());

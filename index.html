@@ -854,27 +854,47 @@
 
   </main>
 
-  <!-- FOOTER STRETCH BAR -->
+  <!-- FOOTER STRETCH BAR WITH LIVE DATE, TIME, & WEATHER -->
   <footer class="fixed bottom-0 left-0 right-0 z-50 h-10 bg-surface-container-lowest border-t border-outline-variant flex items-center justify-between px-gutter select-none">
-    <div class="flex items-center gap-space-md">
-      <div class="flex items-center gap-space-xs px-2 py-0.5 bg-secondary-container text-on-secondary-container -skew-x-6 font-label-sm text-label-sm font-bold">
+    <div class="flex items-center gap-space-xs sm:gap-space-md">
+      <!-- Live Date & Time Widget -->
+      <div class="flex items-center gap-1.5 px-2 py-0.5 bg-secondary-container text-on-secondary-container -skew-x-6 font-label-sm text-label-sm font-bold comic-shadow">
         <span class="material-symbols-outlined text-sm">calendar_today</span>
-        <span>4/11</span>
+        <span id="p5-live-date">11/04 WED</span>
+        <span class="text-primary-container px-1 bg-background font-mono text-[11px]" id="p5-live-time">02:39:20 AM</span>
+        <span class="hidden md:inline px-1 bg-surface-container-high text-secondary-fixed text-[10px] uppercase font-bold" id="p5-live-phase">AFTER SCHOOL</span>
       </div>
+
+      <!-- Real Live Weather Widget -->
       <div class="flex items-center gap-space-xs font-label-sm text-label-sm text-secondary -skew-x-3">
-        <span class="material-symbols-outlined text-sm text-secondary-fixed">cloud</span>
-        <span class="hidden sm:inline uppercase tracking-widest text-on-surface-variant">CLOUDY //</span>
-        <span class="text-primary-container font-bold uppercase tracking-wider animate-pulse">METAVERSE INFILTRATION ACTIVE</span>
+        <span class="material-symbols-outlined text-sm text-secondary-fixed" id="p5-weather-icon">wb_sunny</span>
+        <span class="hidden sm:inline font-bold uppercase tracking-wider text-on-surface" id="p5-live-weather">22°C CLEAR SUNNY</span>
+        <span class="text-primary-container font-bold uppercase tracking-wider animate-pulse hidden lg:inline">// METAVERSE INFILTRATION ACTIVE</span>
       </div>
     </div>
+
     <div class="flex items-center gap-space-md">
       <div class="hidden md:flex items-center gap-space-xs font-label-sm text-label-sm text-on-surface-variant">
         <span class="w-2 h-2 rounded-full bg-primary-container inline-block animate-ping"></span>
         <span>SECURITY LEVEL: 99%</span>
       </div>
-      <span class="font-label-sm text-label-sm text-on-surface">BGM: ON</span>
+      <button id="p5-sound-toggle-btn" class="font-label-sm text-label-sm text-on-surface hover:text-primary-container cursor-pointer uppercase font-bold" type="button">BGM: ON</button>
     </div>
   </footer>
+
+  <!-- FLOATING CALL TO ACTION & SCROLL TO TOP ACTION BAR -->
+  <div class="fixed bottom-12 right-4 z-40 flex flex-col items-end gap-2 pointer-events-none">
+    <!-- Floating CTA Button -->
+    <a href="#calling-card" id="floating-cta-btn" class="pointer-events-auto px-4 py-2 bg-primary-container text-on-primary-container font-headline-sm text-headline-sm text-xs sm:text-sm uppercase tracking-wider -skew-x-6 comic-shadow shadow-2xl transition-all duration-300 hover:-translate-y-1 hover:scale-105 flex items-center gap-1.5 border-2 border-background">
+      <span class="material-symbols-outlined text-base">mark_email_unread</span>
+      <span>SEND CALLING CARD</span>
+    </a>
+
+    <!-- Scroll to Top Button -->
+    <button id="scroll-to-top-btn" class="pointer-events-auto opacity-0 translate-y-4 pointer-events-none transition-all duration-300 p-2.5 bg-surface-container-lowest text-secondary hover:bg-primary-container hover:text-on-primary-container font-bold -skew-x-6 comic-shadow shadow-2xl border-2 border-primary-container cursor-pointer flex items-center justify-center" type="button" title="Scroll to Top">
+      <span class="material-symbols-outlined text-lg">arrow_upward</span>
+    </button>
+  </div>
 
   <!-- ============================================================== -->
   <!-- MODAL 1: P5 PAUSE MENU ("TAKE YOUR TIME")                      -->
