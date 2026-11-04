@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><title>TAKE YOUR HEART // DEV PORTFOLIO</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=JetBrains+Mono:wght@400;600;700&amp;family=Space+Grotesk:wght@400;500;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}.comic-shadow{box-shadow:4px 4px 0px #000000;}.scanline-overlay{background:linear-gradient(rgba(18,16,16,0) 50%, rgba(0,0,0,0.25) 50%), linear-gradient(90deg, rgba(255,0,0,0.06), rgba(0,255,0,0.02), rgba(0,0,255,0.06));background-size:100% 2px, 3px 100%;pointer-events:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-primary-fixed-variant": "#930007", "surface-container-lowest": "#0e0e0e", "error-container": "#93000a", "surface-container": "#201f1f", "surface-bright": "#393939", "background": "#131313", "surface-container-low": "#1c1b1b", "on-surface-variant": "#e9bcb6", "surface-variant": "#353534", "primary-container": "#e60012", "secondary": "#fff9ef", "secondary-fixed": "#ffe16d", "inverse-surface": "#e5e2e1", "tertiary-fixed-dim": "#ffb3ad", "surface-container-high": "#2a2a2a", "on-tertiary-fixed": "#410003", "primary-fixed-dim": "#ffb4aa", "error": "#ffb4ab", "inverse-on-surface": "#313030", "surface-dim": "#131313", "on-primary-fixed": "#410001", "primary-fixed": "#ffdad5", "on-secondary-container": "#725f00", "surface-tint": "#ffb4aa", "on-tertiary": "#680008", "outline": "af8782", "inverse-primary": "#c0000d", "tertiary": "#ffb3ad", "on-tertiary-container": "#fff7f6", "on-error": "#690005", "surface-container-highest": "#353534", "on-error-container": "#ffdad6", "primary": "#ffb4aa", "outline-variant": "#5f3f3b", "on-tertiary-fixed-variant": "#8f1016", "secondary-container": "#ffdb3c", "surface": "#131313", "on-primary-container": "#fff7f6", "on-secondary": "#3a3000", "on-secondary-fixed-variant": "#544600", "on-background": "#e5e2e1", "tertiary-container": "#cc403b", "tertiary-fixed": "#ffdad6", "on-surface": "#e5e2e1", "on-secondary-fixed": "#221b00", "on-primary": "#690003", "secondary-fixed-dim": "#e9c400" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-lg": "1.75rem", "space-xl": "2.5rem", "margin": "3rem", "space-md": "1rem", "gutter-mobile": "1rem", "margin-mobile": "1.25rem", "gutter": "1.5rem", "space-sm": "0.5rem", "space-xs": "0.25rem" }, "fontFamily": { "headline-lg": [ "Anton" ], "label-sm": [ "JetBrains Mono" ], "display-xl": [ "Anton" ], "body-md": [ "Space Grotesk" ], "body-sm": [ "Space Grotesk" ], "label-lg": [ "JetBrains Mono" ], "label-md": [ "JetBrains Mono" ], "headline-lg-mobile": [ "Anton" ], "headline-md": [ "Anton" ], "headline-sm": [ "Anton" ], "display-xl-mobile": [ "Anton" ], "body-lg": [ "Space Grotesk" ] }, "fontSize": { "headline-lg": [ "48px", { "lineHeight": "52px", "letterSpacing": "0.03em", "fontWeight": "400" } ], "label-sm": [ "10px", { "lineHeight": "14px", "letterSpacing": "0.12em", "fontWeight": "600" } ], "display-xl": [ "80px", { "lineHeight": "84px", "letterSpacing": "0.02em", "fontWeight": "400" } ], "body-md": [ "15px", { "lineHeight": "24px", "fontWeight": "400" } ], "body-sm": [ "13px", { "lineHeight": "20px", "fontWeight": "400" } ], "label-lg": [ "14px", { "lineHeight": "18px", "letterSpacing": "0.08em", "fontWeight": "700" } ], "label-md": [ "12px", { "lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600" } ], "headline-lg-mobile": [ "32px", { "lineHeight": "36px", "letterSpacing": "0.03em", "fontWeight": "400" } ], "headline-md": [ "32px", { "lineHeight": "36px", "letterSpacing": "0.02em", "fontWeight": "400" } ], "headline-sm": [ "24px", { "lineHeight": "28px", "letterSpacing": "0.02em", "fontWeight": "400" } ], "display-xl-mobile": [ "44px", { "lineHeight": "48px", "letterSpacing": "0.02em", "fontWeight": "400" } ], "body-lg": [ "18px", { "lineHeight": "28px", "fontWeight": "500" } ] } } } };</script></head><body class="bg-background font-body-md text-on-surface antialiased min-h-screen relative selection:bg-primary-container selection:text-on-primary-container"><div class="fixed inset-0 scanline-overlay z-40 pointer-events-none opacity-40"></div><header class="fixed top-0 left-0 right-0 z-50 bg-surface-container-lowest/95 backdrop-blur-md border-b-2 border-primary-container"><div class="h-20 w-full px-gutter flex items-center justify-between relative overflow-hidden"><div class="absolute -left-12 -top-6 w-48 h-32 bg-primary-container -skew-x-12 -z-10 opacity-90"></div><div class="flex items-center gap-space-md z-10"><img alt="Phantom Emblem" class="h-10 w-auto object-contain drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCS18-T_rEtj5K2MvgT9HRrIK1c6leiZMLhIQvIdZoIlKbB9exRNnIZcKUSaUQhE4k_4Q7XSRVMWz28CSENMQU39FFwPvU6wEEyPAD6GFQno7J84d6C6PiB1MaEIkT9iLd2Q2mKZWt-9-GBg_fVvlhhSJ6vf8Ll74I81U7d1YeoziLXMQFHrr-Jg5NpMbeTel0PszQ6pDB8uKX3nmsmhicsP8_oghfB_2MIV6zc1Tqi"/><div class="flex flex-col"><span class="font-headline-sm text-headline-sm uppercase tracking-wider text-secondary -skew-x-6 drop-shadow-[2px_2px_0px_#000000]">TAKE YOUR HEART</span><span class="font-label-sm text-label-sm uppercase tracking-widest text-primary font-bold -skew-x-6">DEV PORTFOLIO // VER 5.0R</span></div></div><nav class="hidden xl:flex items-center gap-space-sm z-10" data-active-classes="bg-primary-container text-on-primary-container font-headline-sm -skew-x-6"><a class="px-space-md py-space-xs font-label-lg text-label-lg uppercase tracking-wider text-on-surface-variant hover:bg-surface-container hover:text-on-surface -skew-x-6 transition-transform hover:-translate-y-0.5" data-path="palaces" href="#">PALACES</a><a class="px-space-md py-space-xs font-label-lg text-label-lg uppercase tracking-wider text-on-surface-variant hover:bg-surface-container hover:text-on-surface -skew-x-6 transition-transform hover:-translate-y-0.5" data-path="stats" href="#">STATS</a><a aria-current="page" class="px-space-md py-space-xs uppercase tracking-wider transition-transform bg-primary-container text-on-primary-container font-headline-sm -skew-x-6" data-path="confidants" href="#">CONFIDANTS</a><a class="px-space-md py-space-xs font-label-lg text-label-lg uppercase tracking-wider text-on-surface-variant hover:bg-surface-container hover:text-on-surface -skew-x-6 transition-transform hover:-translate-y-0.5" data-path="calling-card" href="#">CALLING CARD</a><a class="px-space-md py-space-xs font-label-lg text-label-lg uppercase tracking-wider text-on-surface-variant hover:bg-surface-container hover:text-on-surface -skew-x-6 transition-transform hover:-translate-y-0.5" data-path="silent-hill-fog" href="#">SILENT HILL FOG</a></nav><div class="flex items-center gap-space-md z-10"><button class="hidden sm:flex items-center gap-space-xs px-space-md py-space-xs bg-primary-container text-on-primary-container font-label-md text-label-md -skew-x-6 comic-shadow transition-transform hover:-translate-x-0.5 hover:-translate-y-0.5" type="button"><span class="material-symbols-outlined text-sm font-bold">terminal</span><span>JOKER CLI</span></button><div class="flex items-center gap-space-sm pl-space-sm border-l border-outline-variant"><div class="relative flex items-center justify-center"><div class="w-10 h-10 p-0.5 bg-primary-container -skew-x-3 comic-shadow"><img alt="Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBzzMurnPro0_jGBCVcWodQ4VMSwkEypN5Cd32TdVX_JSmZJkn_xqbaQxG-2n-uucfx3qyhIKvAfaa7LIaLuv014RMEcUUy2_wgsqnL6VR9QvTOIm82VtmtyiZOZN1V1lIAFXkmCQU-zYQA7OnJH2xQhedXmGkAryqQavUDULfow3DwWoK6d9TVnNTVNxutmUrrYGEWCUZToa4OszgqZZ1niaBWFTeNw8OrziGrX3je"/></div><span class="absolute -bottom-2 -right-2 bg-secondary-container text-on-secondary-container font-label-sm text-label-sm px-1 font-bold -skew-x-6 border border-background">LV.99</span></div></div></div></div></header><main class="w-full pt-20 pb-16 bg-surface min-h-[calc(100vh-4rem)]"><div class="flex flex-col w-full relative pb-24 overflow-hidden select-none">
+<!-- AMBIENT GRAPHIC NOISE / HALVENING ACCENTS -->
+<div class="absolute -top-32 right-10 w-96 h-96 bg-primary-container/10 -skew-x-12 blur-3xl pointer-events-none"></div>
+<div class="absolute top-1/2 -left-20 w-80 h-80 bg-secondary-container/5 skew-y-12 blur-2xl pointer-events-none"></div>
+<!-- TITLE BLOCK: ANGULAR JAGGED COMIC HEADER -->
+<div class="w-full px-gutter relative pt-6 mb-12">
+<div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 relative z-10">
+<!-- Left Major Title Assembly -->
+<div class="relative">
+<!-- Slanted Background Splatter Tag -->
+<div class="inline-flex items-center gap-space-xs px-3 py-1 bg-secondary-container text-on-secondary-container font-label-md text-label-md -skew-x-12 mb-3 comic-shadow">
+<span class="material-symbols-outlined text-sm font-bold">military_tech</span>
+<span>COOPERATION ARCHIVE // FILE_03</span>
+</div>
+<div class="relative inline-block">
+<div class="absolute -inset-x-6 -inset-y-2 bg-surface-container-lowest -skew-x-6 -z-10 comic-shadow"></div>
+<h1 class="font-display-xl text-display-xl uppercase tracking-wider text-secondary drop-shadow-[4px_4px_0px_#000000] -skew-x-6 m-0 leading-none">
+            CONFIDANT <span class="text-primary-container">NETWORK</span>
+</h1>
+</div>
+<div class="flex items-center gap-4 mt-2">
+<span class="font-headline-sm text-headline-sm text-secondary -skew-x-6 tracking-wide drop-shadow-[2px_2px_0px_#000000]">
+            &amp; COMBAT SKILL TREE
+          </span>
+<span class="h-1 w-24 bg-primary-container -skew-x-12 inline-block"></span>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">OPERATIVE: MOHAMMAD ELSHERBINY</span>
+</div>
+</div>
+<!-- Right Stat Badge & Status Readout -->
+<div class="flex items-center gap-space-md self-start lg:self-end">
+<div class="bg-surface-container-low p-3 -skew-x-6 comic-shadow flex items-center gap-4">
+<div class="w-12 h-12 bg-primary-container text-on-primary-container flex flex-col items-center justify-center font-headline-sm text-headline-sm leading-none">
+<span>COOP</span>
+<span class="text-[10px] tracking-tighter font-label-sm">LVL</span>
+</div>
+<div class="flex flex-col pr-3">
+<span class="font-label-sm text-label-sm text-primary font-bold tracking-widest uppercase">META-SYNCHRONIZATION</span>
+<span class="font-headline-sm text-headline-sm text-secondary leading-tight">TOTAL 5 CONTRACTS</span>
+</div>
+</div>
+<div class="hidden sm:flex flex-col bg-surface-container-highest px-3 py-2 -skew-x-6 text-right">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">SECURITY HAZARD</span>
+<span class="font-headline-sm text-headline-sm text-secondary-fixed tracking-wider">MAX THREAT</span>
+</div>
+</div>
+</div>
+<!-- Slanted Red Banner Stripe Bar -->
+<div class="w-full h-3 bg-primary-container -skew-x-12 mt-6 comic-shadow flex items-center justify-end px-4 overflow-hidden">
+<span class="font-label-sm text-[9px] uppercase tracking-widest text-on-primary-container font-black">
+        /// THE BONDS WITH PEOPLE WILL BECOME THE POWER YOU EXERT /// THE BONDS WITH PEOPLE WILL BECOME THE POWER YOU EXERT ///
+      </span>
+</div>
+</div>
+<!-- SECTION 1: CONFIDANT ARCANA CARDS (5 Major Contracts) -->
+<div class="w-full px-gutter mb-20">
+<div class="flex items-center justify-between mb-8">
+<div class="flex items-center gap-3">
+<div class="w-3 h-8 bg-secondary-container -skew-x-12"></div>
+<h2 class="font-headline-lg text-headline-lg uppercase tracking-wide text-secondary -skew-x-6 m-0">
+          ARCANA <span class="text-primary-container">COOPERATION</span>
+</h2>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">
+        CLICK TAROT TO INSPECT SYNERGY
+      </span>
+</div>
+<!-- 5-Card Asymmetric Bento Display -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6 items-stretch">
+<!-- CARD 1: THE MAGICIAN (Col 1-5, Large Spotlight) -->
+<div class="lg:col-span-5 relative group cursor-pointer transition-transform duration-300 hover:-translate-y-2 hover:-translate-x-1">
+<!-- Offset Comic Shadow Backing Plate -->
+<div class="absolute inset-0 bg-primary-container -skew-x-6 translate-x-2 translate-y-2 -z-10 group-hover:translate-x-3 group-hover:translate-y-3 transition-transform"></div>
+<div class="bg-surface-container-lowest h-full p-6 -skew-x-6 flex flex-col justify-between overflow-hidden relative">
+<!-- Screentone Dot Overlay -->
+<div class="absolute inset-0 opacity-10 pointer-events-none bg-[radial-gradient(#ffb4aa_1px,transparent_1px)] [background-size:8px_8px]"></div>
+<div>
+<!-- Header Bar -->
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 bg-primary-container text-on-primary-container font-label-md text-label-md font-bold uppercase -skew-x-6">
+                  ARCANA 01
+                </span>
+<span class="font-headline-sm text-headline-sm text-secondary-fixed uppercase">THE MAGICIAN</span>
+</div>
+<div class="px-2.5 py-0.5 bg-secondary-container text-on-secondary-container font-headline-sm text-headline-sm uppercase tracking-wider animate-pulse">
+                RANK 10 MAX
+              </div>
+</div>
+<!-- Arcana Graphic Persona Visual -->
+<div class="relative w-full h-44 mb-4 overflow-hidden bg-surface-container-high comic-shadow">
+<img class="w-full h-full object-cover filter contrast-125 brightness-95 group-hover:scale-105 transition-transform duration-500" data-alt="Stylized graphic novel crimson and noir illustration of a fiery cybernetic kitsune fox persona surrounded by glowing PyTorch neural network nodes, high contrast graphic novel manga ink aesthetic, crimson red ambient lighting, stark black shadows." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDO7nuqyMnZVCZpSXesCRIlDUBozq1oOWf8dRlt1p_zari4JeK3tiHSfbalXGDbORG-7W4s1tjgsL7_b4KCNo3eTKXEfEsUn-YzNU_qLX16yARcvEuGSaHCxRz5vLGt2ECY-uz9_XrDP7w9Dlyp7vaRV1Zc5ge4Qriqb5AGLIx_xttO9ezj5zHcC1z6khAq4sHkQ58dx6wjwxbttOZlKETM8vphQ_DBn7wYAj3rQvah"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-transparent to-transparent"></div>
+<div class="absolute bottom-2 left-2 flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary-fixed text-lg">local_fire_department</span>
+<span class="font-label-sm text-label-sm text-secondary font-bold uppercase tracking-wider bg-surface-container-lowest/80 px-2 py-0.5">FIRE (AGI) // AI CORE</span>
+</div>
+</div>
+<!-- Title & Focus -->
+<h3 class="font-headline-lg text-headline-lg uppercase text-secondary tracking-wide m-0 mb-1 leading-tight">
+              PYTHON &amp; PYTORCH
+            </h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4">
+              Architecting state-of-the-art Deep Learning pipelines, advanced convolutional architectures, and ultra-compact Edge TPU vision deployment.
+            </p>
+</div>
+<!-- Skills Badges & Perks -->
+<div class="pt-4 mt-auto">
+<div class="flex flex-wrap gap-2 mb-3">
+<span class="px-2 py-1 bg-surface-container text-secondary-fixed font-label-sm text-label-sm">&gt; CNN_BACKBONES</span>
+<span class="px-2 py-1 bg-surface-container text-secondary-fixed font-label-sm text-label-sm">&gt; TENSORRT</span>
+<span class="px-2 py-1 bg-surface-container text-secondary-fixed font-label-sm text-label-sm">&gt; EDGE_TPU</span>
+<span class="px-2 py-1 bg-surface-container text-secondary-fixed font-label-sm text-label-sm">&gt; COMPUTER_VISION</span>
+</div>
+<div class="bg-surface-container-low px-3 py-1.5 flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-primary uppercase font-bold">PERK UNLOCKED</span>
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-tight">MIRACLE MODEL FIT: 99.4% F1-SCORE</span>
+</div>
+</div>
+</div>
+</div>
+<!-- CARD 2: THE EMPEROR (Col 6-12) -->
+<div class="lg:col-span-7 relative group cursor-pointer transition-transform duration-300 hover:-translate-y-2 hover:-translate-x-1">
+<div class="absolute inset-0 bg-secondary-container -skew-x-6 translate-x-2 translate-y-2 -z-10 group-hover:translate-x-3 group-hover:translate-y-3 transition-transform"></div>
+<div class="bg-surface-container-lowest h-full p-6 -skew-x-6 flex flex-col justify-between overflow-hidden relative">
+<div class="absolute inset-0 opacity-10 pointer-events-none bg-[radial-gradient(#ffe16d_1px,transparent_1px)] [background-size:8px_8px]"></div>
+<div>
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 bg-surface-container-highest text-secondary-fixed font-label-md text-label-md font-bold uppercase -skew-x-6">
+                  ARCANA 02
+                </span>
+<span class="font-headline-sm text-headline-sm text-secondary uppercase">THE EMPEROR</span>
+</div>
+<div class="px-2.5 py-0.5 bg-surface-container-highest text-secondary font-headline-sm text-headline-sm uppercase tracking-wider">
+                RANK 9
+              </div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-12 gap-4 mb-4">
+<div class="sm:col-span-5 h-44 overflow-hidden bg-surface-container-high comic-shadow relative">
+<img class="w-full h-full object-cover filter contrast-125 brightness-95 group-hover:scale-105 transition-transform duration-500" data-alt="Dramatic high contrast black and gold digital art of a stern cybernetic warlord with bare silicon microprocessor crown, glowing circuit diagrams, stark ink lines, deep obsidian shadows with electric yellow and crimson accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxRgVG16xpTn-yGyKOUiXQUGLWXa5cWSGbm6GyEUvkok1Wn9Mvw_cr6Qe4zpIsVzblmAMVdpGBu52tZFso2JH9fMxbDgQjusxXi1cEjlotYxFsw3SPNBkXKyC6v637h6KzYDNEiS4Von-w8WlZtJxUM4lhYIG7r4xdSE595jwI_MEGBhFSbr43sqyf0JtNVsb_XjUU7Vj6aNuzpm9rzzSu5S7NfcKeUkPdZezawAmE"/>
+<div class="absolute bottom-2 left-2 flex items-center gap-1.5 bg-surface-container-lowest/80 px-2 py-0.5">
+<span class="material-symbols-outlined text-secondary-fixed text-base">bolt</span>
+<span class="font-label-sm text-label-sm text-secondary uppercase">ELEC (ZIO) // SYS</span>
+</div>
+</div>
+<div class="sm:col-span-7 flex flex-col justify-center">
+<h3 class="font-headline-lg text-headline-lg uppercase text-secondary tracking-wide m-0 mb-2 leading-tight">
+                  C / C++ &amp; LOW-LEVEL SYSTEMS
+                </h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                  Mastery over raw memory pointers, cycle-accurate microprocessor simulation, custom RTOS scheduling, and mission-critical hardware firmware.
+                </p>
+</div>
+</div>
+</div>
+<div class="pt-4 mt-auto">
+<div class="flex flex-wrap gap-2 mb-3">
+<span class="px-2 py-1 bg-surface-container text-secondary-fixed font-label-sm text-label-sm">&gt; MEMORY_PROFILING</span>
+<span class="px-2 py-1 bg-surface-container text-secondary-fixed font-label-sm text-label-sm">&gt; EMBEDDED_C++20</span>
+<span class="px-2 py-1 bg-surface-container text-secondary-fixed font-label-sm text-label-sm">&gt; RISC-V_SIM</span>
+<span class="px-2 py-1 bg-surface-container text-secondary-fixed font-label-sm text-label-sm">&gt; HARDWARE_INTERRUPTS</span>
+</div>
+<div class="bg-surface-container-low px-3 py-1.5 flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-secondary-fixed uppercase font-bold">PERK UNLOCKED</span>
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-tight">ZERO ZERO OVERHEAD: 12KB BARE METAL ROM</span>
+</div>
+</div>
+</div>
+</div>
+<!-- CARD 3: THE CHARIOT (Col 1-4) -->
+<div class="lg:col-span-4 relative group cursor-pointer transition-transform duration-300 hover:-translate-y-2 hover:-translate-x-1">
+<div class="absolute inset-0 bg-primary-container -skew-x-6 translate-x-2 translate-y-2 -z-10 group-hover:translate-x-3 group-hover:translate-y-3 transition-transform"></div>
+<div class="bg-surface-container-lowest h-full p-6 -skew-x-6 flex flex-col justify-between overflow-hidden relative">
+<div>
+<div class="flex justify-between items-start mb-3">
+<div class="flex items-center gap-1.5">
+<span class="px-2 py-0.5 bg-primary-container text-on-primary-container font-label-md text-label-md font-bold uppercase -skew-x-6">03</span>
+<span class="font-headline-sm text-headline-sm text-secondary uppercase">THE CHARIOT</span>
+</div>
+<span class="px-2 py-0.5 bg-secondary-container text-on-secondary-container font-headline-sm text-headline-sm uppercase">RANK 10 MAX</span>
+</div>
+<div class="h-32 mb-4 overflow-hidden bg-surface-container-high comic-shadow relative">
+<img class="w-full h-full object-cover filter contrast-125 brightness-95 group-hover:scale-105 transition-transform duration-500" data-alt="Kinetic graphic novel comic panel of a speeding phantom runner shattering digital glass barriers with vibrant red neon streaks, high tension anime angle, black ink line hatching, electric red and white contrast." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB03VGXuhyZ1VSyv8YoArW_mGT43lE_hPEeNqfB4sI3C8jgIFmrKvtrQTKeuc5zs8zQAV9dBFHDHpmOnTBb5Ifx2aLqW3f2gYKgnEozX26V-BagTpKpYy8tfdaoIFjweIbw5IMFPcgrM7yO0OsEF1IvycgqELX2Yl_ytD8uLv-ywykfBdZbkuW3k_au_GMRJPAspGTpmYPH5ut6odEjqqX1EXVoOgSyYV7YcZmT7nyk"/>
+<div class="absolute bottom-2 left-2 bg-surface-container-lowest/80 px-2 py-0.5 font-label-sm text-label-sm text-secondary uppercase">
+                WIND (GARU) // FRONTEND
+              </div>
+</div>
+<h3 class="font-headline-lg text-headline-lg uppercase text-secondary tracking-wide m-0 mb-1 leading-tight">
+              REACT &amp; MODERN UI
+            </h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-4">
+              Next.js 15, Canvas micro-engines, kinetic styling systems, and zero-jank interactive frontends.
+            </p>
+</div>
+<div>
+<div class="flex flex-wrap gap-1.5 mb-3">
+<span class="px-1.5 py-0.5 bg-surface-container text-secondary-fixed font-label-sm text-label-sm">&gt; NEXT.JS</span>
+<span class="px-1.5 py-0.5 bg-surface-container text-secondary-fixed font-label-sm text-label-sm">&gt; TAILWIND</span>
+<span class="px-1.5 py-0.5 bg-surface-container text-secondary-fixed font-label-sm text-label-sm">&gt; WEBGL</span>
+</div>
+<div class="bg-surface-container-low px-2.5 py-1 text-center font-label-sm text-label-sm text-primary font-bold uppercase">
+              INSTANT ALL-OUT ATTACK 60FPS
+            </div>
+</div>
+</div>
+</div>
+<!-- CARD 4: THE HIEROPHANT (Col 5-8) -->
+<div class="lg:col-span-4 relative group cursor-pointer transition-transform duration-300 hover:-translate-y-2 hover:-translate-x-1">
+<div class="absolute inset-0 bg-surface-container-highest -skew-x-6 translate-x-2 translate-y-2 -z-10 group-hover:translate-x-3 group-hover:translate-y-3 transition-transform"></div>
+<div class="bg-surface-container-lowest h-full p-6 -skew-x-6 flex flex-col justify-between overflow-hidden relative">
+<div>
+<div class="flex justify-between items-start mb-3">
+<div class="flex items-center gap-1.5">
+<span class="px-2 py-0.5 bg-surface-container-highest text-secondary-fixed font-label-md text-label-md font-bold uppercase -skew-x-6">04</span>
+<span class="font-headline-sm text-headline-sm text-secondary uppercase">HIEROPHANT</span>
+</div>
+<span class="px-2 py-0.5 bg-surface-container-highest text-secondary font-headline-sm text-headline-sm uppercase">RANK 9</span>
+</div>
+<div class="h-32 mb-4 overflow-hidden bg-surface-container-high comic-shadow relative">
+<img class="w-full h-full object-cover filter contrast-125 brightness-95 group-hover:scale-105 transition-transform duration-500" data-alt="Monochromatic manga illustration of an ancient high priest surrounded by monolithic mainframe server racks, green terminal phosphors, intricate cryptographic seals, moody noir shadows and subtle gold glowing accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAWZDLmBFeizwDfOpKQZbMMQzxJtTkw7XKYMrZWVoWehKbBb18hI3Gt4Jm4xdID1WGSV0kiz2G7uXRzeztaCkYqhV8Om0advO1S3hFvljH0yVvXb4IVKanxKpLLuurDybgqJ4BFCU-3B-_OamWg1REOZf-zUDgDUIXZ04OEAKahB1-MirAOUFHX5K2U9wSUaMdD2175gCbsB0IpxKCYraX801t-ft_DF35NtU3rU-W7"/>
+<div class="absolute bottom-2 left-2 bg-surface-container-lowest/80 px-2 py-0.5 font-label-sm text-label-sm text-secondary uppercase">
+                ICE (BUFU) // CLOUD BACKEND
+              </div>
+</div>
+<h3 class="font-headline-lg text-headline-lg uppercase text-secondary tracking-wide m-0 mb-1 leading-tight">
+              DJANGO &amp; SYSTEM ARCH
+            </h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-4">
+              Mission-grade REST API grids, multi-tenant PostgreSQL clustering, Redis queues, and resilient ERP microservices.
+            </p>
+</div>
+<div>
+<div class="flex flex-wrap gap-1.5 mb-3">
+<span class="px-1.5 py-0.5 bg-surface-container text-secondary-fixed font-label-sm text-label-sm">&gt; POSTGRES</span>
+<span class="px-1.5 py-0.5 bg-surface-container text-secondary-fixed font-label-sm text-label-sm">&gt; REDIS_PUBSUB</span>
+<span class="px-1.5 py-0.5 bg-surface-container text-secondary-fixed font-label-sm text-label-sm">&gt; DOCKER</span>
+</div>
+<div class="bg-surface-container-low px-2.5 py-1 text-center font-label-sm text-label-sm text-secondary uppercase font-bold">
+              UNSHAKABLE DATABASE SHARDING
+            </div>
+</div>
+</div>
+</div>
+<!-- CARD 5: THE STAR (Col 9-12) -->
+<div class="lg:col-span-4 relative group cursor-pointer transition-transform duration-300 hover:-translate-y-2 hover:-translate-x-1">
+<div class="absolute inset-0 bg-primary-container -skew-x-6 translate-x-2 translate-y-2 -z-10 group-hover:translate-x-3 group-hover:translate-y-3 transition-transform"></div>
+<div class="bg-surface-container-lowest h-full p-6 -skew-x-6 flex flex-col justify-between overflow-hidden relative">
+<div>
+<div class="flex justify-between items-start mb-3">
+<div class="flex items-center gap-1.5">
+<span class="px-2 py-0.5 bg-primary-container text-on-primary-container font-label-md text-label-md font-bold uppercase -skew-x-6">05</span>
+<span class="font-headline-sm text-headline-sm text-secondary uppercase">THE STAR</span>
+</div>
+<span class="px-2 py-0.5 bg-surface-container-highest text-secondary font-headline-sm text-headline-sm uppercase">RANK 8</span>
+</div>
+<div class="h-32 mb-4 overflow-hidden bg-surface-container-high comic-shadow relative">
+<img class="w-full h-full object-cover filter contrast-125 brightness-95 group-hover:scale-105 transition-transform duration-500" data-alt="Persona 5 art style portrait of an optical reconnaissance scout viewing target reticles and infrared point clouds projected over an atmospheric night skyline, crimson and electric cyan telemetry, harsh ink crosshatching." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmv-KwUJ7KcA3Xhl0UnB8Q-Uhglq4CyTRAQVg__FOtrpFID5iN2R7q18EeSINvxjJeQUjyJ9IEVAeH75LqZy60E1RXzx1SaTlvzvwGlJt3P1eIjzw30APF5xI7AHYFqkOgvJQ9SYr7YGKbY3Yq49y7R7JTFW8N1m0lTU0WT0Z_sOVI3oJpNc1VPQbtZj_QQu1JnmKgUJKWQhJZgNkfEyLx0BzgDcikJjYR8I1PEDzN"/>
+<div class="absolute bottom-2 left-2 bg-surface-container-lowest/80 px-2 py-0.5 font-label-sm text-label-sm text-secondary uppercase">
+                PSY // EMBEDDED VISION
+              </div>
+</div>
+<h3 class="font-headline-lg text-headline-lg uppercase text-secondary tracking-wide m-0 mb-1 leading-tight">
+              OPENCV &amp; EDGE EMBEDDED
+            </h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-4">
+              Real-time frame streaming on ESP32-CAM, optical flow estimation, automated defect detection, edge inferencing.
+            </p>
+</div>
+<div>
+<div class="flex flex-wrap gap-1.5 mb-3">
+<span class="px-1.5 py-0.5 bg-surface-container text-secondary-fixed font-label-sm text-label-sm">&gt; ESP32-CAM</span>
+<span class="px-1.5 py-0.5 bg-surface-container text-secondary-fixed font-label-sm text-label-sm">&gt; OPENCV4</span>
+<span class="px-1.5 py-0.5 bg-surface-container text-secondary-fixed font-label-sm text-label-sm">&gt; DMA_CAPTURE</span>
+</div>
+<div class="bg-surface-container-low px-2.5 py-1 text-center font-label-sm text-label-sm text-primary font-bold uppercase">
+              SUB-30MS CAMERA PIPELINE
+            </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- SECTION 2: COMBAT SKILL TREE & METRICS (Persona Skill HUD) -->
+<div class="w-full px-gutter relative">
+<!-- Header with Interactive Filter Nav -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
+<div>
+<div class="inline-flex items-center gap-2 px-2.5 py-0.5 bg-primary-container text-on-primary-container font-label-sm text-label-sm -skew-x-12 mb-2 comic-shadow">
+<span class="material-symbols-outlined text-xs">tune</span>
+<span>BATTLE DECK EQUIPPED</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg uppercase tracking-wide text-secondary -skew-x-6 m-0">
+          COMBAT <span class="text-primary-container">SKILL SLOTS</span> &amp; AFFINITY
+        </h2>
+</div>
+<!-- Slanted Red / Black Filter Polygons -->
+<div class="flex flex-wrap gap-2" id="skill-filter-bar">
+<button class="filter-btn active-filter px-4 py-1.5 bg-primary-container text-on-primary-container font-label-md text-label-md uppercase -skew-x-12 comic-shadow transition-transform hover:-translate-y-0.5" data-filter="all" type="button">
+          [ ALL AFFINITIES ]
+        </button>
+<button class="filter-btn px-4 py-1.5 bg-surface-container-lowest text-on-surface hover:text-secondary-fixed font-label-md text-label-md uppercase -skew-x-12 comic-shadow transition-transform hover:-translate-y-0.5" data-filter="ai" type="button">
+          AGI // AI
+        </button>
+<button class="filter-btn px-4 py-1.5 bg-surface-container-lowest text-on-surface hover:text-secondary-fixed font-label-md text-label-md uppercase -skew-x-12 comic-shadow transition-transform hover:-translate-y-0.5" data-filter="systems" type="button">
+          ZIO // SYSTEMS
+        </button>
+<button class="filter-btn px-4 py-1.5 bg-surface-container-lowest text-on-surface hover:text-secondary-fixed font-label-md text-label-md uppercase -skew-x-12 comic-shadow transition-transform hover:-translate-y-0.5" data-filter="web" type="button">
+          GARU // WEB
+        </button>
+<button class="filter-btn px-4 py-1.5 bg-surface-container-lowest text-on-surface hover:text-secondary-fixed font-label-md text-label-md uppercase -skew-x-12 comic-shadow transition-transform hover:-translate-y-0.5" data-filter="devops" type="button">
+          BUFU // DEVOPS
+        </button>
+</div>
+</div>
+<!-- MAIN SKILL DECK & RADAR MATRIX -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+<!-- 8 Active Combat Skill Slots (Left 8 Cols) -->
+<div class="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-4" id="skill-slots-grid">
+<!-- SKILL 1: AI / FIRE -->
+<div class="skill-card bg-surface-container-lowest p-4 -skew-x-6 comic-shadow relative overflow-hidden group hover:bg-surface-container transition-colors" data-affinity="ai">
+<div class="absolute top-0 right-0 w-2 h-full bg-primary-container"></div>
+<div class="flex items-start justify-between mb-2">
+<div class="flex items-center gap-2">
+<span class="w-8 h-8 bg-primary-container text-on-primary-container flex items-center justify-center font-headline-sm text-headline-sm">
+<span class="material-symbols-outlined text-lg">local_fire_department</span>
+</span>
+<div>
+<span class="font-label-sm text-label-sm text-primary uppercase font-bold block">AGIDYNE // PYTORCH</span>
+<h4 class="font-headline-sm text-headline-sm text-secondary uppercase m-0 leading-none">DEEP VISION NET</h4>
+</div>
+</div>
+<span class="font-label-sm text-label-sm bg-surface-container-high px-2 py-0.5 text-secondary-fixed font-bold">SP: 24</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-3">
+            Inflicts heavy Computer Vision classification damage. 99.4% precision against complex multi-class datasets.
+          </p>
+<div class="flex justify-between items-center text-xs">
+<span class="font-label-sm text-[10px] text-primary uppercase tracking-widest">CRIT CHANCE: 42%</span>
+<span class="font-label-sm text-[10px] text-on-surface-variant uppercase">TARGET: EDGE TPU</span>
+</div>
+</div>
+<!-- SKILL 2: SYSTEMS / ELEC -->
+<div class="skill-card bg-surface-container-lowest p-4 -skew-x-6 comic-shadow relative overflow-hidden group hover:bg-surface-container transition-colors" data-affinity="systems">
+<div class="absolute top-0 right-0 w-2 h-full bg-secondary-container"></div>
+<div class="flex items-start justify-between mb-2">
+<div class="flex items-center gap-2">
+<span class="w-8 h-8 bg-secondary-container text-on-secondary-container flex items-center justify-center font-headline-sm text-headline-sm">
+<span class="material-symbols-outlined text-lg">bolt</span>
+</span>
+<div>
+<span class="font-label-sm text-label-sm text-secondary-fixed uppercase font-bold block">ZIODYNE // C++20</span>
+<h4 class="font-headline-sm text-headline-sm text-secondary uppercase m-0 leading-none">CYCLE ACCURACY</h4>
+</div>
+</div>
+<span class="font-label-sm text-label-sm bg-surface-container-high px-2 py-0.5 text-secondary-fixed font-bold">SP: 18</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-3">
+            Direct shock to registers. Simulates CPU pipelining and memory cache misses with deterministic execution speed.
+          </p>
+<div class="flex justify-between items-center text-xs">
+<span class="font-label-sm text-[10px] text-secondary-fixed uppercase tracking-widest">SHOCK PROC: HIGH</span>
+<span class="font-label-sm text-[10px] text-on-surface-variant uppercase">ZERO LATENCY</span>
+</div>
+</div>
+<!-- SKILL 3: WEB / WIND -->
+<div class="skill-card bg-surface-container-lowest p-4 -skew-x-6 comic-shadow relative overflow-hidden group hover:bg-surface-container transition-colors" data-affinity="web">
+<div class="absolute top-0 right-0 w-2 h-full bg-secondary"></div>
+<div class="flex items-start justify-between mb-2">
+<div class="flex items-center gap-2">
+<span class="w-8 h-8 bg-surface-container-highest text-secondary flex items-center justify-center font-headline-sm text-headline-sm">
+<span class="material-symbols-outlined text-lg">air</span>
+</span>
+<div>
+<span class="font-label-sm text-label-sm text-secondary uppercase font-bold block">GARUDYNE // REACT</span>
+<h4 class="font-headline-sm text-headline-sm text-secondary uppercase m-0 leading-none">NEXT 15 FLOW</h4>
+</div>
+</div>
+<span class="font-label-sm text-label-sm bg-surface-container-high px-2 py-0.5 text-secondary-fixed font-bold">SP: 16</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-3">
+            Sweeps entire UI viewport. Blasts high-volume component state with instant sub-frame re-renders.
+          </p>
+<div class="flex justify-between items-center text-xs">
+<span class="font-label-sm text-[10px] text-secondary uppercase tracking-widest">DODGE BUFF: 60FPS</span>
+<span class="font-label-sm text-[10px] text-on-surface-variant uppercase">CANVAS + DOM</span>
+</div>
+</div>
+<!-- SKILL 4: DEVOPS / ICE -->
+<div class="skill-card bg-surface-container-lowest p-4 -skew-x-6 comic-shadow relative overflow-hidden group hover:bg-surface-container transition-colors" data-affinity="devops">
+<div class="absolute top-0 right-0 w-2 h-full bg-surface-bright"></div>
+<div class="flex items-start justify-between mb-2">
+<div class="flex items-center gap-2">
+<span class="w-8 h-8 bg-surface-container-high text-primary flex items-center justify-center font-headline-sm text-headline-sm">
+<span class="material-symbols-outlined text-lg">ac_unit</span>
+</span>
+<div>
+<span class="font-label-sm text-label-sm text-primary uppercase font-bold block">BUFUDYNE // DJANGO</span>
+<h4 class="font-headline-sm text-headline-sm text-secondary uppercase m-0 leading-none">POSTGRES FREEZE</h4>
+</div>
+</div>
+<span class="font-label-sm text-label-sm bg-surface-container-high px-2 py-0.5 text-secondary-fixed font-bold">SP: 22</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-3">
+            Freezes database deadlock anomalies with atomic transactions and Redis pub-sub cache hydration.
+          </p>
+<div class="flex justify-between items-center text-xs">
+<span class="font-label-sm text-[10px] text-primary uppercase tracking-widest">FREEZE: GUARANTEED</span>
+<span class="font-label-sm text-[10px] text-on-surface-variant uppercase">ACID COMPLIANT</span>
+</div>
+</div>
+<!-- SKILL 5: AI / PSY -->
+<div class="skill-card bg-surface-container-lowest p-4 -skew-x-6 comic-shadow relative overflow-hidden group hover:bg-surface-container transition-colors" data-affinity="ai">
+<div class="absolute top-0 right-0 w-2 h-full bg-primary-container"></div>
+<div class="flex items-start justify-between mb-2">
+<div class="flex items-center gap-2">
+<span class="w-8 h-8 bg-primary-container text-on-primary-container flex items-center justify-center font-headline-sm text-headline-sm">
+<span class="material-symbols-outlined text-lg">visibility</span>
+</span>
+<div>
+<span class="font-label-sm text-label-sm text-primary uppercase font-bold block">PSYODYNE // OPENCV</span>
+<h4 class="font-headline-sm text-headline-sm text-secondary uppercase m-0 leading-none">EDGE RETICLE</h4>
+</div>
+</div>
+<span class="font-label-sm text-label-sm bg-surface-container-high px-2 py-0.5 text-secondary-fixed font-bold">SP: 20</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-3">
+            Technical weakness exploiter: real-time spatial feature tracking and polygon edge detection on microcontrollers.
+          </p>
+<div class="flex justify-between items-center text-xs">
+<span class="font-label-sm text-[10px] text-primary uppercase tracking-widest">TECHNICAL COMBO</span>
+<span class="font-label-sm text-[10px] text-on-surface-variant uppercase">ESP32 OPTIMIZED</span>
+</div>
+</div>
+<!-- SKILL 6: SYSTEMS / PASSIVE -->
+<div class="skill-card bg-surface-container-lowest p-4 -skew-x-6 comic-shadow relative overflow-hidden group hover:bg-surface-container transition-colors" data-affinity="systems">
+<div class="absolute top-0 right-0 w-2 h-full bg-secondary-container"></div>
+<div class="flex items-start justify-between mb-2">
+<div class="flex items-center gap-2">
+<span class="w-8 h-8 bg-secondary-container text-on-secondary-container flex items-center justify-center font-headline-sm text-headline-sm">
+<span class="material-symbols-outlined text-lg">memory</span>
+</span>
+<div>
+<span class="font-label-sm text-label-sm text-secondary-fixed uppercase font-bold block">PASSIVE // ARCHITECTURE</span>
+<h4 class="font-headline-sm text-headline-sm text-secondary uppercase m-0 leading-none">DMA STREAM BOOST</h4>
+</div>
+</div>
+<span class="font-label-sm text-label-sm bg-surface-container-high px-2 py-0.5 text-secondary-fixed font-bold">SP: AUTO</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-3">
+            Permanently increases hardware throughput by bypassing CPU bus overhead during frame transport.
+          </p>
+<div class="flex justify-between items-center text-xs">
+<span class="font-label-sm text-[10px] text-secondary-fixed uppercase tracking-widest">+50% BUS BANDWIDTH</span>
+<span class="font-label-sm text-[10px] text-on-surface-variant uppercase">HARDWARE DMA</span>
+</div>
+</div>
+<!-- SKILL 7: DEVOPS / ALMIGHTY -->
+<div class="skill-card bg-surface-container-lowest p-4 -skew-x-6 comic-shadow relative overflow-hidden group hover:bg-surface-container transition-colors" data-affinity="devops">
+<div class="absolute top-0 right-0 w-2 h-full bg-primary-container"></div>
+<div class="flex items-start justify-between mb-2">
+<div class="flex items-center gap-2">
+<span class="w-8 h-8 bg-primary-container text-on-primary-container flex items-center justify-center font-headline-sm text-headline-sm">
+<span class="material-symbols-outlined text-lg">cloud_done</span>
+</span>
+<div>
+<span class="font-label-sm text-label-sm text-primary uppercase font-bold block">MEGIDOLAON // CLOUD</span>
+<h4 class="font-headline-sm text-headline-sm text-secondary uppercase m-0 leading-none">DOCKER SWARM</h4>
+</div>
+</div>
+<span class="font-label-sm text-label-sm bg-surface-container-high px-2 py-0.5 text-secondary-fixed font-bold">SP: 38</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-3">
+            Severe Almighty cloud infrastructure deployment. Bypasses all environment discrepancies regardless of host OS.
+          </p>
+<div class="flex justify-between items-center text-xs">
+<span class="font-label-sm text-[10px] text-primary uppercase tracking-widest">NON-ELEMENTAL</span>
+<span class="font-label-sm text-[10px] text-on-surface-variant uppercase">ZERO DOWNTIME</span>
+</div>
+</div>
+<!-- SKILL 8: WEB / RECOVERY -->
+<div class="skill-card bg-surface-container-lowest p-4 -skew-x-6 comic-shadow relative overflow-hidden group hover:bg-surface-container transition-colors" data-affinity="web">
+<div class="absolute top-0 right-0 w-2 h-full bg-secondary-container"></div>
+<div class="flex items-start justify-between mb-2">
+<div class="flex items-center gap-2">
+<span class="w-8 h-8 bg-secondary-container text-on-secondary-container flex items-center justify-center font-headline-sm text-headline-sm">
+<span class="material-symbols-outlined text-lg">auto_fix_high</span>
+</span>
+<div>
+<span class="font-label-sm text-label-sm text-secondary-fixed uppercase font-bold block">MEDIORAHAN // DESIGN</span>
+<h4 class="font-headline-sm text-headline-sm text-secondary uppercase m-0 leading-none">TAILWIND POLISH</h4>
+</div>
+</div>
+<span class="font-label-sm text-label-sm bg-surface-container-high px-2 py-0.5 text-secondary-fixed font-bold">SP: 14</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-3">
+            Fully restores aesthetics to 100% visual fidelity across all screen resolutions and responsive breakpoints.
+          </p>
+<div class="flex justify-between items-center text-xs">
+<span class="font-label-sm text-[10px] text-secondary-fixed uppercase tracking-widest">FULL HP RESTORE</span>
+<span class="font-label-sm text-[10px] text-on-surface-variant uppercase">DESIGN SYSTEM</span>
+</div>
+</div>
+</div>
+<!-- PERSONA PARAMETERS / RADAR & BATTLE STATS (Right 4 Cols) -->
+<div class="lg:col-span-4 bg-surface-container-lowest p-6 -skew-x-6 comic-shadow relative flex flex-col justify-between">
+<!-- Top Title Label -->
+<div>
+<div class="flex items-center justify-between pb-3 mb-4">
+<div>
+<span class="font-label-sm text-label-sm text-primary uppercase font-bold">STATUS AFFINITY</span>
+<h3 class="font-headline-sm text-headline-sm text-secondary uppercase m-0">COGNITIVE RADAR</h3>
+</div>
+<div class="px-2 py-1 bg-primary-container text-on-primary-container font-headline-sm text-headline-sm -skew-x-6">
+              LV.99
+            </div>
+</div>
+<!-- Radar Chart Visualizer (Inline SVG with P5 Geometric Theme) -->
+<div class="relative w-full aspect-square flex items-center justify-center my-2 bg-surface-container-low/60 -skew-x-3 overflow-hidden">
+<svg aria-label="Persona Stat Pentagram" class="w-full h-full p-4 overflow-visible" viewbox="0 0 200 200">
+<!-- Background Radar Webs -->
+<polygon class="text-surface-variant" fill="none" points="100,20 176,75 147,165 53,165 24,75" stroke="currentColor" stroke-width="1.5"></polygon>
+<polygon class="text-surface-variant" fill="none" points="100,45 152,83 133,145 67,145 48,83" stroke="currentColor" stroke-dasharray="3 3" stroke-width="1"></polygon>
+<polygon class="text-surface-variant" fill="none" points="100,70 128,90 118,125 82,125 72,90" stroke="currentColor" stroke-width="1"></polygon>
+<!-- Axes -->
+<line class="text-surface-variant" stroke="currentColor" stroke-width="1" x1="100" x2="100" y1="100" y2="20"></line>
+<line class="text-surface-variant" stroke="currentColor" stroke-width="1" x1="100" x2="176" y1="100" y2="75"></line>
+<line class="text-surface-variant" stroke="currentColor" stroke-width="1" x1="100" x2="147" y1="100" y2="165"></line>
+<line class="text-surface-variant" stroke="currentColor" stroke-width="1" x1="100" x2="53" y1="100" y2="165"></line>
+<line class="text-surface-variant" stroke="currentColor" stroke-width="1" x1="100" x2="24" y1="100" y2="75"></line>
+<!-- Active Stat Polygon (AI: 95, Systems: 92, Frontend: 98, Backend: 90, Edge: 88) -->
+<polygon fill="rgba(230,0,18,0.35)" points="100,24 171,78 142,160 58,158 30,79" stroke="#e60012" stroke-width="2.5"></polygon>
+<!-- Data Points (Glow dots) -->
+<circle cx="100" cy="24" fill="#ffdb3c" r="4"></circle>
+<circle cx="171" cy="78" fill="#ffdb3c" r="4"></circle>
+<circle cx="142" cy="160" fill="#ffdb3c" r="4"></circle>
+<circle cx="58" cy="158" fill="#ffdb3c" r="4"></circle>
+<circle cx="30" cy="79" fill="#ffdb3c" r="4"></circle>
+<!-- Radar Labels -->
+<text fill="#fff9ef" font-family="'JetBrains Mono'" font-size="9" font-weight="bold" text-anchor="middle" x="100" y="12">AI (STR)</text>
+<text fill="#fff9ef" font-family="'JetBrains Mono'" font-size="9" font-weight="bold" text-anchor="start" x="182" y="78">SYS (MAG)</text>
+<text fill="#fff9ef" font-family="'JetBrains Mono'" font-size="9" font-weight="bold" text-anchor="middle" x="152" y="180">WEB (AGI)</text>
+<text fill="#fff9ef" font-family="'JetBrains Mono'" font-size="9" font-weight="bold" text-anchor="middle" x="48" y="180">OPS (END)</text>
+<text fill="#fff9ef" font-family="'JetBrains Mono'" font-size="9" font-weight="bold" text-anchor="end" x="18" y="78">EDGE (LUK)</text>
+</svg>
+</div>
+<!-- Battle Metric Sliders -->
+<div class="space-y-3 mt-4">
+<div>
+<div class="flex justify-between font-label-sm text-label-sm mb-1">
+<span class="text-secondary font-bold uppercase">HP (ENGINEERING STAMINA)</span>
+<span class="text-primary-container font-black">999 / 999</span>
+</div>
+<div class="w-full h-2.5 bg-surface-container-high overflow-hidden">
+<div class="h-full bg-primary-container w-full"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between font-label-sm text-label-sm mb-1">
+<span class="text-secondary font-bold uppercase">SP (SYSTEM COMPLEXITY CAP)</span>
+<span class="text-secondary-fixed font-black">840 / 840</span>
+</div>
+<div class="w-full h-2.5 bg-surface-container-high overflow-hidden">
+<div class="h-full bg-secondary-container w-full"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Calling Card Signature Stamp -->
+<div class="mt-6 pt-4 bg-surface-container p-3 flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-label-sm text-[9px] uppercase tracking-widest text-on-surface-variant">META-ID RECORD</span>
+<span class="font-headline-sm text-headline-sm text-secondary uppercase leading-none">M. ELSHERBINY</span>
+</div>
+<a class="px-3 py-1 bg-primary-container text-on-primary-container font-label-md text-label-md uppercase -skew-x-6 hover:bg-secondary hover:text-on-secondary transition-colors comic-shadow" data-path="calling-card" href="#">
+            SEND CARD &gt;
+          </a>
+</div>
+</div>
+</div>
+</div>
+<!-- BOTTOM ACCENT CUTOUT STRIP -->
+<div class="w-full px-gutter mt-16">
+<div class="bg-surface-container-high p-4 -skew-x-6 comic-shadow flex flex-col md:flex-row items-center justify-between gap-4">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary-container text-2xl animate-spin">cyclone</span>
+<span class="font-label-md text-label-md text-secondary uppercase tracking-wider">
+          LOOKING FOR CUSTOM SKILL SYNTHESIS? FUSION PROTOCOL READY.
+        </span>
+</div>
+<div class="flex items-center gap-3">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">SYSTEM: ALL-OUT ATTACK READY</span>
+<button class="px-4 py-1.5 bg-secondary-container text-on-secondary-container font-label-md text-label-md uppercase -skew-x-12 comic-shadow hover:-translate-y-0.5 transition-transform" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" type="button">
+          RETURN TO TOP
+        </button>
+</div>
+</div>
+</div>
+</div>
+<!-- INTERACTIVE SCRIPT: AFFINITY FILTER SYSTEM -->
+<script>
+  (function initPersonaSkillsFilter() {
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const skillCards = document.querySelectorAll('.skill-card');
+
+    if (!filterButtons.length || !skillCards.length) return;
+
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const filter = btn.getAttribute('data-filter');
+
+        // Update button visual styles
+        filterButtons.forEach(b => {
+          b.classList.remove('bg-primary-container', 'text-on-primary-container');
+          b.classList.add('bg-surface-container-lowest', 'text-on-surface');
+        });
+        btn.classList.remove('bg-surface-container-lowest', 'text-on-surface');
+        btn.classList.add('bg-primary-container', 'text-on-primary-container');
+
+        // Filter cards with smooth display animation
+        skillCards.forEach(card => {
+          const affinity = card.getAttribute('data-affinity');
+          if (filter === 'all' || affinity === filter) {
+            card.style.display = 'block';
+            card.style.opacity = '1';
+          } else {
+            card.style.display = 'none';
+            card.style.opacity = '0';
+          }
+        });
+      });
+    });
+  })();
+</script></main><footer class="fixed bottom-0 left-0 right-0 z-50 h-10 bg-surface-container-lowest border-t border-outline-variant flex items-center justify-between px-gutter select-none"><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-xs px-2 py-0.5 bg-secondary-container text-on-secondary-container -skew-x-6 font-label-sm text-label-sm font-bold"><span class="material-symbols-outlined text-sm">calendar_today</span><span>4/11</span></div><div class="flex items-center gap-space-xs font-label-sm text-label-sm text-secondary -skew-x-3"><span class="material-symbols-outlined text-sm text-secondary-fixed">cloud</span><span class="hidden sm:inline uppercase tracking-widest text-on-surface-variant">CLOUDY //</span><span class="text-primary-container font-bold uppercase tracking-wider animate-pulse">METAVERSE INFILTRATION ACTIVE</span></div></div><div class="flex items-center gap-space-md"><div class="hidden md:flex items-center gap-space-xs font-label-sm text-label-sm text-on-surface-variant"><span class="w-2 h-2 rounded-full bg-primary-container inline-block animate-ping"></span><span>SECURITY LEVEL: 99%</span></div><button class="flex items-center gap-1 font-label-sm text-label-sm text-on-surface hover:text-primary transition-colors" type="button"><span class="material-symbols-outlined text-base">volume_up</span><span class="hidden sm:inline uppercase">BGM: ON</span></button></div></footer></body></html>

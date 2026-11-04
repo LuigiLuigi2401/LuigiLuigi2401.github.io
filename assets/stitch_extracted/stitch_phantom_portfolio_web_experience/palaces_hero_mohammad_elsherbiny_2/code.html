@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><title>TAKE YOUR HEART // DEV PORTFOLIO</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=JetBrains+Mono:wght@400;600;700&amp;family=Space+Grotesk:wght@400;500;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}.comic-shadow{box-shadow:4px 4px 0px #000000;}.scanline-overlay{background:linear-gradient(rgba(18,16,16,0) 50%, rgba(0,0,0,0.25) 50%), linear-gradient(90deg, rgba(255,0,0,0.06), rgba(0,255,0,0.02), rgba(0,0,255,0.06));background-size:100% 2px, 3px 100%;pointer-events:none;}</style><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-primary-fixed-variant": "#930007", "surface-container-lowest": "#0e0e0e", "error-container": "#93000a", "surface-container": "#201f1f", "surface-bright": "#393939", "background": "#131313", "surface-container-low": "#1c1b1b", "on-surface-variant": "#e9bcb6", "surface-variant": "#353534", "primary-container": "#e60012", "secondary": "#fff9ef", "secondary-fixed": "#ffe16d", "inverse-surface": "#e5e2e1", "tertiary-fixed-dim": "#ffb3ad", "surface-container-high": "#2a2a2a", "on-tertiary-fixed": "#410003", "primary-fixed-dim": "#ffb4aa", "error": "#ffb4ab", "inverse-on-surface": "#313030", "surface-dim": "#131313", "on-primary-fixed": "#410001", "primary-fixed": "#ffdad5", "on-secondary-container": "#725f00", "surface-tint": "#ffb4aa", "on-tertiary": "#680008", "outline": "af8782", "inverse-primary": "#c0000d", "tertiary": "#ffb3ad", "on-tertiary-container": "#fff7f6", "on-error": "#690005", "surface-container-highest": "#353534", "on-error-container": "#ffdad6", "primary": "#ffb4aa", "outline-variant": "#5f3f3b", "on-tertiary-fixed-variant": "#8f1016", "secondary-container": "#ffdb3c", "surface": "#131313", "on-primary-container": "#fff7f6", "on-secondary": "#3a3000", "on-secondary-fixed-variant": "#544600", "on-background": "#e5e2e1", "tertiary-container": "#cc403b", "tertiary-fixed": "#ffdad6", "on-surface": "#e5e2e1", "on-secondary-fixed": "#221b00", "on-primary": "#690003", "secondary-fixed-dim": "#e9c400" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-lg": "1.75rem", "space-xl": "2.5rem", "margin": "3rem", "space-md": "1rem", "gutter-mobile": "1rem", "margin-mobile": "1.25rem", "gutter": "1.5rem", "space-sm": "0.5rem", "space-xs": "0.25rem" }, "fontFamily": { "headline-lg": [ "Anton" ], "label-sm": [ "JetBrains Mono" ], "display-xl": [ "Anton" ], "body-md": [ "Space Grotesk" ], "body-sm": [ "Space Grotesk" ], "label-lg": [ "JetBrains Mono" ], "label-md": [ "JetBrains Mono" ], "headline-lg-mobile": [ "Anton" ], "headline-md": [ "Anton" ], "headline-sm": [ "Anton" ], "display-xl-mobile": [ "Anton" ], "body-lg": [ "Space Grotesk" ] }, "fontSize": { "headline-lg": [ "48px", { "lineHeight": "52px", "letterSpacing": "0.03em", "fontWeight": "400" } ], "label-sm": [ "10px", { "lineHeight": "14px", "letterSpacing": "0.12em", "fontWeight": "600" } ], "display-xl": [ "80px", { "lineHeight": "84px", "letterSpacing": "0.02em", "fontWeight": "400" } ], "body-md": [ "15px", { "lineHeight": "24px", "fontWeight": "400" } ], "body-sm": [ "13px", { "lineHeight": "20px", "fontWeight": "400" } ], "label-lg": [ "14px", { "lineHeight": "18px", "letterSpacing": "0.08em", "fontWeight": "700" } ], "label-md": [ "12px", { "lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600" } ], "headline-lg-mobile": [ "32px", { "lineHeight": "36px", "letterSpacing": "0.03em", "fontWeight": "400" } ], "headline-md": [ "32px", { "lineHeight": "36px", "letterSpacing": "0.02em", "fontWeight": "400" } ], "headline-sm": [ "24px", { "lineHeight": "28px", "letterSpacing": "0.02em", "fontWeight": "400" } ], "display-xl-mobile": [ "44px", { "lineHeight": "48px", "letterSpacing": "0.02em", "fontWeight": "400" } ], "body-lg": [ "18px", { "lineHeight": "28px", "fontWeight": "500" } ] } } } };</script></head><body class="bg-background font-body-md text-on-surface antialiased min-h-screen relative selection:bg-primary-container selection:text-on-primary-container"><div class="fixed inset-0 scanline-overlay z-40 pointer-events-none opacity-40"></div><header class="fixed top-0 left-0 right-0 z-50 bg-surface-container-lowest/95 backdrop-blur-md border-b-2 border-primary-container"><div class="h-20 w-full px-gutter flex items-center justify-between relative overflow-hidden"><div class="absolute -left-12 -top-6 w-48 h-32 bg-primary-container -skew-x-12 -z-10 opacity-90"></div><div class="flex items-center gap-space-md z-10"><img alt="Phantom Emblem" class="h-10 w-auto object-contain drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCS18-T_rEtj5K2MvgT9HRrIK1c6leiZMLhIQvIdZoIlKbB9exRNnIZcKUSaUQhE4k_4Q7XSRVMWz28CSENMQU39FFwPvU6wEEyPAD6GFQno7J84d6C6PiB1MaEIkT9iLd2Q2mKZWt-9-GBg_fVvlhhSJ6vf8Ll74I81U7d1YeoziLXMQFHrr-Jg5NpMbeTel0PszQ6pDB8uKX3nmsmhicsP8_oghfB_2MIV6zc1Tqi"/><div class="flex flex-col"><span class="font-headline-sm text-headline-sm uppercase tracking-wider text-secondary -skew-x-6 drop-shadow-[2px_2px_0px_#000000]">TAKE YOUR HEART</span><span class="font-label-sm text-label-sm uppercase tracking-widest text-primary font-bold -skew-x-6">DEV PORTFOLIO // VER 5.0R</span></div></div><nav class="hidden xl:flex items-center gap-space-sm z-10" data-active-classes="bg-primary-container text-on-primary-container font-headline-sm -skew-x-6"><a aria-current="page" class="px-space-md py-space-xs uppercase tracking-wider transition-transform bg-primary-container text-on-primary-container font-headline-sm -skew-x-6" data-path="palaces" href="#palaces-section">PALACES</a><a class="px-space-md py-space-xs font-label-lg text-label-lg uppercase tracking-wider text-on-surface-variant hover:bg-surface-container hover:text-on-surface -skew-x-6 transition-transform hover:-translate-y-0.5" data-path="stats" href="#hero-stats">STATS</a><a class="px-space-md py-space-xs font-label-lg text-label-lg uppercase tracking-wider text-on-surface-variant hover:bg-surface-container hover:text-on-surface -skew-x-6 transition-transform hover:-translate-y-0.5" data-path="confidants" href="#palaces-section">CONFIDANTS</a><a class="px-space-md py-space-xs font-label-lg text-label-lg uppercase tracking-wider text-on-surface-variant hover:bg-surface-container hover:text-on-surface -skew-x-6 transition-transform hover:-translate-y-0.5" data-path="calling-card" href="#calling-card">CALLING CARD</a><a class="px-space-md py-space-xs font-label-lg text-label-lg uppercase tracking-wider text-on-surface-variant hover:bg-surface-container hover:text-on-surface -skew-x-6 transition-transform hover:-translate-y-0.5" data-path="silent-hill-fog" href="#calling-card" id="nav-silenthill">SILENT HILL FOG</a></nav><div class="flex items-center gap-space-md z-10"><button class="hidden sm:flex items-center gap-space-xs px-space-md py-space-xs bg-primary-container text-on-primary-container font-label-md text-label-md -skew-x-6 comic-shadow transition-transform hover:-translate-x-0.5 hover:-translate-y-0.5" id="btn-joker-cli" type="button"><span class="material-symbols-outlined text-sm font-bold">terminal</span><span>JOKER CLI</span></button><button class="flex items-center gap-1.5 px-2.5 py-1 bg-surface-container-highest text-secondary border border-outline-variant/60 font-label-sm text-label-sm -skew-x-6 comic-shadow transition-transform hover:-translate-x-0.5 hover:-translate-y-0.5" id="header-sfx-toggle" title="Toggle Synthesized Persona 5 / Silent Hill Audio" type="button"><span class="w-2 h-2 rounded-full bg-primary-container animate-ping inline-block" id="header-sfx-pulse"></span><span class="material-symbols-outlined text-sm text-secondary-fixed" id="header-sfx-icon">volume_up</span><span class="font-bold tracking-wider" id="header-sfx-text">SFX: ON</span></button><div class="flex items-center gap-space-sm pl-space-sm border-l border-outline-variant"><div class="relative flex items-center justify-center"><div class="w-10 h-10 p-0.5 bg-primary-container -skew-x-3 comic-shadow"><img alt="Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBzzMurnPro0_jGBCVcWodQ4VMSwkEypN5Cd32TdVX_JSmZJkn_xqbaQxG-2n-uucfx3qyhIKvAfaa7LIaLuv014RMEcUUy2_wgsqnL6VR9QvTOIm82VtmtyiZOZN1V1lIAFXkmCQU-zYQA7OnJH2xQhedXmGkAryqQavUDULfow3DwWoK6d9TVnNTVNxutmUrrYGEWCUZToa4OszgqZZ1niaBWFTeNw8OrziGrX3je"/></div><span class="absolute -bottom-2 -right-2 bg-secondary-container text-on-secondary-container font-label-sm text-label-sm px-1 font-bold -skew-x-6 border border-background">LV.99</span></div></div></div></div></header><main class="w-full pt-20 pb-16 bg-surface min-h-[calc(100vh-4rem)]"><div class="flex flex-col w-full relative overflow-hidden select-none">
+<!-- Dynamic Halftone & Speedline Texture Layer -->
+<div class="absolute inset-0 pointer-events-none opacity-20 z-0" style="background-image: radial-gradient(#e60012 1.5px, transparent 1.5px); background-size: 14px 14px;"></div>
+<!-- Atmospheric Fog Ambient Glow Behind Hero -->
+<div class="absolute -top-32 -left-32 w-[650px] h-[650px] bg-primary-container/15 rounded-full blur-[140px] pointer-events-none -z-10"></div>
+<div class="absolute top-96 -right-40 w-[600px] h-[600px] bg-secondary-container/10 rounded-full blur-[160px] pointer-events-none -z-10"></div>
+<!-- ============================================================== -->
+<!-- 1. HERO SECTION: JAGGED HEADLINE & JOKER CUT-IN STAT CARD      -->
+<!-- ============================================================== -->
+<section class="relative z-10 w-full px-gutter pt-8 pb-16 flex flex-col gap-space-lg" id="hero-stats">
+<!-- Top Metadata Status Bar -->
+<div class="flex flex-wrap items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-sm -skew-x-6">
+<span class="px-3 py-1 bg-surface-container-lowest text-secondary font-label-md text-label-md tracking-wider border-l-4 border-primary-container comic-shadow">
+          MISSION STATUS: <span class="text-primary-container font-bold animate-pulse">PALACE INFILTRATION IN PROGRESS</span>
+</span>
+<span class="hidden sm:inline-flex px-3 py-1 bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm">
+          TARGET: THE META-WEB
+        </span>
+</div>
+<!-- Persona 5 'TAKE YOUR TIME' Rotating Badge Teaser -->
+<div class="flex items-center gap-space-xs -skew-x-6 bg-surface-container-lowest px-3 py-1 comic-shadow border-r-4 border-secondary-container">
+<span class="material-symbols-outlined text-secondary-container text-base animate-spin" style="animation-duration: 9s;">progress_activity</span>
+<span class="font-headline-sm text-headline-sm tracking-widest text-secondary text-sm">TAKE YOUR TIME</span>
+</div>
+</div>
+<!-- Main Grid: Kinetic Typography Left / Joker Cut-In Right -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-center">
+<!-- Typography & CTAs Column (7 cols) -->
+<div class="lg:col-span-7 flex flex-col gap-space-md z-20">
+<!-- Angular Badges -->
+<div class="flex flex-wrap items-center gap-space-xs -skew-x-6">
+<div class="bg-secondary-container px-3 py-1 comic-shadow">
+<span class="font-label-lg text-label-lg text-on-secondary-container uppercase font-bold tracking-widest">
+              TRILINGUAL [EN / AR / JP]
+            </span>
+</div>
+<div class="bg-surface-container-highest px-3 py-1 comic-shadow">
+<span class="font-label-lg text-label-lg text-secondary uppercase font-semibold tracking-wider">
+              SOFTWARE ENGINEER @ E-JUST
+            </span>
+</div>
+<div class="bg-primary-container px-2.5 py-1 text-on-primary-container font-label-sm text-label-sm font-bold uppercase tracking-widest comic-shadow">
+            FULL-STACK DEV
+          </div>
+</div>
+<!-- Colossal Persona 5 Jagged Name Header -->
+<div class="relative py-2 select-none">
+<!-- Crimson Offset Drop Layer -->
+<h1 class="font-display-xl text-display-xl uppercase tracking-tighter text-primary-container absolute top-1.5 left-1.5 opacity-90 -skew-x-6 leading-none pointer-events-none select-none">
+            MOHAMMAD<br/>ELSHERBINY
+          </h1>
+<!-- Obsidian Foreground Lettering -->
+<h1 class="relative font-display-xl text-display-xl uppercase tracking-tighter text-secondary -skew-x-6 leading-none filter drop-shadow-[4px_4px_0px_#000000]">
+            MOHAMMAD<br/>
+<span class="text-secondary-fixed bg-surface-container-lowest px-3 py-0 inline-block -skew-x-3 comic-shadow">
+              ELSHERBINY
+            </span>
+</h1>
+</div>
+<!-- Narrative Manifesto / Psychological Fog Hybrid Description -->
+<div class="relative bg-surface-container-low p-space-md -skew-x-3 comic-shadow max-w-2xl border-l-4 border-primary-container">
+<p class="font-body-lg text-body-lg text-on-surface leading-relaxed">
+            Architecting cognitive full-stack applications and high-fidelity embedded systems where clean code confronts the uncanny distortion of the digital metaverse. Unraveling systemic corruption with low-level precision.
+          </p>
+<div class="mt-space-xs flex items-center gap-space-sm font-label-sm text-label-sm text-on-surface-variant">
+<span class="text-secondary-container font-bold">&gt; LOC:</span> EGYPT-JAPAN UNIVERSITY OF SCIENCE AND TECHNOLOGY
+            <span class="text-primary-container">●</span>
+<span>COGNITIVE CORE: ONLINE</span>
+</div>
+</div>
+<!-- Action CTAs: Parallelograms & Hard Comic Shadows -->
+<div class="flex flex-wrap items-center gap-space-md pt-2">
+<!-- Skewed Crimson Button -->
+<a class="group relative px-space-lg py-space-sm bg-primary-container text-on-primary-container font-headline-sm text-headline-sm uppercase tracking-wider -skew-x-6 comic-shadow transition-transform hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[8px_8px_0px_#ffe16d] flex items-center gap-space-xs" data-sound="heavy" href="#palaces-section">
+<span>EXPLORE PALACES (PROJECTS)</span>
+<span class="material-symbols-outlined transition-transform group-hover:translate-x-1">arrow_forward</span>
+</a>
+<!-- Monochrome Secondary Button -->
+<a class="group px-space-lg py-space-sm bg-surface-container-highest text-secondary font-headline-sm text-headline-sm uppercase tracking-wider -skew-x-6 comic-shadow transition-transform hover:-translate-x-1 hover:-translate-y-1 hover:bg-secondary hover:text-surface-container-lowest flex items-center gap-space-xs" data-sound="select" href="#calling-card">
+<span>DOWNLOAD RESUME (CV)</span>
+<span class="material-symbols-outlined transition-transform group-hover:translate-y-0.5">download</span>
+</a>
+</div>
+<!-- Interactive Terminal Prompt Bar -->
+<div class="mt-space-sm bg-surface-container-lowest p-space-sm -skew-x-3 comic-shadow max-w-2xl flex items-center gap-space-sm cursor-pointer group hover:border-primary-container transition-all" id="cli-terminal-trigger">
+<div class="flex items-center gap-1 font-label-md text-label-md text-primary-container font-bold">
+<span class="material-symbols-outlined text-sm">terminal</span>
+<span>JOKER CLI</span>
+</div>
+<span class="text-outline-variant select-none">|</span>
+<div class="flex-1 font-label-sm text-label-sm text-on-surface-variant truncate">
+<span class="text-secondary-fixed">&gt;</span> /palaces   /skills   /silenthill   /take-your-heart
+          </div>
+<span class="w-2.5 h-4 bg-secondary-fixed animate-pulse inline-block"></span>
+</div>
+</div>
+<!-- Cut-In Card Column (5 cols) -->
+<div class="lg:col-span-5 relative flex justify-center z-10">
+<!-- Layered Dynamic Backing Plate -->
+<div class="absolute inset-0 bg-primary-container -skew-x-6 translate-x-3 translate-y-3 -z-10 comic-shadow"></div>
+<div class="absolute -top-4 -right-4 px-3 py-1 bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-bold -skew-x-6 comic-shadow z-30 uppercase tracking-widest">
+          COGNITIVE SPEC: ARCHITECT
+        </div>
+<!-- The Main Phantom Cut-In Card Surface -->
+<div class="w-full bg-surface-container-lowest p-space-sm -skew-x-6 comic-shadow flex flex-col gap-space-sm">
+<!-- Image Container with Diagonal Ribbon Overlay -->
+<div class="relative w-full aspect-square overflow-hidden bg-surface-container-high border-b-4 border-primary-container group">
+<img alt="Mohammad Elsherbiny Persona Cut-In Avatar" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 filter contrast-125" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBzzMurnPro0_jGBCVcWodQ4VMSwkEypN5Cd32TdVX_JSmZJkn_xqbaQxG-2n-uucfx3qyhIKvAfaa7LIaLuv014RMEcUUy2_wgsqnL6VR9QvTOIm82VtmtyiZOZN1V1lIAFXkmCQU-zYQA7OnJH2xQhedXmGkAryqQavUDULfow3DwWoK6d9TVnNTVNxutmUrrYGEWCUZToa4OszgqZZ1niaBWFTeNw8OrziGrX3je"/>
+<!-- Comic Screen-Tone Scanline Texture -->
+<div class="absolute inset-0 pointer-events-none bg-gradient-to-t from-surface-container-lowest via-transparent to-transparent opacity-80"></div>
+<!-- Angled Joker Tag Ribbon -->
+<div class="absolute bottom-2 left-2 bg-primary-container text-on-primary-container font-headline-sm text-headline-sm px-3 py-0.5 -skew-x-6 comic-shadow uppercase cursor-pointer" data-sound="select">
+              ARSÈNE.CODE // AWAKENED
+            </div>
+<div class="absolute top-2 left-2 bg-surface-container-lowest/90 px-2 py-0.5 text-secondary-fixed font-label-sm text-label-sm font-bold -skew-x-3">
+              LEVEL 99
+            </div>
+</div>
+<!-- Combat Stats / Persona HUD -->
+<div class="flex flex-col gap-space-xs px-space-xs pb-space-xs font-label-sm text-label-sm">
+<!-- Health & Skill Points -->
+<div class="flex items-center justify-between gap-space-sm pt-1">
+<div class="flex-1 bg-surface-container p-1.5 -skew-x-3 flex flex-col gap-0.5 cursor-pointer hover:bg-surface-container-high transition-colors" data-sound="select">
+<div class="flex justify-between text-secondary font-bold font-label-xs">
+<span class="text-primary-container">HP</span>
+<span>999 / 999</span>
+</div>
+<div class="w-full h-2 bg-surface-container-lowest overflow-hidden">
+<div class="w-full h-full bg-primary-container"></div>
+</div>
+</div>
+<div class="flex-1 bg-surface-container p-1.5 -skew-x-3 flex flex-col gap-0.5 cursor-pointer hover:bg-surface-container-high transition-colors" data-sound="select">
+<div class="flex justify-between text-secondary font-bold font-label-xs">
+<span class="text-secondary-fixed">SP</span>
+<span>999 / 999</span>
+</div>
+<div class="w-full h-2 bg-surface-container-lowest overflow-hidden">
+<div class="w-full h-full bg-secondary-fixed"></div>
+</div>
+</div>
+</div>
+<!-- Traits & Arcana Matrix -->
+<div class="grid grid-cols-2 gap-space-xs pt-1">
+<div class="bg-surface-container-low px-2 py-1 flex items-center gap-1.5 cursor-pointer hover:bg-surface-container transition-colors" data-sound="select">
+<span class="material-symbols-outlined text-primary-container text-sm">translate</span>
+<span class="text-on-surface truncate">Trilingual Diplomat</span>
+</div>
+<div class="bg-surface-container-low px-2 py-1 flex items-center gap-1.5 cursor-pointer hover:bg-surface-container transition-colors" data-sound="select">
+<span class="material-symbols-outlined text-secondary-container text-sm">neurology</span>
+<span class="text-on-surface truncate">PyTorch / TinyML</span>
+</div>
+<div class="bg-surface-container-low px-2 py-1 flex items-center gap-1.5 cursor-pointer hover:bg-surface-container transition-colors" data-sound="select">
+<span class="material-symbols-outlined text-primary text-sm">memory</span>
+<span class="text-on-surface truncate">x86 Assembly Guru</span>
+</div>
+<div class="bg-surface-container-low px-2 py-1 flex items-center gap-1.5 cursor-pointer hover:bg-surface-container transition-colors" data-sound="select">
+<span class="material-symbols-outlined text-secondary-fixed text-sm">database</span>
+<span class="text-on-surface truncate">Full-Stack Django</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ============================================================== -->
+<!-- 2. PALACES INFILTRATION GRID (PROJECT SHOWCASE)                -->
+<!-- ============================================================== -->
+<section class="relative z-10 w-full px-gutter py-12 flex flex-col gap-space-xl" id="palaces-section">
+<!-- Section Header with Jagged Slanted Banner -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md relative">
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs font-label-md text-label-md text-primary-container font-bold tracking-widest uppercase -skew-x-6">
+<span class="material-symbols-outlined text-base">radar</span>
+<span>COGNITIVE TARGET DATABASE // ARCHIVES</span>
+</div>
+<div class="relative inline-block mt-1">
+<span class="font-headline-lg text-headline-lg uppercase tracking-tight text-secondary -skew-x-6 drop-shadow-[3px_3px_0px_#e60012]">
+            FEATURED PALACES (PROJECTS)
+          </span>
+</div>
+</div>
+<div class="flex items-center gap-space-sm -skew-x-6">
+<span class="px-3 py-1.5 bg-surface-container-lowest text-on-surface font-label-sm text-label-sm comic-shadow">
+          TREASURE SECURITY LEVEL: <strong class="text-primary-container">ALERT STATUS CRITICAL</strong>
+</span>
+</div>
+</div>
+<!-- The 3 Dynamic Palace Cards Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-space-lg items-stretch">
+<!-- PALACE 01: ESP32-CAM AI FRUIT SPOILAGE DETECTOR -->
+<div class="group relative flex flex-col bg-surface-container-lowest p-space-md -skew-x-3 comic-shadow transition-all duration-300 hover:-translate-y-2 hover:shadow-[10px_10px_0px_#e60012] border-t-4 border-primary-container cursor-pointer">
+<!-- Header Strip: Palace Code & Security Gauge -->
+<div class="flex items-center justify-between pb-space-sm border-b border-surface-container-highest">
+<span class="px-2 py-0.5 bg-primary-container text-on-primary-container font-headline-sm text-headline-sm text-xs -skew-x-6">
+            PALACE #01
+          </span>
+<div class="flex items-center gap-1 font-label-sm text-label-sm text-secondary-fixed">
+<span class="material-symbols-outlined text-sm">lock_clock</span>
+<span>SEC. 94.2%</span>
+</div>
+</div>
+<!-- Palace Name & Tech Badges -->
+<div class="py-space-md flex flex-col gap-space-xs flex-grow">
+<div class="font-label-sm text-label-sm text-primary font-bold tracking-widest uppercase">
+            EMBEDDED EDGE AI // COMPUTER VISION
+          </div>
+<h3 class="font-headline-md text-headline-md uppercase text-secondary tracking-tight group-hover:text-primary-container transition-colors">
+            ESP32-CAM AI FRUIT SPOILAGE DETECTOR
+          </h3>
+<p class="font-body-md text-body-md text-on-surface-variant mt-2 leading-relaxed">
+            Trained custom TinyML models deployed at the extreme edge. Real-time vision classification identifying ethylene degradation and fungal onset on embedded microcontrollers with ultra-low latency.
+          </p>
+<!-- Core Metric Highlight Visual -->
+<div class="my-space-sm p-space-sm bg-surface-container-low -skew-x-3 flex flex-col gap-space-xs border-l-2 border-secondary-container">
+<div class="flex justify-between items-center font-label-sm text-label-sm">
+<span class="text-on-surface font-semibold">TINYML INFERENCE ACCURACY</span>
+<span class="font-bold text-secondary-fixed">94.2%</span>
+</div>
+<!-- Progress Bar Barcode Aesthetic -->
+<div class="w-full h-2.5 bg-surface-container-lowest overflow-hidden flex gap-0.5">
+<div class="h-full bg-secondary-fixed w-[94.2%]"></div>
+<div class="h-full bg-primary-container flex-1 animate-pulse"></div>
+</div>
+<div class="flex justify-between font-label-sm text-label-sm text-on-surface-variant text-[11px] pt-1">
+<span>MODEL: YOLOv8-NANO</span>
+<span>CHIP: ESP32-WROVER</span>
+</div>
+</div>
+<!-- Stack Badges -->
+<div class="flex flex-wrap gap-1.5 pt-2">
+<span class="px-2 py-0.5 bg-surface-container font-label-sm text-label-sm text-secondary-fixed-dim">&gt; ESP32</span>
+<span class="px-2 py-0.5 bg-surface-container font-label-sm text-label-sm text-secondary-fixed-dim">&gt; PyTorch</span>
+<span class="px-2 py-0.5 bg-surface-container font-label-sm text-label-sm text-secondary-fixed-dim">&gt; Edge Impulse</span>
+<span class="px-2 py-0.5 bg-surface-container font-label-sm text-label-sm text-secondary-fixed-dim">&gt; C++</span>
+</div>
+</div>
+<!-- Footer Action Strip -->
+<div class="pt-space-sm flex items-center justify-between border-t border-surface-container-highest">
+<div class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">
+            TREASURE: <span class="text-secondary font-bold">EDGE VISION MODEL</span>
+</div>
+<button class="px-3 py-1 bg-surface-container-highest text-secondary hover:bg-primary-container hover:text-on-primary-container font-headline-sm text-headline-sm text-xs -skew-x-6 comic-shadow transition-colors flex items-center gap-1" data-sound="heavy" type="button">
+<span>INFILTRATE</span>
+<span class="material-symbols-outlined text-xs">open_in_new</span>
+</button>
+</div>
+</div>
+<!-- PALACE 02: EL3YADA CLINIC ERP SYSTEM -->
+<div class="group relative flex flex-col bg-surface-container-lowest p-space-md -skew-x-3 comic-shadow transition-all duration-300 hover:-translate-y-2 hover:shadow-[10px_10px_0px_#ffdb3c] border-t-4 border-secondary-container cursor-pointer">
+<!-- Header Strip -->
+<div class="flex items-center justify-between pb-space-sm border-b border-surface-container-highest">
+<span class="px-2 py-0.5 bg-secondary-container text-on-secondary-container font-headline-sm text-headline-sm text-xs -skew-x-6 font-bold">
+            PALACE #02
+          </span>
+<div class="flex items-center gap-1 font-label-sm text-label-sm text-primary">
+<span class="material-symbols-outlined text-sm">healing</span>
+<span>CLINICAL ERP</span>
+</div>
+</div>
+<!-- Palace Name & Tech Badges -->
+<div class="py-space-md flex flex-col gap-space-xs flex-grow">
+<div class="font-label-sm text-label-sm text-secondary-fixed font-bold tracking-widest uppercase">
+            FULL-STACK HEALTHCARE // EMR
+          </div>
+<h3 class="font-headline-md text-headline-md uppercase text-secondary tracking-tight group-hover:text-secondary-fixed transition-colors">
+            EL3YADA CLINIC ERP SYSTEM
+          </h3>
+<p class="font-body-md text-body-md text-on-surface-variant mt-2 leading-relaxed">
+            Enterprise-grade clinic operation engine. Integrates multi-tenant role isolation, synchronized doctor appointment calendars, automated diagnostic invoicing, and encrypted patient electronic records.
+          </p>
+<!-- Core Metric Highlight Visual -->
+<div class="my-space-sm p-space-sm bg-surface-container-low -skew-x-3 flex flex-col gap-space-xs border-l-2 border-primary-container">
+<div class="flex justify-between items-center font-label-sm text-label-sm">
+<span class="text-on-surface font-semibold">QUERY &amp; LATENCY BENCHMARK</span>
+<span class="font-bold text-primary">&lt; 38ms TTFB</span>
+</div>
+<!-- Progress Bar Barcode Aesthetic -->
+<div class="w-full h-2.5 bg-surface-container-lowest overflow-hidden flex gap-0.5">
+<div class="h-full bg-primary-container w-[88%]"></div>
+<div class="h-full bg-secondary-fixed flex-1"></div>
+</div>
+<div class="flex justify-between font-label-sm text-label-sm text-on-surface-variant text-[11px] pt-1">
+<span>BACKEND: DJANGO REST</span>
+<span>DB: POSTGRESQL ACID</span>
+</div>
+</div>
+<!-- Stack Badges -->
+<div class="flex flex-wrap gap-1.5 pt-2">
+<span class="px-2 py-0.5 bg-surface-container font-label-sm text-label-sm text-secondary-fixed-dim">&gt; Django</span>
+<span class="px-2 py-0.5 bg-surface-container font-label-sm text-label-sm text-secondary-fixed-dim">&gt; React 18</span>
+<span class="px-2 py-0.5 bg-surface-container font-label-sm text-label-sm text-secondary-fixed-dim">&gt; PostgreSQL</span>
+<span class="px-2 py-0.5 bg-surface-container font-label-sm text-label-sm text-secondary-fixed-dim">&gt; Tailwind</span>
+</div>
+</div>
+<!-- Footer Action Strip -->
+<div class="pt-space-sm flex items-center justify-between border-t border-surface-container-highest">
+<div class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">
+            TREASURE: <span class="text-secondary font-bold">EMR RECORD VAULT</span>
+</div>
+<button class="px-3 py-1 bg-surface-container-highest text-secondary hover:bg-secondary-container hover:text-on-secondary-container font-headline-sm text-headline-sm text-xs -skew-x-6 comic-shadow transition-colors flex items-center gap-1" data-sound="heavy" type="button">
+<span>INFILTRATE</span>
+<span class="material-symbols-outlined text-xs">open_in_new</span>
+</button>
+</div>
+</div>
+<!-- PALACE 03: i8086EMU MICROPROCESSOR EMULATOR -->
+<div class="group relative flex flex-col bg-surface-container-lowest p-space-md -skew-x-3 comic-shadow transition-all duration-300 hover:-translate-y-2 hover:shadow-[10px_10px_0px_#e5e2e1] border-t-4 border-inverse-surface cursor-pointer">
+<!-- Header Strip -->
+<div class="flex items-center justify-between pb-space-sm border-b border-surface-container-highest">
+<span class="px-2 py-0.5 bg-inverse-surface text-inverse-on-surface font-headline-sm text-headline-sm text-xs -skew-x-6 font-bold">
+            PALACE #03
+          </span>
+<div class="flex items-center gap-1 font-label-sm text-label-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-sm">terminal</span>
+<span>LOW-LEVEL ARCH</span>
+</div>
+</div>
+<!-- Palace Name & Tech Badges -->
+<div class="py-space-md flex flex-col gap-space-xs flex-grow">
+<div class="font-label-sm text-label-sm text-tertiary-fixed-dim font-bold tracking-widest uppercase">
+            SYSTEMS ENGINEERING // C++ EMULATION
+          </div>
+<h3 class="font-headline-md text-headline-md uppercase text-secondary tracking-tight group-hover:text-primary transition-colors">
+            i8086EMU MICROPROCESSOR EMULATOR
+          </h3>
+<p class="font-body-md text-body-md text-on-surface-variant mt-2 leading-relaxed">
+            Cycle-accurate Intel 8086 architectural emulator written in modern C++. Full 1MB segmented memory simulation, 16-bit register debugger, ALU flag recalculation, and visual opcode disassembly execution.
+          </p>
+<!-- Core Metric Highlight Visual -->
+<div class="my-space-sm p-space-sm bg-surface-container-low -skew-x-3 flex flex-col gap-space-xs border-l-2 border-inverse-surface">
+<div class="flex justify-between items-center font-label-sm text-label-sm">
+<span class="text-on-surface font-semibold">OPCODE INSTRUCTION COVERAGE</span>
+<span class="font-bold text-secondary">99.8% INTR</span>
+</div>
+<!-- Progress Bar Barcode Aesthetic -->
+<div class="w-full h-2.5 bg-surface-container-lowest overflow-hidden flex gap-0.5">
+<div class="h-full bg-secondary w-[99%]"></div>
+<div class="h-full bg-primary-container flex-1"></div>
+</div>
+<div class="flex justify-between font-label-sm text-label-sm text-on-surface-variant text-[11px] pt-1">
+<span>SEGMENTS: CS, DS, SS, ES</span>
+<span>FLAGS: CF, ZF, SF, OF</span>
+</div>
+</div>
+<!-- Stack Badges -->
+<div class="flex flex-wrap gap-1.5 pt-2">
+<span class="px-2 py-0.5 bg-surface-container font-label-sm text-label-sm text-secondary-fixed-dim">&gt; Modern C++20</span>
+<span class="px-2 py-0.5 bg-surface-container font-label-sm text-label-sm text-secondary-fixed-dim">&gt; x86 Assembly</span>
+<span class="px-2 py-0.5 bg-surface-container font-label-sm text-label-sm text-secondary-fixed-dim">&gt; Memory Segments</span>
+<span class="px-2 py-0.5 bg-surface-container font-label-sm text-label-sm text-secondary-fixed-dim">&gt; GDB Tracing</span>
+</div>
+</div>
+<!-- Footer Action Strip -->
+<div class="pt-space-sm flex items-center justify-between border-t border-surface-container-highest">
+<div class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">
+            TREASURE: <span class="text-secondary font-bold">16-BIT KERNEL CORE</span>
+</div>
+<button class="px-3 py-1 bg-surface-container-highest text-secondary hover:bg-inverse-surface hover:text-inverse-on-surface font-headline-sm text-headline-sm text-xs -skew-x-6 comic-shadow transition-colors flex items-center gap-1" data-sound="heavy" type="button">
+<span>INFILTRATE</span>
+<span class="material-symbols-outlined text-xs">open_in_new</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- ============================================================== -->
+<!-- 3. SILENT HILL FOG / METAVERSE CALLING CARD TEASER BANNER      -->
+<!-- ============================================================== -->
+<section class="relative z-10 w-full px-gutter py-8 mb-6" id="calling-card">
+<div class="relative w-full bg-surface-container-lowest p-space-lg -skew-x-3 comic-shadow border-l-8 border-primary-container overflow-hidden">
+<!-- Hazard Caution Background Stripes -->
+<div class="absolute -right-20 -bottom-20 w-80 h-80 bg-primary-container/10 rounded-full blur-3xl pointer-events-none"></div>
+<div class="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-space-lg">
+<div class="flex flex-col gap-space-xs max-w-2xl">
+<div class="flex items-center gap-space-xs font-label-sm text-label-sm text-secondary-container uppercase tracking-widest font-bold">
+<span class="material-symbols-outlined text-base animate-pulse">crisis_alert</span>
+<span>PHANTOM THIEVES PROTOCOL // COGNITIVE REVOLUTION</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg uppercase text-secondary tracking-tight">
+            TRANSMIT A CALLING CARD TO MOHAMMAD
+          </h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+            Need an edge AI architecture that defies limits? Or a resilient full-stack platform built with clinical precision? Dispatch your message straight to the thieves' hideout.
+          </p>
+</div>
+<div class="flex flex-wrap items-center gap-space-md">
+<a class="px-space-lg py-space-sm bg-primary-container text-on-primary-container font-headline-sm text-headline-sm uppercase tracking-wider -skew-x-6 comic-shadow hover:-translate-y-1 hover:shadow-[6px_6px_0px_#ffe16d] transition-transform flex items-center gap-2" data-sound="heavy" href="mailto:m.elsherbiny@example.com">
+<span class="material-symbols-outlined">mail</span>
+<span>DISPATCH TRANSMISSION</span>
+</a>
+<div class="flex items-center gap-space-xs bg-surface-container px-3 py-2 -skew-x-3 comic-shadow">
+<span class="w-3 h-3 rounded-full bg-primary-container animate-ping"></span>
+<span class="font-label-sm text-label-sm text-secondary uppercase font-mono">STATUS: OPEN FOR CONTRACTS</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+<script>
+  // ==============================================================
+  // PERSONA 5 + SILENT HILL WEB AUDIO SYNTHESIS ENGINE (ZERO ASSETS)
+  // ==============================================================
+  class PersonaAudioEngine {
+    constructor() {
+      this.ctx = null;
+      this.enabled = true;
+      this.initialized = false;
+    }
+
+    init() {
+      if (!this.ctx) {
+        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+        if (AudioCtx) {
+          this.ctx = new AudioCtx();
+        }
+      }
+      if (this.ctx && this.ctx.state === 'suspended') {
+        this.ctx.resume();
+      }
+      this.initialized = true;
+    }
+
+    toggle() {
+      this.init();
+      this.enabled = !this.enabled;
+      return this.enabled;
+    }
+
+    // 1. P5 Menu Click / Select: Crisp high-frequency punchy FM blip / whip chord
+    playMenuClick() {
+      if (!this.enabled) return;
+      this.init();
+      if (!this.ctx) return;
+
+      const t = this.ctx.currentTime;
+      // Dual oscillator: sine fundamental + triangle overtone with fast exponential decay
+      const osc1 = this.ctx.createOscillator();
+      const osc2 = this.ctx.createOscillator();
+      const gain = this.ctx.createGain();
+
+      osc1.type = 'sine';
+      osc2.type = 'triangle';
+
+      // Punchy upward sweep into high whip ring (880Hz -> 1760Hz -> 440Hz fast)
+      osc1.frequency.setValueAtTime(620, t);
+      osc1.frequency.exponentialRampToValueAtTime(1480, t + 0.04);
+      osc1.frequency.exponentialRampToValueAtTime(440, t + 0.14);
+
+      osc2.frequency.setValueAtTime(1240, t);
+      osc2.frequency.exponentialRampToValueAtTime(2960, t + 0.04);
+
+      gain.gain.setValueAtTime(0.32, t);
+      gain.gain.exponentialRampToValueAtTime(0.001, t + 0.16);
+
+      osc1.connect(gain);
+      osc2.connect(gain);
+      gain.connect(this.ctx.destination);
+
+      osc1.start(t);
+      osc2.start(t);
+      osc1.stop(t + 0.16);
+      osc2.stop(t + 0.16);
+    }
+
+    // 2. P5 Hover / Cursor Move: Subtle snappy mechanical tick / chirp
+    playHover() {
+      if (!this.enabled) return;
+      this.init();
+      if (!this.ctx) return;
+
+      const t = this.ctx.currentTime;
+      const osc = this.ctx.createOscillator();
+      const gain = this.ctx.createGain();
+
+      osc.type = 'sine';
+      // Crisp 1200Hz to 600Hz high tick pulse, 45ms duration
+      osc.frequency.setValueAtTime(1350, t);
+      osc.frequency.exponentialRampToValueAtTime(450, t + 0.038);
+
+      gain.gain.setValueAtTime(0.12, t);
+      gain.gain.exponentialRampToValueAtTime(0.001, t + 0.045);
+
+      osc.connect(gain);
+      gain.connect(this.ctx.destination);
+
+      osc.start(t);
+      osc.stop(t + 0.045);
+    }
+
+    // 3. P5 Cancel / Back: Lower pitched snappy double-blip
+    playCancel() {
+      if (!this.enabled) return;
+      this.init();
+      if (!this.ctx) return;
+
+      const t = this.ctx.currentTime;
+      [0, 0.05].forEach((delay, i) => {
+        const osc = this.ctx.createOscillator();
+        const gain = this.ctx.createGain();
+        osc.type = 'triangle';
+        const startFreq = i === 0 ? 520 : 380;
+        osc.frequency.setValueAtTime(startFreq, t + delay);
+        osc.frequency.exponentialRampToValueAtTime(180, t + delay + 0.06);
+
+        gain.gain.setValueAtTime(0.24, t + delay);
+        gain.gain.exponentialRampToValueAtTime(0.001, t + delay + 0.07);
+
+        osc.connect(gain);
+        gain.connect(this.ctx.destination);
+        osc.start(t + delay);
+        osc.stop(t + delay + 0.07);
+      });
+    }
+
+    // 4. P5 All-Out / Heavy Action Click: Resonant brassy metallic impact with fast drop + distortion tone
+    playHeavyAction() {
+      if (!this.enabled) return;
+      this.init();
+      if (!this.ctx) return;
+
+      const t = this.ctx.currentTime;
+      // Low impact sub-boom
+      const subOsc = this.ctx.createOscillator();
+      const subGain = this.ctx.createGain();
+      subOsc.type = 'triangle';
+      subOsc.frequency.setValueAtTime(180, t);
+      subOsc.frequency.exponentialRampToValueAtTime(35, t + 0.35);
+      subGain.gain.setValueAtTime(0.5, t);
+      subGain.gain.exponentialRampToValueAtTime(0.001, t + 0.38);
+
+      // Brassy metallic slash (sawtooth + FM modulation)
+      const metalOsc = this.ctx.createOscillator();
+      const metalGain = this.ctx.createGain();
+      metalOsc.type = 'sawtooth';
+      metalOsc.frequency.setValueAtTime(980, t);
+      metalOsc.frequency.exponentialRampToValueAtTime(110, t + 0.22);
+      metalGain.gain.setValueAtTime(0.35, t);
+      metalGain.gain.exponentialRampToValueAtTime(0.001, t + 0.25);
+
+      // Noise burst for comic katana slice / gun hammer snap
+      const bufferSize = this.ctx.sampleRate * 0.06;
+      const buffer = this.ctx.createBuffer(1, bufferSize, this.ctx.sampleRate);
+      const data = buffer.getChannelData(0);
+      for (let i = 0; i < bufferSize; i++) {
+        data[i] = Math.random() * 2 - 1;
+      }
+      const noise = this.ctx.createBufferSource();
+      noise.buffer = buffer;
+      const noiseFilter = this.ctx.createBiquadFilter();
+      noiseFilter.type = 'bandpass';
+      noiseFilter.frequency.setValueAtTime(3200, t);
+      noiseFilter.Q.setValueAtTime(2.5, t);
+      const noiseGain = this.ctx.createGain();
+      noiseGain.gain.setValueAtTime(0.28, t);
+      noiseGain.gain.exponentialRampToValueAtTime(0.001, t + 0.08);
+
+      subOsc.connect(subGain);
+      metalOsc.connect(metalGain);
+      noise.connect(noiseFilter);
+      noiseFilter.connect(noiseGain);
+
+      subGain.connect(this.ctx.destination);
+      metalGain.connect(this.ctx.destination);
+      noiseGain.connect(this.ctx.destination);
+
+      subOsc.start(t);
+      metalOsc.start(t);
+      noise.start(t);
+
+      subOsc.stop(t + 0.4);
+      metalOsc.stop(t + 0.26);
+      noise.stop(t + 0.08);
+    }
+
+    // 5. Silent Hill Radio Static / Fog Ambient Glitch Burst
+    playSilentHillStatic() {
+      if (!this.enabled) return;
+      this.init();
+      if (!this.ctx) return;
+
+      const t = this.ctx.currentTime;
+      const duration = 0.45;
+      const bufferSize = this.ctx.sampleRate * duration;
+      const buffer = this.ctx.createBuffer(1, bufferSize, this.ctx.sampleRate);
+      const data = buffer.getChannelData(0);
+      for (let i = 0; i < bufferSize; i++) {
+        data[i] = (Math.random() * 2 - 1) * (0.8 + 0.2 * Math.sin(i * 0.04));
+      }
+      const noise = this.ctx.createBufferSource();
+      noise.buffer = buffer;
+
+      const filter = this.ctx.createBiquadFilter();
+      filter.type = 'highpass';
+      filter.frequency.setValueAtTime(1400, t);
+      filter.frequency.exponentialRampToValueAtTime(2800, t + duration);
+
+      const gain = this.ctx.createGain();
+      gain.gain.setValueAtTime(0.22, t);
+      gain.gain.linearRampToValueAtTime(0.35, t + 0.15);
+      gain.gain.exponentialRampToValueAtTime(0.001, t + duration);
+
+      noise.connect(filter);
+      filter.connect(gain);
+      gain.connect(this.ctx.destination);
+
+      noise.start(t);
+      noise.stop(t + duration);
+    }
+  }
+
+  const p5Audio = new PersonaAudioEngine();
+
+  // Audio UI Sync & Event Wiring
+  document.addEventListener('DOMContentLoaded', () => {
+    const updateAudioIndicators = (active) => {
+      const headerText = document.getElementById('header-sfx-text');
+      const headerIcon = document.getElementById('header-sfx-icon');
+      const headerPulse = document.getElementById('header-sfx-pulse');
+      const footerToggle = document.getElementById('footer-bgm-toggle');
+
+      if (headerText) headerText.textContent = active ? 'SFX: ON' : 'SFX: MUTED';
+      if (headerIcon) headerIcon.textContent = active ? 'volume_up' : 'volume_off';
+      if (headerPulse) {
+        if (active) {
+          headerPulse.classList.remove('hidden');
+          headerPulse.classList.add('inline-block');
+        } else {
+          headerPulse.classList.add('hidden');
+          headerPulse.classList.remove('inline-block');
+        }
+      }
+      if (footerToggle) {
+        const textSpan = footerToggle.querySelector('span:last-child');
+        const iconSpan = footerToggle.querySelector('.material-symbols-outlined');
+        if (textSpan) textSpan.textContent = active ? 'SFX: ON' : 'SFX: MUTED';
+        if (iconSpan) iconSpan.textContent = active ? 'volume_up' : 'volume_off';
+      }
+    };
+
+    const handleToggleAudio = (e) => {
+      if (e) e.preventDefault();
+      const isActive = p5Audio.toggle();
+      updateAudioIndicators(isActive);
+      if (isActive) {
+        p5Audio.playMenuClick();
+      } else {
+        p5Audio.playCancel();
+      }
+    };
+
+    const headerBtn = document.getElementById('header-sfx-toggle');
+    const footerBtn = document.getElementById('footer-bgm-toggle');
+    if (headerBtn) headerBtn.addEventListener('click', handleToggleAudio);
+    if (footerBtn) footerBtn.addEventListener('click', handleToggleAudio);
+
+    // Silent Hill Fog Nav Link special sound effect
+    const silentHillLink = document.getElementById('nav-silenthill');
+    if (silentHillLink) {
+      silentHillLink.addEventListener('click', (e) => {
+        p5Audio.playSilentHillStatic();
+      });
+    }
+
+    // Attach hover & click audio handlers to all interactive items
+    const interactiveQuery = 'a, button, [data-sound], [data-path], input, .cursor-pointer, [role="button"]';
+    document.querySelectorAll(interactiveQuery).forEach((el) => {
+      // Avoid recursive loops on toggles
+      if (el.id === 'header-sfx-toggle' || el.id === 'footer-bgm-toggle') return;
+
+      el.addEventListener('mouseenter', () => {
+        p5Audio.playHover();
+      });
+
+      el.addEventListener('click', () => {
+        const soundType = el.getAttribute('data-sound');
+        if (soundType === 'heavy') {
+          p5Audio.playHeavyAction();
+        } else if (soundType === 'cancel') {
+          p5Audio.playCancel();
+        } else {
+          p5Audio.playMenuClick();
+        }
+      });
+    });
+
+    // Interactive CLI prompt micro-interaction
+    const cliCommands = ['/palaces', '/skills', '/silenthill', '/take-your-heart', '/stats', '/confidants'];
+    let idx = 0;
+    const cliEl = document.querySelector('.truncate.font-label-sm');
+    if (cliEl) {
+      setInterval(() => {
+        idx = (idx + 1) % cliCommands.length;
+        cliEl.innerHTML = `<span class="text-secondary-fixed">></span> ${cliCommands[idx]} &nbsp; <span class="text-on-surface-variant opacity-75">--target metaverse</span>`;
+      }, 3500);
+    }
+
+    const cliTrigger = document.getElementById('cli-terminal-trigger');
+    const jokerCliBtn = document.getElementById('btn-joker-cli');
+    [cliTrigger, jokerCliBtn].forEach(trigger => {
+      if (trigger) {
+        trigger.addEventListener('click', () => {
+          p5Audio.playHeavyAction();
+        });
+      }
+    });
+
+    // Global unlock on first user gesture
+    document.body.addEventListener('pointerdown', () => {
+      p5Audio.init();
+    }, { once: true });
+  });
+</script></main><footer class="fixed bottom-0 left-0 right-0 z-50 h-10 bg-surface-container-lowest border-t border-outline-variant flex items-center justify-between px-gutter select-none"><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-xs px-2 py-0.5 bg-secondary-container text-on-secondary-container -skew-x-6 font-label-sm text-label-sm font-bold"><span class="material-symbols-outlined text-sm">calendar_today</span><span>4/11</span></div><div class="flex items-center gap-space-xs font-label-sm text-label-sm text-secondary -skew-x-3"><span class="material-symbols-outlined text-sm text-secondary-fixed">cloud</span><span class="hidden sm:inline uppercase tracking-widest text-on-surface-variant">CLOUDY //</span><span class="text-primary-container font-bold uppercase tracking-wider animate-pulse">METAVERSE INFILTRATION ACTIVE</span></div></div><div class="flex items-center gap-space-md"><div class="hidden md:flex items-center gap-space-xs font-label-sm text-label-sm text-on-surface-variant"><span class="w-2 h-2 rounded-full bg-primary-container inline-block animate-ping"></span><span>SECURITY LEVEL: 99%</span></div><button class="flex items-center gap-1 font-label-sm text-label-sm text-on-surface hover:text-primary transition-colors cursor-pointer" id="footer-bgm-toggle" type="button"><span class="material-symbols-outlined text-base">volume_up</span><span class="hidden sm:inline uppercase">SFX: ON</span></button></div></footer></body></html>

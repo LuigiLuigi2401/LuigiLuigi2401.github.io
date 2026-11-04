@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><title>TOLUCA COLD-STORE // LOW-LEVEL CODEBASE DECOMPILER</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=JetBrains+Mono:ital,wght@0,300;0,400;0,600;0,700;1,400&amp;family=Space+Grotesk:wght@400;500;700&amp;family=Special+Elite&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>
+  @layer base {
+    html, body { margin:0; padding:0; }
+    body { overscroll-behavior:none; }
+    main > :first-child { margin-top:0!important; }
+    main > :last-child { margin-bottom:0!important; }
+  }
+  ::-webkit-scrollbar { display:none; }
+
+  /* Rustic grimy industrial shadows & textures */
+  .rust-shadow { box-shadow: 4px 4px 0px #090908, inset 0 1px 0 rgba(255,255,255,0.04); }
+  .heavy-rust-shadow { box-shadow: 6px 6px 0px #080807, 0 12px 24px rgba(0,0,0,0.7); }
+  .copper-badge { border: 1px solid #3a5f57; background: linear-gradient(135deg, #1b2e2a 0%, #11201d 100%); }
+  .weathered-panel {
+    background-color: #161514;
+    border: 1px solid #2e2a27;
+    position: relative;
+  }
+  .weathered-panel::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(176, 92, 42, 0.35), transparent);
+  }
+  .rivet {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, #5a483e 0%, #201a16 80%, #0d0a08 100%);
+    box-shadow: inset 0 1px 1px rgba(255,255,255,0.15), 0 1px 1px #000;
+  }
+  .scanline-overlay {
+    background: linear-gradient(rgba(18,16,15,0) 50%, rgba(8,7,6,0.38) 50%), linear-gradient(90deg, rgba(140,72,38,0.04), rgba(44,76,71,0.03), rgba(212,168,75,0.03));
+    background-size: 100% 3px, 4px 100%;
+    pointer-events: none;
+  }
+  .analog-flicker {
+    animation: tubeFlicker 0.12s infinite alternate;
+  }
+  @keyframes tubeFlicker {
+    0% { opacity: 0.94; filter: brightness(1) drop-shadow(0 0 4px rgba(180, 230, 160, 0.25)); }
+    100% { opacity: 1; filter: brightness(1.15) drop-shadow(0 0 7px rgba(180, 230, 160, 0.45)); }
+  }
+</style><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      "colors": {
+        "on-primary-fixed-variant": "#930007",
+        "surface-container-lowest": "#0a0909",
+        "error-container": "#691b15",
+        "surface-container": "#181716",
+        "surface-bright": "#2c2927",
+        "background": "#0f0e0d",
+        "surface-container-low": "#131211",
+        "on-surface-variant": "#b8a89b",
+        "surface-variant": "#22201e",
+        "primary-container": "#8c4826", // Oxidized rust orange
+        "secondary": "#dfd7ca",         // Weathered off-white / parchment
+        "secondary-fixed": "#c4a059",   // Aged brass/amber
+        "inverse-surface": "#dcd4c7",
+        "tertiary-fixed-dim": "#7aa098",
+        "surface-container-high": "#211f1d",
+        "on-tertiary-fixed": "#0e1e1b",
+        "primary-fixed-dim": "#d98d62",
+        "error": "#d46b60",
+        "inverse-on-surface": "#23201d",
+        "surface-dim": "#0c0b0a",
+        "on-primary-fixed": "#3a1705",
+        "primary-fixed": "#f2bca0",
+        "on-secondary-container": "#4a3c10",
+        "surface-tint": "#b05c2a",
+        "on-tertiary": "#0b1a17",
+        "outline": "#63584e",
+        "outline-variant": "#3c352f",
+        "inverse-primary": "#50210b",
+        "tertiary": "#3a5f57",          // Oxidized copper green
+        "on-tertiary-container": "#d4ede5",
+        "on-error": "#ffffff",
+        "surface-container-highest": "#2c2825",
+        "on-error-container": "#ffd9d4",
+        "primary": "#b05c2a",           // Rust iron
+        "secondary-container": "#9d7c35",
+        "surface": "#121110",
+        "on-primary-container": "#fce9df",
+        "on-secondary": "#1c160a",
+        "on-secondary-fixed-variant": "#4a3a14",
+        "on-background": "#dfd7ca",
+        "tertiary-container": "#243e39",
+        "tertiary-fixed": "#9fc4bc",
+        "on-surface": "#dcd4c7",
+        "on-secondary-fixed": "#251c04",
+        "on-primary": "#2b1003",
+        "secondary-fixed-dim": "#a88741",
+        "rust": {
+          "900": "#3b1a0d",
+          "800": "#5c2b15",
+          "700": "#8c4826",
+          "600": "#b05c2a",
+          "500": "#c06536",
+          "400": "#d98255",
+        },
+        "copper": {
+          "900": "#101e1b",
+          "800": "#1c322d",
+          "700": "#2c4c47",
+          "600": "#3a5f57",
+          "500": "#527e74",
+        },
+        "ash": {
+          "900": "#141312",
+          "800": "#1e1c1a",
+          "700": "#2a2724",
+          "600": "#3d3935",
+          "500": "#554f49",
+        }
+      },
+      "fontFamily": {
+        "headline-lg": ["Anton", "sans-serif"],
+        "label-sm": ["JetBrains Mono", "monospace"],
+        "display-xl": ["Anton", "sans-serif"],
+        "body-md": ["Space Grotesk", "sans-serif"],
+        "body-sm": ["Space Grotesk", "sans-serif"],
+        "label-lg": ["JetBrains Mono", "monospace"],
+        "label-md": ["JetBrains Mono", "monospace"],
+        "headline-sm": ["Anton", "sans-serif"],
+        "archive": ["Special Elite", "Courier New", "monospace"]
+      }
+    }
+  }
+};</script></head><body class="bg-background font-body-md text-on-surface antialiased min-h-screen relative selection:bg-rust-700 selection:text-secondary"><div class="fixed inset-0 scanline-overlay z-40 pointer-events-none opacity-50"></div><!-- Atmospheric Rust & Damp Moisture Fog Layers --><div class="fixed inset-0 pointer-events-none z-0 opacity-45 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-ash-700/60 via-ash-900 to-black"></div><div class="fixed -top-48 left-1/2 -translate-x-1/2 w-[1000px] h-[750px] rounded-full bg-rust-900/20 blur-[150px] pointer-events-none z-0"></div><div class="fixed top-1/3 right-10 w-[600px] h-[600px] rounded-full bg-copper-900/25 blur-[140px] pointer-events-none z-0"></div><!-- Flashlight Beam Ambient Overlay --><div class="pointer-events-none fixed top-[-8%] left-1/2 -translate-x-1/2 w-0 h-0 border-l-[380px] border-l-transparent border-r-[380px] border-r-transparent border-t-[840px] border-t-amber-100/5 blur-[55px] mix-blend-screen z-10"></div><!-- Top Header Navigation Bar --><header class="fixed top-0 left-0 right-0 z-50 bg-[#11100f]/95 backdrop-blur-md border-b border-ash-600/60"><div class="h-20 w-full px-gutter flex items-center justify-between relative overflow-hidden"><!-- Weathered Rust Accent Band --><div class="absolute -left-10 -top-6 w-44 h-32 bg-gradient-to-r from-rust-800 to-rust-900 -skew-x-12 -z-10 opacity-75 border-r border-rust-600/40"></div><div class="flex items-center gap-space-md z-10"><img alt="Toluca Archives Seal" class="h-10 w-auto object-contain filter contrast-125 sepia-[0.35] drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCS18-T_rEtj5K2MvgT9HRrIK1c6leiZMLhIQvIdZoIlKbB9exRNnIZcKUSaUQhE4k_4Q7XSRVMWz28CSENMQU39FFwPvU6wEEyPAD6GFQno7J84d6C6PiB1MaEIkT9iLd2Q2mKZWt-9-GBg_fVvlhhSJ6vf8Ll74I81U7d1YeoziLXMQFHrr-Jg5NpMbeTel0PszQ6pDB8uKX3nmsmhicsP8_oghfB_2MIV6zc1Tqi"/><div class="flex flex-col"><div class="flex items-center gap-2"><span class="font-headline-sm text-headline-sm uppercase tracking-wider text-secondary -skew-x-6 drop-shadow-[2px_2px_0px_#000000]">MOHAMMAD ELSHERBINY</span><span class="text-[10px] font-label-sm px-1.5 py-0.2 bg-copper-900/80 text-copper-500 border border-copper-700/60 rounded">LOW-LEVEL ARCH</span></div><span class="font-label-sm text-label-sm uppercase tracking-widest text-primary-fixed-dim font-bold -skew-x-6">FIRMWARE // EMBEDDED C // COMPILERS // RE-ENG</span></div></div><!-- Navigation links --><nav class="hidden xl:flex items-center gap-space-sm z-10"><a class="px-space-md py-space-xs font-label-lg text-label-lg uppercase tracking-wider text-on-surface-variant hover:bg-surface-container hover:text-secondary -skew-x-6 transition-all hover:-translate-y-0.5" data-path="palaces" href="#">PALACES</a><a class="px-space-md py-space-xs font-label-lg text-label-lg uppercase tracking-wider text-on-surface-variant hover:bg-surface-container hover:text-secondary -skew-x-6 transition-all hover:-translate-y-0.5" data-path="stats" href="#">STATS</a><a class="px-space-md py-space-xs font-label-lg text-label-lg uppercase tracking-wider text-on-surface-variant hover:bg-surface-container hover:text-secondary -skew-x-6 transition-all hover:-translate-y-0.5" data-path="confidants" href="#">CONFIDANTS</a><a class="px-space-md py-space-xs font-label-lg text-label-lg uppercase tracking-wider text-on-surface-variant hover:bg-surface-container hover:text-secondary -skew-x-6 transition-all hover:-translate-y-0.5" data-path="calling-card" href="#">CALLING CARD</a><!-- Subtle Subdued Active Tab --><a aria-current="page" class="px-space-md py-space-xs uppercase tracking-wider transition-transform bg-gradient-to-r from-rust-800 to-ash-800 text-secondary font-headline-sm text-sm -skew-x-6 border-l-2 border-rust-500 rust-shadow" data-path="archive-fog-core" href="#"><span class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-rust-500 animate-pulse"></span>ARCHIVE 04 // FOG CORE</span></a></nav><div class="flex items-center gap-space-md z-10"><button class="hidden sm:flex items-center gap-space-xs px-space-md py-space-xs bg-ash-800 hover:bg-ash-700 text-secondary border border-ash-600 font-label-md text-label-md -skew-x-6 rust-shadow transition-transform hover:-translate-x-0.5 hover:-translate-y-0.5 sfx-click" type="button"><span class="material-symbols-outlined text-sm text-secondary-fixed">terminal</span><span>GDB REPL</span></button><div class="flex items-center gap-space-sm pl-space-sm border-l border-ash-600"><div class="relative flex items-center justify-center"><div class="w-10 h-10 p-0.5 bg-gradient-to-br from-rust-700 to-ash-800 -skew-x-3 rust-shadow border border-rust-600/50"><img alt="Profile" class="w-full h-full object-cover filter contrast-110 sepia-[0.25]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBzzMurnPro0_jGBCVcWodQ4VMSwkEypN5Cd32TdVX_JSmZJkn_xqbaQxG-2n-uucfx3qyhIKvAfaa7LIaLuv014RMEcUUy2_wgsqnL6VR9QvTOIm82VtmtyiZOZN1V1lIAFXkmCQU-zYQA7OnJH2xQhedXmGkAryqQavUDULfow3DwWoK6d9TVnNTVNxutmUrrYGEWCUZToa4OszgqZZ1niaBWFTeNw8OrziGrX3je"/></div><span class="absolute -bottom-2 -right-2 bg-copper-800 text-tertiary-fixed font-label-sm text-[10px] px-1 font-bold -skew-x-6 border border-copper-600">LV.99</span></div></div></div></div></header><main class="w-full pt-20 pb-16 bg-surface min-h-[calc(100vh-4rem)] relative"><div class="flex flex-col w-full relative select-none overflow-hidden pb-16">
+<!-- TOP TITLE BAR: Atmospheric & Weathered Municipal Archives HUD -->
+<section class="relative z-20 px-gutter pt-7 flex flex-col lg:flex-row lg:items-end justify-between gap-space-md">
+<div class="flex flex-col gap-1.5 max-w-2xl">
+<!-- Subtle Sector & Order Protocol Badge -->
+<div class="flex flex-wrap items-center gap-2">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 bg-ash-800 text-secondary-fixed text-[11px] font-label-sm border border-ash-600/70 tracking-widest uppercase">
+<span class="w-1.5 h-1.5 rounded-full bg-rust-500 animate-ping"></span>
+        TOLUCA COLD-STORE RECORD // SUB-VAULT 04
+      </span>
+<span class="text-[11px] font-label-sm text-copper-500 tracking-wider font-mono">
+        ORDER PROTOCOL: 0x9AF8-DAMP
+      </span>
+</div>
+<!-- Nuanced Atmospheric Title -->
+<h1 class="font-display-xl text-3xl sm:text-5xl lg:text-6xl uppercase tracking-tight text-secondary -skew-x-3 drop-shadow-[4px_4px_0px_#090908] leading-none mt-1">
+      SECTOR 04 <span class="text-rust-500 font-normal">// RUST &amp; ASH CORE</span>
+</h1>
+<p class="font-label-md text-xs sm:text-sm text-on-surface-variant tracking-wide max-w-xl font-mono leading-relaxed">
+      REVERSE SENSORY DECAY. PHYSICAL LOW-LEVEL FIRMWARE EXCAVATION &amp; BARE-METAL DISASSEMBLER.
+    </p>
+</div>
+<!-- Rusty Radio Static Audio & RF 104.7 Monitor -->
+<div class="relative bg-surface-container-lowest/90 border border-ash-600/80 p-3.5 rust-shadow max-w-md w-full cursor-pointer group hover:border-rust-600/70 transition-all select-none" id="radio-transistor-hud" title="Click or interact to tune RF 104.7 Radio static">
+<!-- Weathered Industrial Rivets -->
+<div class="rivet absolute top-1.5 left-1.5"></div>
+<div class="rivet absolute top-1.5 right-1.5"></div>
+<div class="rivet absolute bottom-1.5 left-1.5"></div>
+<div class="rivet absolute bottom-1.5 right-1.5"></div>
+<div class="flex items-center justify-between gap-space-sm pb-1.5 px-1">
+<div class="flex items-center gap-1.5 text-secondary-fixed">
+<span class="material-symbols-outlined text-sm animate-pulse text-secondary-fixed">radio</span>
+<span class="font-label-sm text-[11px] font-bold tracking-widest uppercase">POCKET TRANSISTOR // RF 104.7</span>
+</div>
+<span class="font-label-sm text-[10px] px-2 py-0.5 bg-rust-900/90 text-primary-fixed-dim border border-rust-700/80 uppercase font-bold tracking-wider animate-pulse cursor-pointer group-hover:bg-rust-700 transition-colors" id="static-spike-badge">
+        STATIC SPIKE
+      </span>
+</div>
+<!-- Static Soundwave Graphic -->
+<div class="w-full h-7 bg-ash-900/90 border border-ash-700/60 flex items-center justify-between px-2 gap-0.5 overflow-hidden" id="radio-soundwave">
+<div class="w-1 bg-rust-600 h-3 animate-pulse"></div>
+<div class="w-1 bg-rust-500 h-5 animate-pulse"></div>
+<div class="w-1 bg-rust-700 h-2 animate-pulse"></div>
+<div class="w-1 bg-secondary-fixed h-6 animate-pulse"></div>
+<div class="w-1 bg-copper-600 h-4 animate-pulse"></div>
+<div class="w-1 bg-rust-600 h-3 animate-pulse"></div>
+<div class="w-1 bg-secondary-fixed h-6 animate-pulse"></div>
+<div class="w-1 bg-rust-500 h-2 animate-pulse"></div>
+<div class="w-1 bg-copper-500 h-5 animate-pulse"></div>
+<div class="w-1 bg-secondary-fixed h-6 animate-pulse"></div>
+<div class="w-1 bg-rust-600 h-5 animate-pulse"></div>
+<div class="w-1 bg-rust-700 h-4 animate-pulse"></div>
+<div class="w-1 bg-rust-500 h-2 animate-pulse"></div>
+<div class="w-1 bg-secondary-fixed h-6 animate-pulse"></div>
+<div class="w-1 bg-copper-600 h-3 animate-pulse"></div>
+</div>
+<div class="flex items-center justify-between pt-1.5 px-1">
+<span class="font-label-sm text-[10px] text-rust-400 font-bold tracking-wider font-mono animate-pulse" id="radio-indicator-text">
+        RADIO SIGNAL: DENSE INTERFERENCE DETECTED
+      </span>
+<span class="font-label-sm text-[10px] text-on-surface-variant font-mono">DAMPING: 0.82λ</span>
+</div>
+</div>
+</section>
+<!-- Weathered Clue Strip & Industrial Metaverse Switch Override -->
+<section class="relative z-20 px-gutter my-space-md">
+<div class="weathered-panel p-space-sm flex flex-col lg:flex-row items-center justify-between gap-space-md rust-shadow">
+<div class="flex items-center gap-space-md pl-space-sm">
+<span class="font-label-sm text-xs text-rust-500 uppercase tracking-widest font-mono hidden sm:inline border-r border-ash-600 pr-3">
+        MUNICIPAL NOTE
+      </span>
+<p class="font-archive text-sm sm:text-base text-secondary tracking-wide italic">
+        "There was a hole here. It is compilation ready now."
+        <span class="font-label-sm text-[11px] not-italic text-on-surface-variant ml-2 font-mono">— TOLUCA TOWN ARCHIVE / BOX 24</span>
+</p>
+</div>
+<div class="flex items-center gap-space-sm w-full lg:w-auto justify-end">
+<!-- CRT Phosphor Toggle Button -->
+<button class="px-space-md py-1.5 bg-ash-800 hover:bg-ash-700 text-secondary border border-ash-600 font-label-md text-xs uppercase tracking-wider transition-all hover:-translate-y-0.5 flex items-center gap-1.5" id="toggle-phosphor" type="button">
+<span class="material-symbols-outlined text-sm text-secondary-fixed">filter_vintage</span>
+<span>AMBER CRT FLICKER</span>
+</button>
+<!-- Industrial Emergency Return Switch -->
+<button class="relative group px-space-md py-2 bg-gradient-to-r from-rust-800 via-rust-700 to-rust-900 border-2 border-rust-500/80 text-secondary font-label-md text-xs uppercase tracking-widest transition-all duration-150 hover:-translate-x-0.5 hover:-translate-y-0.5 rust-shadow" id="metaverse-return" title="Engage industrial valve switch to return to Metaverse" type="button">
+<span class="relative z-10 flex items-center gap-2 font-bold">
+<span class="material-symbols-outlined text-base text-amber-200">settings_backup_restore</span>
+<span>VALVE OVERRIDE: METAVERSE (P5)</span>
+</span>
+</button>
+</div>
+</div>
+</section>
+<!-- MAIN CODE ARCHAEOLOGY HUD (Split Screen) -->
+<section class="relative z-20 px-gutter grid grid-cols-1 xl:grid-cols-12 gap-space-md">
+<!-- Left 7-Cols: Low-Level Codebase Archaeology & Interactive Decompiler -->
+<div class="xl:col-span-7 flex flex-col gap-space-md">
+<!-- Codebase File System Header & Artifact Selector -->
+<div class="weathered-panel p- space-sm rust-shadow" id="terminal-wrapper">
+<!-- CRT Header Bar -->
+<div class="flex flex-wrap items-center justify-between pb-2 bg-ash-900 px-3 py-2 -mx-0 -mt-0 mb-2 border-b border-ash-700">
+<div class="flex items-center gap-2">
+<div class="w-2.5 h-2.5 rounded-full bg-rust-700 border border-rust-500"></div>
+<div class="w-2.5 h-2.5 rounded-full bg-copper-700 border border-copper-500"></div>
+<div class="w-2.5 h-2.5 rounded-full bg-ash-600 border border-ash-500"></div>
+<span class="font-label-sm text-[11px] text-secondary-fixed uppercase tracking-wider pl-1 font-mono">
+            DISASSEMBLY_DUMP // MOHAMMAD ELSHERBINY ARCHIVE
+          </span>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-label-sm text-[10px] text-copper-400 font-mono bg-copper-900/60 px-1.5 py-0.5 border border-copper-700/60">
+            ISA: xtensa-lx7 / x86_16
+          </span>
+<span class="font-label-sm text-[10px] text-on-surface-variant font-mono">
+            CRC: 0x9A48F7
+          </span>
+</div>
+</div>
+<!-- Codebase Artifact Tabs (Low-Level Systems & Firmware) -->
+<div class="flex flex-wrap items-center gap-1 px-2 pb-2 border-b border-ash-700/80">
+<button class="code-tab px-3 py-1 font-label-sm text-xs uppercase tracking-wider font-bold transition-all border border-rust-500 bg-rust-900/70 text-secondary" data-file="esp32" type="button">
+<span class="text-rust-400 mr-1">01.</span>esp32_tinyml_yolo.c
+        </button>
+<button class="code-tab px-3 py-1 font-label-sm text-xs uppercase tracking-wider font-medium transition-all border border-ash-700 bg-ash-800 text-on-surface-variant hover:text-secondary hover:border-ash-600" data-file="i8086" type="button">
+<span class="text-copper-400 mr-1">02.</span>i8086_cycle_exec.cpp
+        </button>
+<button class="code-tab px-3 py-1 font-label-sm text-xs uppercase tracking-wider font-medium transition-all border border-ash-700 bg-ash-800 text-on-surface-variant hover:text-secondary hover:border-ash-600" data-file="rtos" type="button">
+<span class="text-secondary-fixed mr-1">03.</span>rtos_memory_heap.s
+        </button>
+</div>
+<!-- Live Code & Hex Dump Window (Phosphor Amber/Green) -->
+<div class="p-3 bg-[#0a0a09] font-label-sm text-xs leading-relaxed overflow-x-auto shadow-inner min-h-[340px]" id="code-display-body">
+<!-- Content inserted dynamically by JS -->
+</div>
+<!-- Terminal Status & Live Memory Registers -->
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-2 p-2 bg-ash-900/90 border-t border-ash-700 text-[11px] font-mono text-on-surface-variant">
+<div><span class="text-secondary-fixed font-bold">PC:</span> <span id="reg-pc">0x40081C40</span></div>
+<div><span class="text-rust-400 font-bold">SP:</span> <span id="reg-sp">0x3FFE42B0</span></div>
+<div><span class="text-copper-400 font-bold">CYCLES:</span> <span id="reg-cycles">1,409,218</span></div>
+<div><span class="text-secondary font-bold">SRAM:</span> <span id="reg-sram">412KB / 520KB</span></div>
+</div>
+<!-- Quick Action Controls -->
+<div class="flex flex-wrap items-center justify-between gap-space-sm p-2.5 bg-ash-800/60 border-t border-ash-700">
+<div class="flex items-center gap-1.5">
+<button class="px-2.5 py-1 bg-ash-700 hover:bg-ash-600 text-secondary font-label-sm text-[11px] uppercase sfx-click border border-ash-600" id="btn-step-frame" type="button">
+            STEP 100 CYCLES
+          </button>
+<button class="px-2.5 py-1 bg-ash-700 hover:bg-ash-600 text-secondary font-label-sm text-[11px] uppercase sfx-click border border-ash-600" id="btn-dump-symbols" type="button">
+            DUMP SYMBOL TABLE
+          </button>
+</div>
+<div class="flex items-center gap-2 text-copper-500 font-label-sm text-[10px]">
+<span class="w-1.5 h-1.5 rounded-full bg-copper-500 animate-pulse"></span>
+<span>DAMP MEMORY DECAY: STABILIZED</span>
+</div>
+</div>
+</div>
+<!-- Live Memory Hex Dump & String Inspection Panel -->
+<div class="weathered-panel p-space-md rust-shadow">
+<div class="flex items-center justify-between pb-2 border-b border-ash-700">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-copper-400 text-lg">database</span>
+<span class="font-headline-sm text-lg uppercase text-secondary tracking-wider">
+            RAW MEMORY &amp; STRING ARTIFACTS
+          </span>
+</div>
+<span class="font-label-sm text-[10px] px-2 py-0.5 bg-copper-900/60 text-copper-300 border border-copper-700 font-mono">
+          PAGE: 0x3FFB_0000 - 0x3FFB_007F
+        </span>
+</div>
+<div class="mt-2.5 font-mono text-[11px] leading-relaxed bg-[#090807] p-3 border border-ash-800 overflow-x-auto text-on-surface-variant">
+<div class="grid grid-cols-12 gap-1 pb-1 text-ash-500 border-b border-ash-800 font-bold">
+<span class="col-span-3">OFFSET</span>
+<span class="col-span-5">HEX BYTES</span>
+<span class="col-span-4">DECODED ASCII</span>
+</div>
+<div class="grid grid-cols-12 gap-1 py-0.5 hover:bg-ash-800/50 cursor-pointer">
+<span class="col-span-3 text-secondary-fixed">0x3FFB0000</span>
+<span class="col-span-5 text-secondary">54 4F 4C 55 43 41 5F 43</span>
+<span class="col-span-4 text-copper-400 font-bold">"TOLUCA_C"</span>
+</div>
+<div class="grid grid-cols-12 gap-1 py-0.5 hover:bg-ash-800/50 cursor-pointer">
+<span class="col-span-3 text-secondary-fixed">0x3FFB0008</span>
+<span class="col-span-5 text-secondary">41 4D 5F 49 4E 49 54 00</span>
+<span class="col-span-4 text-copper-400 font-bold">"AM_INIT\0"</span>
+</div>
+<div class="grid grid-cols-12 gap-1 py-0.5 hover:bg-ash-800/50 cursor-pointer">
+<span class="col-span-3 text-secondary-fixed">0x3FFB0010</span>
+<span class="col-span-5 text-secondary">79 6F 6C 6F 5F 76 38 6E</span>
+<span class="col-span-4 text-rust-400 font-bold">"yolo_v8n"</span>
+</div>
+<div class="grid grid-cols-12 gap-1 py-0.5 hover:bg-ash-800/50 cursor-pointer">
+<span class="col-span-3 text-secondary-fixed">0x3FFB0018</span>
+<span class="col-span-5 text-secondary">5F 69 6E 74 38 2E 74 66</span>
+<span class="col-span-4 text-rust-400 font-bold">"_int8.tf"</span>
+</div>
+<div class="grid grid-cols-12 gap-1 py-0.5 hover:bg-ash-800/50 cursor-pointer">
+<span class="col-span-3 text-secondary-fixed">0x3FFB0020</span>
+<span class="col-span-5 text-secondary">6C 69 74 65 00 FF A4 02</span>
+<span class="col-span-4 text-secondary-fixed font-bold">"lite\0.."</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Right 5-Cols: Industrial Inventory, Operator Status & Low-Level Projects -->
+<div class="xl:col-span-5 flex flex-col gap-space-md">
+<!-- Industrial Equipment & Low-Level Artifacts (4 Slots) -->
+<div class="weathered-panel p-space-md rust-shadow relative">
+<div class="flex items-center justify-between pb-space-sm border-b border-ash-700">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-secondary-fixed text-lg">inventory_2</span>
+<span class="font-headline-sm text-lg uppercase text-secondary tracking-wider">
+            COLD-STORE HARDWARE ARTIFACTS
+          </span>
+</div>
+<span class="font-label-sm text-[10px] text-copper-400 tracking-wider font-mono">
+          SLOTS: 4/4 MOUNTED
+        </span>
+</div>
+<!-- 4-Slot Hardware Grid -->
+<div class="grid grid-cols-2 gap-space-sm mt-3">
+<!-- Slot 1: ESP32-CAM TinyML -->
+<div class="p-2.5 bg-ash-900 border border-ash-700 hover:border-rust-500 transition-all flex flex-col justify-between h-36 relative group cursor-pointer inventory-item ring-1 ring-rust-600/80" data-desc="Bare-metal ESP32-CAM module running quantized YOLOv8 object detector with custom DMA FIFO buffer over SPI." data-item="ESP32-CAM TINYML RIG">
+<div class="flex justify-between items-start">
+<span class="font-label-sm text-[10px] text-rust-400 font-bold tracking-widest">SLOT 01</span>
+<span class="font-label-sm text-[9px] bg-ash-800 px-1 text-secondary-fixed font-mono border border-ash-600">240MHz</span>
+</div>
+<div class="flex flex-col items-center justify-center gap-1 my-auto">
+<span class="material-symbols-outlined text-3xl text-rust-400 group-hover:scale-105 transition-transform">memory</span>
+<span class="font-label-md text-xs uppercase font-bold text-secondary text-center">ESP32-CAM YOLO</span>
+</div>
+<div class="w-full bg-ash-800 h-1 overflow-hidden">
+<div class="bg-rust-500 h-full w-[88%]"></div>
+</div>
+</div>
+<!-- Slot 2: 8086 CPU Cycle Emulator -->
+<div class="p-2.5 bg-ash-900 border border-ash-700 hover:border-copper-500 transition-all flex flex-col justify-between h-36 relative group cursor-pointer inventory-item" data-desc="Cycle-accurate Intel 8086 microarchitecture emulator written in modern C++ with opcode decode tables and interrupt hooks." data-item="8086 CPU EMULATOR">
+<div class="flex justify-between items-start">
+<span class="font-label-sm text-[10px] text-copper-400 font-bold tracking-widest">SLOT 02</span>
+<span class="font-label-sm text-[9px] bg-ash-800 px-1 text-copper-300 font-mono border border-ash-600">C++20</span>
+</div>
+<div class="flex flex-col items-center justify-center gap-1 my-auto">
+<span class="material-symbols-outlined text-3xl text-copper-400 group-hover:scale-105 transition-transform">developer_board</span>
+<span class="font-label-md text-xs uppercase font-bold text-secondary text-center">8086 CORE</span>
+</div>
+<div class="w-full bg-ash-800 h-1 overflow-hidden">
+<div class="bg-copper-500 h-full w-[95%]"></div>
+</div>
+</div>
+<!-- Slot 3: FreeRTOS Kernel Custom Allocator -->
+<div class="p-2.5 bg-ash-900 border border-ash-700 hover:border-secondary-fixed transition-all flex flex-col justify-between h-36 relative group cursor-pointer inventory-item" data-desc="Custom priority-inheritance mutex scheduler and heap_4 fragmentation guard written for real-time robotic controllers." data-item="RTOS MEMORY MANAGER">
+<div class="flex justify-between items-start">
+<span class="font-label-sm text-[10px] text-secondary-fixed font-bold tracking-widest">SLOT 03</span>
+<span class="font-label-sm text-[9px] bg-ash-800 px-1 text-secondary font-mono border border-ash-600">ASM/C</span>
+</div>
+<div class="flex flex-col items-center justify-center gap-1 my-auto">
+<span class="material-symbols-outlined text-3xl text-secondary-fixed group-hover:scale-105 transition-transform">schema</span>
+<span class="font-label-md text-xs uppercase font-bold text-secondary text-center">RTOS KERNEL</span>
+</div>
+<div class="w-full bg-ash-800 h-1 overflow-hidden">
+<div class="bg-secondary-fixed h-full w-[91%]"></div>
+</div>
+</div>
+<!-- Slot 4: Pocket Radio RF 104.7 Transistor -->
+<div class="p-2.5 bg-ash-900 border border-ash-700 hover:border-rust-400 transition-all flex flex-col justify-between h-36 relative group cursor-pointer inventory-item" data-desc="Tuned analog heterodyne receiver capturing magnetic static bursts when hostile runtime exceptions occur." data-item="RF 104.7 DETECTOR">
+<div class="flex justify-between items-start">
+<span class="font-label-sm text-[10px] text-rust-400 font-bold tracking-widest">SLOT 04</span>
+<span class="font-label-sm text-[9px] bg-ash-800 px-1 text-rust-400 font-mono border border-ash-600">ANALOG</span>
+</div>
+<div class="flex flex-col items-center justify-center gap-1 my-auto">
+<span class="material-symbols-outlined text-3xl text-rust-400 group-hover:scale-105 transition-transform">sensors</span>
+<span class="font-label-md text-xs uppercase font-bold text-secondary text-center">RF DETECTOR</span>
+</div>
+<div class="w-full bg-ash-800 h-1 overflow-hidden">
+<div class="bg-rust-600 h-full w-[72%]"></div>
+</div>
+</div>
+</div>
+<!-- Item Specification Card -->
+<div class="mt-space-md p-2.5 bg-ash-900/90 border border-ash-700" id="item-detail-card">
+<div class="flex items-center justify-between pb-1">
+<span class="font-label-sm text-[11px] uppercase text-secondary-fixed font-bold" id="item-spec-title">
+            ITEM SPECIFICATION // ESP32-CAM TINYML RIG
+          </span>
+<span class="font-label-sm text-[10px] text-on-surface-variant font-mono">TAG: SH-EMBED-01</span>
+</div>
+<p class="font-body-sm text-xs text-secondary leading-relaxed" id="item-spec-desc">
+          "Bare-metal ESP32-CAM module running quantized YOLOv8 object detector with custom DMA FIFO buffer over SPI. Handles sub-40ms edge inference."
+        </p>
+</div>
+</div>
+<!-- Operator Condition & Low-Level Mastery Meters -->
+<div class="weathered-panel p-space-md rust-shadow relative">
+<div class="flex items-center justify-between pb-2 border-b border-ash-700">
+<span class="font-headline-sm text-lg uppercase text-secondary tracking-wider">
+          STATUS: MOHAMMAD ELSHERBINY
+        </span>
+<span class="px-2 py-0.5 bg-ash-800 text-copper-400 font-label-sm text-[10px] font-bold uppercase tracking-widest border border-copper-800">
+          CONDITION: COLD &amp; OPTIMAL
+        </span>
+</div>
+<!-- ECG / Electrocardiogram Heart Monitor -->
+<div class="p-2.5 bg-ash-900 my-2.5 flex items-center justify-between gap-space-sm border border-ash-800">
+<div class="flex items-center gap-2 text-rust-500">
+<span class="material-symbols-outlined text-xl animate-pulse">ecg_heart</span>
+<div class="flex flex-col">
+<span class="font-label-sm text-[10px] uppercase text-secondary">CORE PULSE</span>
+<span class="font-label-lg text-sm font-bold text-rust-400 font-mono">92 BPM</span>
+</div>
+</div>
+<div class="h-6 flex-1 flex items-center justify-center overflow-hidden px-2 opacity-70">
+<svg class="w-full h-5 text-rust-500" fill="none" preserveaspectratio="none" viewbox="0 0 200 30">
+<path d="M0 15 H40 L45 7 L50 23 L55 2 L60 28 L65 15 H110 L115 10 L120 20 L125 15 H200" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></path>
+</svg>
+</div>
+<span class="font-label-sm text-xs text-copper-400 font-bold font-mono">
+          CANARY: INTACT
+        </span>
+</div>
+<!-- Engineering Skill Bars (Subdued Rust & Copper Palette) -->
+<div class="space-y-2 font-mono text-xs">
+<div>
+<div class="flex justify-between pb-0.5">
+<span class="font-label-sm text-[11px] uppercase text-secondary">BARE-METAL C / C++ / X86 ASM</span>
+<span class="text-secondary-fixed text-[11px] font-bold">96%</span>
+</div>
+<div class="w-full bg-ash-800 h-1.5 border border-ash-700">
+<div class="bg-rust-500 h-full w-[96%]"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between pb-0.5">
+<span class="font-label-sm text-[11px] uppercase text-secondary">ESP32 &amp; TINYML EDGE INFERENCE</span>
+<span class="text-copper-400 text-[11px] font-bold">90%</span>
+</div>
+<div class="w-full bg-ash-800 h-1.5 border border-ash-700">
+<div class="bg-copper-600 h-full w-[90%]"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between pb-0.5">
+<span class="font-label-sm text-[11px] uppercase text-secondary">CYCLE-ACCURATE CPU EMULATION</span>
+<span class="text-secondary-fixed text-[11px] font-bold">93%</span>
+</div>
+<div class="w-full bg-ash-800 h-1.5 border border-ash-700">
+<div class="bg-secondary-fixed h-full w-[93%]"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between pb-0.5">
+<span class="font-label-sm text-[11px] uppercase text-secondary">RTOS KERNEL &amp; HEAP RECOVERY</span>
+<span class="text-tertiary-fixed text-[11px] font-bold">88%</span>
+</div>
+<div class="w-full bg-ash-800 h-1.5 border border-ash-700">
+<div class="bg-copper-500 h-full w-[88%]"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Weathered Memorandum Cassette Tape #09 Log Strip -->
+<section class="relative z-20 px-gutter mt-space-md">
+<div class="weathered-panel p-3 sm:p-4 flex flex-col md:flex-row items-center justify-between gap-space-md border-l-4 border-l-rust-600 rust-shadow">
+<div class="flex items-center gap-3 sm:gap-4">
+<div class="w-10 h-10 rounded-full bg-ash-800 border border-ash-600 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-secondary-fixed text-xl">album</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<span class="font-label-sm text-[10px] text-rust-400 tracking-widest uppercase font-bold">ARCHIVE CASSETTE #09 // LAKESIDE TEST LOG</span>
+<span class="text-[9px] font-mono px-1 bg-ash-800 text-ash-500 border border-ash-700">1999_REC</span>
+</div>
+<h3 class="font-headline-sm text-base sm:text-lg text-secondary uppercase tracking-wide mt-0.5">
+          "The fog clears only when the build succeeds without warnings."
+        </h3>
+<p class="font-body-sm text-xs text-on-surface-variant font-mono">
+          Sub-basement recovery tape. Found stored alongside an unpacked ESP32-WROOM breadboard.
+        </p>
+</div>
+</div>
+<div class="flex items-center gap-2 shrink-0">
+<button class="px-space-md py-1.5 bg-ash-800 hover:bg-ash-700 border border-ash-600 text-secondary font-label-md text-xs uppercase tracking-wider transition-colors flex items-center gap-1.5" id="inspect-audio" type="button">
+<span class="material-symbols-outlined text-base text-secondary-fixed">play_arrow</span>
+<span>PLAY CASSETTE</span>
+</button>
+<span class="font-label-sm text-[11px] text-secondary-fixed font-mono hidden" id="audio-status">
+        [TAPE PLAY: 00:14 / 01:42]
+      </span>
+</div>
+</div>
+</section>
+</div>
+<!-- INTERACTIVE DECOMPILER & AUDIO SYNTHESIS SCRIPT -->
+<script>
+  (function () {
+    // 1. Procedural Web Audio Sound Synthesizer Engine
+    let audioCtx = null;
+    let sfxMuted = false;
+    let tapeNoiseNode = null;
+    let tapeDroneOsc = null;
+    let tapeGainNode = null;
+
+    function getAudioContext() {
+      if (!audioCtx) {
+        const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+        if (AudioContextClass) {
+          audioCtx = new AudioContextClass();
+        }
+      }
+      if (audioCtx && audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+      return audioCtx;
+    }
+
+    function createNoiseBuffer(ctx, duration = 1.0) {
+      const bufferSize = ctx.sampleRate * duration;
+      const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+      const data = buffer.getChannelData(0);
+      let lastOut = 0.0;
+      for (let i = 0; i < bufferSize; i++) {
+        const white = Math.random() * 2 - 1;
+        lastOut = (lastOut * 0.72) + (white * 0.28);
+        data[i] = lastOut;
+      }
+      return buffer;
+    }
+
+    function playRadioStatic(duration = 0.55, intensity = 0.24) {
+      if (sfxMuted) return;
+      const ctx = getAudioContext();
+      if (!ctx) return;
+
+      const now = ctx.currentTime;
+      const noiseBuffer = createNoiseBuffer(ctx, duration + 0.1);
+      const noiseSource = ctx.createBufferSource();
+      noiseSource.buffer = noiseBuffer;
+
+      const filter = ctx.createBiquadFilter();
+      filter.type = 'bandpass';
+      filter.frequency.setValueAtTime(1250, now);
+      filter.frequency.exponentialRampToValueAtTime(2900, now + duration * 0.4);
+      filter.frequency.exponentialRampToValueAtTime(750, now + duration);
+      filter.Q.setValueAtTime(4.0, now);
+
+      const gain = ctx.createGain();
+      gain.gain.setValueAtTime(0.01, now);
+      gain.gain.linearRampToValueAtTime(intensity, now + 0.04);
+      for (let t = 0.07; t < duration - 0.04; t += 0.05) {
+        gain.gain.setValueAtTime((Math.random() * 0.2 + 0.08) * intensity, now + t);
+      }
+      gain.gain.exponentialRampToValueAtTime(0.001, now + duration);
+
+      noiseSource.connect(filter);
+      filter.connect(gain);
+      gain.connect(ctx.destination);
+
+      noiseSource.start(now);
+      noiseSource.stop(now + duration);
+    }
+
+    function playMechanicalClick(tonePitch = 220) {
+      if (sfxMuted) return;
+      const ctx = getAudioContext();
+      if (!ctx) return;
+
+      const now = ctx.currentTime;
+      const osc = ctx.createOscillator();
+      osc.type = 'square';
+      osc.frequency.setValueAtTime(tonePitch, now);
+      osc.frequency.exponentialRampToValueAtTime(40, now + 0.035);
+
+      const oscGain = ctx.createGain();
+      oscGain.gain.setValueAtTime(0.28, now);
+      oscGain.gain.exponentialRampToValueAtTime(0.001, now + 0.04);
+
+      osc.connect(oscGain);
+      oscGain.connect(ctx.destination);
+
+      osc.start(now);
+      osc.stop(now + 0.045);
+    }
+
+    function startTapeAudio() {
+      if (sfxMuted) return;
+      const ctx = getAudioContext();
+      if (!ctx) return;
+      stopTapeAudio();
+
+      const now = ctx.currentTime;
+      tapeGainNode = ctx.createGain();
+      tapeGainNode.gain.setValueAtTime(0.001, now);
+      tapeGainNode.gain.linearRampToValueAtTime(0.16, now + 0.3);
+
+      tapeNoiseNode = ctx.createBufferSource();
+      tapeNoiseNode.buffer = createNoiseBuffer(ctx, 3.5);
+      tapeNoiseNode.loop = true;
+
+      const tapeFilter = ctx.createBiquadFilter();
+      tapeFilter.type = 'bandpass';
+      tapeFilter.frequency.setValueAtTime(900, now);
+      tapeFilter.Q.setValueAtTime(1.4, now);
+
+      tapeDroneOsc = ctx.createOscillator();
+      tapeDroneOsc.type = 'triangle';
+      tapeDroneOsc.frequency.setValueAtTime(55, now);
+
+      tapeNoiseNode.connect(tapeFilter);
+      tapeFilter.connect(tapeGainNode);
+      tapeDroneOsc.connect(tapeGainNode);
+      tapeGainNode.connect(ctx.destination);
+
+      tapeNoiseNode.start(now);
+      tapeDroneOsc.start(now);
+    }
+
+    function stopTapeAudio() {
+      if (tapeGainNode && audioCtx) {
+        const now = audioCtx.currentTime;
+        tapeGainNode.gain.linearRampToValueAtTime(0.001, now + 0.15);
+        setTimeout(() => {
+          try {
+            if (tapeNoiseNode) tapeNoiseNode.stop();
+            if (tapeDroneOsc) tapeDroneOsc.stop();
+          } catch (e) {}
+          tapeNoiseNode = null;
+          tapeDroneOsc = null;
+          tapeGainNode = null;
+        }, 180);
+      }
+    }
+
+    // 2. Interactive Codebase Archaeology Explorer Data
+    const codebaseFiles = {
+      esp32: {
+        title: "ESP32-CAM TINYML YOLO INFERENCE DRIVER // esp32_tinyml_yolo.c",
+        content: `
+<div class="text-copper-400 font-mono mb-2">[+] EXCAVATED ARTIFACT: esp32_tinyml_yolo.c // ARCH: Xtensa LX7 Dual-Core 240MHz</div>
+<div class="grid grid-cols-12 gap-1 py-0.5 opacity-90"><span class="col-span-3 text-secondary-fixed">0x40081C40</span><span class="col-span-5 text-rust-400">36 01 00 21 00 12</span><span class="col-span-4 text-secondary">entry a1, 32</span></div>
+<div class="grid grid-cols-12 gap-1 py-0.5 opacity-90"><span class="col-span-3 text-secondary-fixed">0x40081C46</span><span class="col-span-5 text-rust-400">00 20 C1 40 82 10</span><span class="col-span-4 text-secondary">movi a2, dma_fb_buffer</span></div>
+<div class="grid grid-cols-12 gap-1 py-0.5 opacity-90"><span class="col-span-3 text-secondary-fixed">0x40081C4C</span><span class="col-span-5 text-rust-400">22 30 11 02 44 91</span><span class="col-span-4 text-secondary-fixed">call8 esp_camera_fb_get</span></div>
+<div class="grid grid-cols-12 gap-1 py-0.5 opacity-90"><span class="col-span-3 text-secondary-fixed">0x40081C52</span><span class="col-span-5 text-rust-400">C0 21 FF 00 11 00</span><span class="col-span-4 text-copper-300 font-bold">call8 tinyml_quantize_int8</span></div>
+<div class="grid grid-cols-12 gap-1 py-0.5 opacity-90"><span class="col-span-3 text-secondary-fixed">0x40081C58</span><span class="col-span-5 text-rust-400">30 40 01 C9 88 12</span><span class="col-span-4 text-rust-300">call8 yolov8_run_conv2d</span></div>
+<div class="grid grid-cols-12 gap-1 py-0.5 opacity-90"><span class="col-span-3 text-secondary-fixed">0x40081C5E</span><span class="col-span-5 text-rust-400">F0 1D 00 00 F1 C0</span><span class="col-span-4 text-secondary">retw.n</span></div>
+<div class="p-2 bg-ash-900 border border-ash-700/80 my-2 text-on-surface-variant">
+  <div class="text-copper-400 font-bold uppercase text-[10px] pb-1">TFLite Micro Quantized Tensor Stats</div>
+  <div class="font-mono text-[11px] text-secondary">Input Shape: [1, 96, 96, 1] | Conv2D Weights: 48,220 INT8 Params</div>
+  <div class="font-mono text-[11px] text-rust-400">Latency: 38.4ms per frame @ 240MHz (Zero-copy PSRAM DMA)</div>
+</div>
+<div class="text-secondary-fixed animate-pulse">▶ ESP32 RTOS TASK: "dma_capture_worker" RUNNING [CORE 1]</div>
+        `
+      },
+      i8086: {
+        title: "CYCLE-ACCURATE CPU EMULATION ENGINE // i8086_cycle_exec.cpp",
+        content: `
+<div class="text-copper-400 font-mono mb-2">[+] EXCAVATED ARTIFACT: i8086_cycle_exec.cpp // C++20 Instruction Decoder</div>
+<div class="grid grid-cols-12 gap-1 py-0.5 opacity-90"><span class="col-span-3 text-secondary-fixed">0x00001000</span><span class="col-span-5 text-rust-400">8B 45 F8 89 02 90</span><span class="col-span-4 text-secondary">mov eax, [rbp-8]</span></div>
+<div class="grid grid-cols-12 gap-1 py-0.5 opacity-90"><span class="col-span-3 text-secondary-fixed">0x00001006</span><span class="col-span-5 text-rust-400">0F B6 08 83 E1 07</span><span class="col-span-4 text-secondary-fixed">movzx ecx, byte ptr [rax]</span></div>
+<div class="grid grid-cols-12 gap-1 py-0.5 opacity-90"><span class="col-span-3 text-secondary-fixed">0x0000100C</span><span class="col-span-5 text-rust-400">FF 24 CD 80 20 00</span><span class="col-span-4 text-copper-300 font-bold">jmp [opcode_jump_table + rcx*8]</span></div>
+<div class="grid grid-cols-12 gap-1 py-0.5 opacity-90"><span class="col-span-3 text-secondary-fixed">0x00001014</span><span class="col-span-5 text-rust-400">E8 A0 FD FF FF 90</span><span class="col-span-4 text-rust-300">call decode_mod_rm_byte</span></div>
+<div class="grid grid-cols-12 gap-1 py-0.5 opacity-90"><span class="col-span-3 text-secondary-fixed">0x0000101A</span><span class="col-span-5 text-rust-400">83 05 40 30 00 04</span><span class="col-span-4 text-secondary">add dword [cycles_accum], 4</span></div>
+<div class="p-2 bg-ash-900 border border-ash-700/80 my-2 text-on-surface-variant">
+  <div class="text-secondary-fixed font-bold uppercase text-[10px] pb-1">Microarchitecture State Registers</div>
+  <div class="font-mono text-[11px] text-secondary">AX: 0x4F02 | BX: 0x0010 | CX: 0x0000 | DX: 0x03D4 | CS:IP = 0x0800:0x0100</div>
+  <div class="font-mono text-[11px] text-copper-400">Prefetch Queue: [0xB8, 0x00, 0x4C, 0xCD, 0x21, 0x90] (6 Bytes)</div>
+</div>
+<div class="text-copper-400 animate-pulse">▶ BUS INTERFACE UNIT: PIPELINE CLOCK AT 4.77MHz REPLICATED</div>
+        `
+      },
+      rtos: {
+        title: "LOW-LEVEL HEAP ALLOCATOR & SCHEDULER // rtos_memory_heap.s",
+        content: `
+<div class="text-secondary-fixed font-mono mb-2">[+] EXCAVATED ARTIFACT: rtos_memory_heap.s // Assembly Memory Guard</div>
+<div class="grid grid-cols-12 gap-1 py-0.5 opacity-90"><span class="col-span-3 text-secondary-fixed">0x00008400</span><span class="col-span-5 text-rust-400">B8 20 00 00 00 89</span><span class="col-span-4 text-secondary">mov eax, HEAP_CANARY_TAG</span></div>
+<div class="grid grid-cols-12 gap-1 py-0.5 opacity-90"><span class="col-span-3 text-secondary-fixed">0x00008406</span><span class="col-span-5 text-rust-400">39 43 FC 75 14 90</span><span class="col-span-4 text-copper-300 font-bold">cmp [rbx-4], eax ; test canary</span></div>
+<div class="grid grid-cols-12 gap-1 py-0.5 opacity-90"><span class="col-span-3 text-secondary-fixed">0x0000840C</span><span class="col-span-5 text-rust-400">75 12 48 89 53 08</span><span class="col-span-4 text-rust-300 font-bold">jne _kernel_panic_corrupt</span></div>
+<div class="grid grid-cols-12 gap-1 py-0.5 opacity-90"><span class="col-span-3 text-secondary-fixed">0x00008412</span><span class="col-span-5 text-rust-400">48 8B 05 38 12 00</span><span class="col-span-4 text-secondary">mov rax, [next_free_block]</span></div>
+<div class="grid grid-cols-12 gap-1 py-0.5 opacity-90"><span class="col-span-3 text-secondary-fixed">0x00008418</span><span class="col-span-5 text-rust-400">C3 90 90 90 90 90</span><span class="col-span-4 text-secondary">ret</span></div>
+<div class="p-2 bg-ash-900 border border-ash-700/80 my-2 text-on-surface-variant">
+  <div class="text-rust-400 font-bold uppercase text-[10px] pb-1">Kernel Memory Slab Diagnostics</div>
+  <div class="font-mono text-[11px] text-secondary">Allocated Slabs: 64B x 128 | 256B x 64 | 1024B x 16 (0% Frag)</div>
+  <div class="font-mono text-[11px] text-secondary-fixed">Stack Protector: Armed on all task context switches</div>
+</div>
+<div class="text-secondary-fixed animate-pulse">▶ RTOS SCHEDULER: PREEMPTIVE PRIORITY DISPATCH READY</div>
+        `
+      }
+    };
+
+    const codeDisplayBody = document.getElementById('code-display-body');
+    const codeTabs = document.querySelectorAll('.code-tab');
+
+    function renderCodeFile(fileKey) {
+      if (!codebaseFiles[fileKey] || !codeDisplayBody) return;
+      codeDisplayBody.innerHTML = codebaseFiles[fileKey].content;
+      codeTabs.forEach(tab => {
+        if (tab.getAttribute('data-file') === fileKey) {
+          tab.className = 'code-tab px-3 py-1 font-label-sm text-xs uppercase tracking-wider font-bold transition-all border border-rust-500 bg-rust-900/70 text-secondary';
+        } else {
+          tab.className = 'code-tab px-3 py-1 font-label-sm text-xs uppercase tracking-wider font-medium transition-all border border-ash-700 bg-ash-800 text-on-surface-variant hover:text-secondary hover:border-ash-600';
+        }
+      });
+    }
+
+    // Default load first artifact
+    renderCodeFile('esp32');
+
+    codeTabs.forEach(tab => {
+      tab.addEventListener('click', function () {
+        playMechanicalClick(280);
+        const file = this.getAttribute('data-file');
+        renderCodeFile(file);
+      });
+    });
+
+    // 3. Register & Interactive Cycle Stepping
+    const btnStepFrame = document.getElementById('btn-step-frame');
+    const btnDumpSymbols = document.getElementById('btn-dump-symbols');
+    const regCycles = document.getElementById('reg-cycles');
+    const regPc = document.getElementById('reg-pc');
+    let cyclesCount = 1409218;
+
+    if (btnStepFrame) {
+      btnStepFrame.addEventListener('click', function () {
+        playMechanicalClick(320);
+        cyclesCount += 100;
+        if (regCycles) regCycles.textContent = cyclesCount.toLocaleString();
+        if (regPc) {
+          const nextAddr = '0x' + (0x40081C40 + (cyclesCount % 0x80)).toString(16).toUpperCase();
+          regPc.textContent = nextAddr;
+        }
+      });
+    }
+
+    if (btnDumpSymbols) {
+      btnDumpSymbols.addEventListener('click', function () {
+        playMechanicalClick(210);
+        alert("[TOLUCA COLD-STORE SYMBOL TABLE DUMP]\n- esp_camera_fb_get: 0x40081B10\n- tinyml_quantize_int8: 0x40081E80\n- yolov8_run_conv2d: 0x40082200\n- dma_buffer_head: 0x3FFE4200");
+      });
+    }
+
+    // 4. Radio Transistor Interactions
+    const radioTransistor = document.getElementById('radio-transistor-hud');
+    const staticBadge = document.getElementById('static-spike-badge');
+    const radioSoundwave = document.getElementById('radio-soundwave');
+    const radioText = document.getElementById('radio-indicator-text');
+
+    function triggerRadioEffect() {
+      playRadioStatic(0.65, 0.28);
+      if (radioSoundwave) {
+        radioSoundwave.classList.add('brightness-150');
+        setTimeout(() => radioSoundwave.classList.remove('brightness-150'), 350);
+      }
+      if (radioText) {
+        radioText.textContent = 'RADIO SIGNAL: CRITICAL INTERFERENCE [RF 104.7 LOCKED]';
+        setTimeout(() => {
+          radioText.textContent = 'RADIO SIGNAL: DENSE INTERFERENCE DETECTED';
+        }, 1300);
+      }
+    }
+
+    if (radioTransistor) {
+      radioTransistor.addEventListener('click', triggerRadioEffect);
+      radioTransistor.addEventListener('mouseenter', () => playRadioStatic(0.22, 0.12));
+    }
+    if (staticBadge) {
+      staticBadge.addEventListener('click', (e) => {
+        e.stopPropagation();
+        triggerRadioEffect();
+      });
+    }
+
+    // 5. Phosphor Tube Amber Flicker Toggle
+    const phosphorBtn = document.getElementById('toggle-phosphor');
+    const terminalWrapper = document.getElementById('terminal-wrapper');
+    if (phosphorBtn && terminalWrapper) {
+      let isPhosphor = false;
+      phosphorBtn.addEventListener('click', function () {
+        playMechanicalClick(180);
+        isPhosphor = !isPhosphor;
+        if (isPhosphor) {
+          terminalWrapper.classList.add('analog-flicker', 'brightness-110');
+          phosphorBtn.classList.add('bg-rust-700', 'border-rust-500');
+        } else {
+          terminalWrapper.classList.remove('analog-flicker', 'brightness-110');
+          phosphorBtn.classList.remove('bg-rust-700', 'border-rust-500');
+        }
+      });
+    }
+
+    // 6. Inventory Item Selection
+    const invItems = document.querySelectorAll('.inventory-item');
+    const itemSpecTitle = document.getElementById('item-spec-title');
+    const itemSpecDesc = document.getElementById('item-spec-desc');
+
+    invItems.forEach(item => {
+      item.addEventListener('click', function () {
+        playMechanicalClick(300);
+        const name = this.getAttribute('data-item') || 'ITEM';
+        const desc = this.getAttribute('data-desc') || '';
+        if (itemSpecTitle) itemSpecTitle.textContent = 'ITEM SPECIFICATION // ' + name;
+        if (itemSpecDesc) itemSpecDesc.textContent = '"' + desc + '"';
+        invItems.forEach(el => el.classList.remove('ring-1', 'ring-rust-500'));
+        this.classList.add('ring-1', 'ring-rust-500');
+      });
+    });
+
+    // 7. Cassette Tape Player
+    const inspectAudio = document.getElementById('inspect-audio');
+    const audioStatus = document.getElementById('audio-status');
+    if (inspectAudio && audioStatus) {
+      inspectAudio.addEventListener('click', function () {
+        playMechanicalClick(140);
+        const isHidden = audioStatus.classList.contains('hidden');
+        if (isHidden) {
+          audioStatus.classList.remove('hidden');
+          inspectAudio.querySelector('span:last-child').textContent = 'HALT CASSETTE';
+          startTapeAudio();
+        } else {
+          audioStatus.classList.add('hidden');
+          inspectAudio.querySelector('span:last-child').textContent = 'PLAY CASSETTE';
+          stopTapeAudio();
+        }
+      });
+    }
+
+    // 8. Valve Return to Metaverse Switch
+    const returnBtn = document.getElementById('metaverse-return');
+    if (returnBtn) {
+      returnBtn.addEventListener('click', function () {
+        playMechanicalClick(120);
+        playRadioStatic(0.4, 0.2);
+        document.body.classList.add('transition-all', 'duration-500', 'brightness-150');
+        setTimeout(() => {
+          document.body.classList.remove('brightness-150');
+          const palacesLink = document.querySelector('a[data-path="palaces"]');
+          if (palacesLink) {
+            palacesLink.click();
+          } else {
+            window.location.hash = '#palaces';
+          }
+        }, 350);
+      });
+    }
+
+    // 9. Audio Mute Toggle in Footer
+    const bgmToggle = document.getElementById('bgm-toggle');
+    const bgmIcon = document.getElementById('bgm-icon');
+    const bgmLabel = document.getElementById('bgm-label');
+    if (bgmToggle) {
+      bgmToggle.addEventListener('click', function () {
+        sfxMuted = !sfxMuted;
+        if (sfxMuted) {
+          stopTapeAudio();
+          if (bgmIcon) bgmIcon.textContent = 'volume_off';
+          if (bgmLabel) bgmLabel.textContent = 'SFX: MUTED';
+          bgmToggle.classList.add('text-rust-500');
+        } else {
+          if (bgmIcon) bgmIcon.textContent = 'volume_up';
+          if (bgmLabel) bgmLabel.textContent = 'SFX: ACTIVE';
+          bgmToggle.classList.remove('text-rust-500');
+          playMechanicalClick(240);
+        }
+      });
+    }
+
+    // Generic SFX clickers
+    document.querySelectorAll('.sfx-click').forEach(btn => {
+      btn.addEventListener('click', () => playMechanicalClick(220));
+    });
+  })();
+</script></main><!-- Weathered Municipal Bottom HUD Bar --><footer class="fixed bottom-0 left-0 right-0 z-50 h-10 bg-[#0d0c0b] border-t border-ash-700/80 flex items-center justify-between px-gutter select-none"><div class="flex items-center gap-space-md"><div class="flex items-center gap-1.5 px-2 py-0.5 bg-ash-800 text-secondary-fixed font-label-sm text-xs font-bold border border-ash-700"><span class="material-symbols-outlined text-xs text-copper-400">calendar_today</span><span>ARCHIVE DATE: 11/04</span></div><div class="flex items-center gap-1.5 font-label-sm text-xs text-secondary"><span class="material-symbols-outlined text-xs text-copper-400">cloud</span><span class="hidden sm:inline uppercase tracking-widest text-on-surface-variant font-mono">DAMP FOG DENSITY //</span><span class="text-rust-400 font-bold uppercase tracking-wider font-mono animate-pulse">0.84λ PARTICULATE ACTIVE</span></div></div><div class="flex items-center gap-space-md"><div class="hidden md:flex items-center gap-1.5 font-label-sm text-xs text-on-surface-variant font-mono"><span class="w-1.5 h-1.5 rounded-full bg-rust-500 inline-block animate-ping"></span><span>TOLUCA SEC: 04</span></div><button class="flex items-center gap-1 font-label-sm text-xs text-on-surface hover:text-rust-400 transition-colors cursor-pointer" id="bgm-toggle" title="Toggle Analog Sound Engine" type="button"><span class="material-symbols-outlined text-base" id="bgm-icon">volume_up</span><span class="hidden sm:inline uppercase font-mono" id="bgm-label">SFX: ACTIVE</span></button></div></footer></body></html>

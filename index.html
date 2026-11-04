@@ -1,341 +1,497 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="dark" lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mohammad Elsherbiny — Trilingual Full-Stack Developer</title>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>TAKE YOUR HEART // MOHAMMAD ELSHERBINY PORTFOLIO</title>
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=JetBrains+Mono:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Space+Grotesk:wght@400;500;700&family=Special+Elite&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet"/>
 
-  <!-- Meta SEO -->
-  <meta name="description" content="Portfolio of Mohammad Elsherbiny — Trilingual Full-Stack Developer & Software Engineer at E-JUST. Inspired by Persona 5 Royal & Silent Hill." />
-  <meta name="author" content="Mohammad Elsherbiny (LuigiLuigi2401)" />
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface": "#131313",
+            "surface-dim": "#131313",
+            "surface-bright": "#393939",
+            "surface-container-lowest": "#0e0e0e",
+            "surface-container-low": "#1c1b1b",
+            "surface-container": "#201f1f",
+            "surface-container-high": "#2a2a2a",
+            "surface-container-highest": "#353534",
+            "on-surface": "#e5e2e1",
+            "on-surface-variant": "#e9bcb6",
+            "primary-container": "#e60012",
+            "on-primary-container": "#fff7f6",
+            "secondary": "#fff9ef",
+            "secondary-container": "#ffdb3c",
+            "on-secondary-container": "#725f00",
+            "secondary-fixed": "#ffe16d",
+            "outline-variant": "#5f3f3b",
+            "background": "#131313",
+            "rust": {
+              "900": "#3b1a0d", "800": "#5c2b15", "700": "#8c4826", "600": "#b05c2a", "500": "#c06536", "400": "#d98255"
+            },
+            "copper": {
+              "900": "#101e1b", "800": "#1c322d", "700": "#2c4c47", "600": "#3a5f57", "500": "#527e74"
+            },
+            "ash": {
+              "900": "#141312", "800": "#1e1c1a", "700": "#2a2724", "600": "#3d3935", "500": "#554f49"
+            }
+          },
+          "fontFamily": {
+            "headline-lg": ["Anton", "sans-serif"],
+            "label-sm": ["JetBrains Mono", "monospace"],
+            "display-xl": ["Anton", "sans-serif"],
+            "body-md": ["Space Grotesk", "sans-serif"],
+            "label-lg": ["JetBrains Mono", "monospace"],
+            "label-md": ["JetBrains Mono", "monospace"],
+            "headline-sm": ["Anton", "sans-serif"],
+            "archive": ["Special Elite", "monospace"]
+          }
+        }
+      }
+    };
+  </script>
 
-  <!-- Icons -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" />
+  <style>
+    @layer base { html, body { margin: 0; padding: 0; } body { overscroll-behavior: none; } }
+    ::-webkit-scrollbar { display: none; }
+    .comic-shadow { box-shadow: 4px 4px 0px #000000; }
+    .rust-shadow { box-shadow: 4px 4px 0px #090908, inset 0 1px 0 rgba(255,255,255,0.04); }
+    .scanline-overlay {
+      background: linear-gradient(rgba(18,16,16,0) 50%, rgba(0,0,0,0.25) 50%), linear-gradient(90deg, rgba(255,0,0,0.06), rgba(0,255,0,0.02), rgba(0,0,255,0.06));
+      background-size: 100% 2px, 3px 100%;
+      pointer-events: none;
+    }
+  </style>
 
-  <!-- Persona 5 Royal & Silent Hill Custom Stylesheet -->
+  <!-- P5 Custom Interactivity Stylesheet -->
   <link rel="stylesheet" href="assets/css/p5r_theme.css" />
 </head>
-<body>
 
-  <!-- Silent Hill Shaders & Overlays -->
+<body class="bg-background font-body-md text-on-surface antialiased min-h-screen relative selection:bg-primary-container selection:text-on-primary-container">
+
+  <!-- Scanline & Fog Shaders -->
+  <div class="fixed inset-0 scanline-overlay z-40 pointer-events-none opacity-40"></div>
   <div id="sh-spotlight"></div>
   <div id="sh-scanlines"></div>
   <div id="sh-fog"></div>
 
-  <!-- Persona 5 Background Slash Accent -->
-  <div class="p5-bg-slash"></div>
-
   <!-- ------------------------------------------------------------------------
-       NAVBAR
+       HEADER NAVIGATION BAR
        ------------------------------------------------------------------------ -->
-  <nav class="p5-navbar">
-    <div class="p5-container p5-nav-inner">
-      <a href="#" class="p5-brand">
-        <span class="p5-brand-star">★</span> M. ELSHERBINY
-      </a>
+  <header class="fixed top-0 left-0 right-0 z-50 bg-surface-container-lowest/95 backdrop-blur-md border-b-2 border-primary-container">
+    <div class="h-20 w-full px-6 flex items-center justify-between relative overflow-hidden">
+      <div class="absolute -left-12 -top-6 w-48 h-32 bg-primary-container -skew-x-12 -z-10 opacity-90"></div>
+      
+      <div class="flex items-center gap-4 z-10">
+        <a href="#" class="flex flex-col text-decoration-none">
+          <span class="font-headline-sm text-2xl uppercase tracking-wider text-secondary -skew-x-6 drop-shadow-[2px_2px_0px_#000000]">
+            ★ MOHAMMAD ELSHERBINY
+          </span>
+          <span class="font-label-sm text-xs uppercase tracking-widest text-primary-container font-bold -skew-x-6">
+            DEV PORTFOLIO // VER 5.0R
+          </span>
+        </a>
+      </div>
 
-      <div class="p5-nav-actions">
-        <button id="joker-cli-toggle" class="p5-btn-action" title="Open Command Palette (Ctrl+K)">
-          <i class="ri-terminal-box-line"></i> <span>CLI (Ctrl+K)</span>
+      <nav class="hidden xl:flex items-center gap-2 z-10">
+        <button class="px-4 py-1.5 uppercase font-headline-sm text-lg text-secondary hover:bg-primary-container hover:text-on-primary-container -skew-x-6 transition-transform hover:-translate-y-0.5" onclick="document.getElementById('palaces-section').scrollIntoView({behavior:'smooth'})">PALACES</button>
+        <button class="px-4 py-1.5 uppercase font-headline-sm text-lg text-secondary hover:bg-primary-container hover:text-on-primary-container -skew-x-6 transition-transform hover:-translate-y-0.5" onclick="document.getElementById('stats-section').scrollIntoView({behavior:'smooth'})">STATS</button>
+        <button class="px-4 py-1.5 uppercase font-headline-sm text-lg text-secondary hover:bg-primary-container hover:text-on-primary-container -skew-x-6 transition-transform hover:-translate-y-0.5" onclick="document.getElementById('skills-section').scrollIntoView({behavior:'smooth'})">CONFIDANTS</button>
+        <button class="px-4 py-1.5 uppercase font-headline-sm text-lg text-secondary hover:bg-primary-container hover:text-on-primary-container -skew-x-6 transition-transform hover:-translate-y-0.5" onclick="document.getElementById('calling-card-section').scrollIntoView({behavior:'smooth'})">CALLING CARD</button>
+        <button id="sh-toggle" class="px-4 py-1.5 uppercase font-headline-sm text-lg bg-rust-800 text-secondary border border-rust-500 -skew-x-6 transition-transform hover:-translate-y-0.5">SILENT HILL FOG</button>
+      </nav>
+
+      <div class="flex items-center gap-4 z-10">
+        <button id="joker-cli-toggle" class="hidden sm:flex items-center gap-2 px-4 py-1.5 bg-primary-container text-on-primary-container font-label-md text-xs -skew-x-6 comic-shadow transition-transform hover:-translate-x-0.5 hover:-translate-y-0.5" type="button">
+          <span class="material-symbols-outlined text-sm font-bold">terminal</span>
+          <span>JOKER CLI (Ctrl+K)</span>
         </button>
 
-        <button id="sh-toggle" class="p5-btn-action" title="Toggle Silent Hill Fog Mode">
-          <i class="ri-flashlight-line"></i> <span id="sh-btn-text">Fog Mode</span>
-        </button>
-
-        <button id="p5-menu-toggle" class="p5-btn-action p5-btn-menu" title="Open P5 Menu (ESC)">
-          <i class="ri-menu-4-line"></i> <span>MENU (ESC)</span>
+        <button id="p5-menu-toggle" class="flex items-center gap-2 px-4 py-1.5 bg-secondary-container text-on-secondary-container font-headline-sm text-lg -skew-x-6 comic-shadow" type="button">
+          <i class="ri-menu-4-line"></i>
+          <span>MENU (ESC)</span>
         </button>
       </div>
     </div>
-  </nav>
+  </header>
 
   <!-- ------------------------------------------------------------------------
-       HERO SECTION (JOKER STANCE & CALLOUT CARD)
+       MAIN HERO SECTION
        ------------------------------------------------------------------------ -->
-  <section class="p5-hero">
-    <div class="p5-container p5-hero-grid">
-      <div class="p5-hero-text">
-        <div class="p5-hero-tag">
-          <div class="p5-badge"><i class="ri-flashlight-fill"></i> <span>FULL-STACK DEVELOPER • E-JUST 2024</span></div>
-        </div>
+  <main class="w-full pt-20 pb-16 bg-surface min-h-[calc(100vh-4rem)]">
+    <div class="flex flex-col w-full relative overflow-hidden select-none">
+      <div class="absolute inset-0 pointer-events-none opacity-20 z-0" style="background-image: radial-gradient(#e60012 1.5px, transparent 1.5px); background-size: 14px 14px;"></div>
 
-        <h1 class="p5-hero-title">
-          MOHAMMAD<br />
-          <span style="color: var(--p5-red);">ELSHERBINY</span>
-        </h1>
-
-        <p class="p5-hero-subtitle">
-          Trilingual (EN / AR / JP) Software Engineer crafting high-performance web applications, edge computer vision systems, and low-level emulation tools.
-        </p>
-
-        <div class="p5-hero-ctas">
-          <button class="p5-skew-box p5-skew-box-red" onclick="document.getElementById('palaces').scrollIntoView({behavior:'smooth'})">
-            <span><i class="ri-sword-line"></i> EXPLORE PALACES (PROJECTS)</span>
-          </button>
-
-          <a href="assets/Mohammad Elsherbiny.pdf" target="_blank" class="p5-skew-box p5-skew-box-yellow" style="text-decoration: none;">
-            <span><i class="ri-file-download-line"></i> DOWNLOAD RESUME (CV)</span>
-          </a>
-        </div>
-      </div>
-
-      <!-- P5 Character Cut-In Card -->
-      <div class="p5-character-card">
-        <div class="p5-card-header-banner">
-          ★ CONFIDANT: PHANTOM DEVELOPER ★
-        </div>
-
-        <div class="p5-avatar-box">
-          <!-- Stylized P5 Graphic Cut-In Illustration -->
-          <svg class="p5-avatar-svg" viewBox="0 0 400 500" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M0 0H400V500H0V0Z" fill="#121212"/>
-            <path d="M50 0L400 350V500H200L0 150V0H50Z" fill="#E60012" opacity="0.85"/>
-            <!-- Joker Mask Silhouette -->
-            <path d="M120 220C150 180 250 180 280 220C260 250 200 270 200 270C200 270 140 250 120 220Z" fill="#FFFFFF"/>
-            <circle cx="160" cy="225" r="15" fill="#121212"/>
-            <circle cx="240" cy="225" r="15" fill="#121212"/>
-            <path d="M80 320L200 480L320 320" stroke="#FFFFFF" stroke-width="8"/>
-          </svg>
-
-          <div class="p5-avatar-callout">
-            <div class="p5-avatar-callout-title">NAME: MOHAMMAD ELSHERBINY</div>
-            <div>ROLE: TRILINGUAL CODING ENGINE</div>
-            <div>STATUS: LEVEL 99 FULL-STACK</div>
+      <section class="relative z-10 w-full px-8 pt-8 pb-16 flex flex-col gap-6">
+        <!-- Status Ribbon Bar -->
+        <div class="flex flex-wrap items-center justify-between gap-4">
+          <div class="flex items-center gap-2 -skew-x-6">
+            <span class="px-3 py-1 bg-surface-container-lowest text-secondary font-label-md text-xs tracking-wider border-l-4 border-primary-container comic-shadow">
+              MISSION STATUS: <span class="text-primary-container font-bold animate-pulse">PALACE INFILTRATION IN PROGRESS</span>
+            </span>
           </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- ------------------------------------------------------------------------
-       STATS SECTION (ABOUT & EDUCATION)
-       ------------------------------------------------------------------------ -->
-  <section id="stats" class="p5-section">
-    <div class="p5-container">
-      <div class="p5-section-title-wrap">
-        <h2 class="p5-section-title">01. STATS & <span style="color: var(--p5-red);">BACKGROUND</span></h2>
-        <div class="p5-section-sub">// EDUCATION • ACADEMIC & CULTURAL PROFILE</div>
-      </div>
-
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;">
-        <div class="p5-skew-box p5-skew-box-red" style="padding: 24px;">
-          <div>
-            <h3 style="font-size: 1.8rem; margin-bottom: 8px;">🎓 E-JUST UNIVERSITY</h3>
-            <p style="font-size: 0.95rem; margin-bottom: 12px;">Egypt-Japan University of Science and Technology (2024 – Present)</p>
-            <p style="font-size: 0.9rem;">Pursuing Computer Science & Engineering with a focus on modern web stacks, artificial intelligence, and embedded IoT architectures.</p>
+          <div class="flex items-center gap-2 -skew-x-6 bg-surface-container-lowest px-3 py-1 comic-shadow border-r-4 border-secondary-container">
+            <span class="material-symbols-outlined text-secondary-container text-base animate-spin" style="animation-duration: 9s;">progress_activity</span>
+            <span class="font-headline-sm tracking-widest text-secondary text-sm">TAKE YOUR TIME</span>
           </div>
         </div>
 
-        <div class="p5-skew-box" style="padding: 24px;">
-          <div>
-            <h3 style="font-size: 1.8rem; margin-bottom: 8px; color: var(--p5-yellow);">🎙️ DIPLOMATIC TRANSLATION & HOSTING</h3>
-            <p style="font-size: 0.95rem; margin-bottom: 12px;">4th E-JUST Matsuri Event & Egypt-Japan Schools (EJS)</p>
-            <p style="font-size: 0.9rem;">Served as Event Host & Official Japanese/English Translator for <strong>Ambassador Fumio Iwai</strong> at the 4th E-JUST Matsuri. Translator & Storyteller at EJS under the distinguished guidance and supervision of <strong>Mrs. Itsuyo Fukuda</strong>, spouse of former IEEE President Prof. Toshio Fukuda.</p>
-          </div>
-        </div>
-
-        <div class="p5-skew-box p5-skew-box-yellow" style="padding: 24px;">
-          <div>
-            <h3 style="font-size: 1.8rem; margin-bottom: 8px; color: var(--p5-black);">🌐 TRILINGUAL MASTERY</h3>
-            <p style="font-size: 0.95rem; margin-bottom: 12px;">Fluent in English, Arabic, and Japanese (EN / AR / JP)</p>
-            <p style="font-size: 0.9rem;">Bridging international communication, technical writing, cultural diplomatic hosting, and global software collaboration.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ------------------------------------------------------------------------
-       PALACES SECTION (FEATURED PROJECTS)
-       ------------------------------------------------------------------------ -->
-  <section id="palaces" class="p5-section">
-    <div class="p5-container">
-      <div class="p5-section-title-wrap">
-        <h2 class="p5-section-title">02. FEATURED <span style="color: var(--p5-red);">PALACES</span></h2>
-        <div class="p5-section-sub">// REPOSITORIES & SOFTWARE ARCHITECTURE</div>
-      </div>
-
-      <div class="p5-palaces-grid">
-        <!-- Palace 1: ESP32-CAM AI Fruit Spoilage Detector -->
-        <div class="p5-palace-card">
-          <div class="p5-palace-header">
-            <span>PALACE I</span>
-            <i class="ri-apple-fill"></i>
-          </div>
-          <div class="p5-palace-body">
-            <h3 class="p5-palace-title">ESP32-CAM AI Fruit Spoilage Detector</h3>
-            <p class="p5-palace-desc">
-              Real-time edge AI computer vision system featuring OpenCV region proposal, PyTorch MobileNetV2 inference (~22ms latency), PyQt6 glassmorphism desktop GUI, and Flask mobile streaming web server.
-            </p>
-            <div class="p5-palace-tags">
-              <span class="p5-badge">PyTorch</span>
-              <span class="p5-badge">OpenCV</span>
-              <span class="p5-badge">PyQt6</span>
-              <span class="p5-badge">ESP32-CAM</span>
+        <!-- Kinetic Headline Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div class="lg:col-span-7 flex flex-col gap-4 z-20">
+            <div class="flex flex-wrap items-center gap-2 -skew-x-6">
+              <div class="bg-secondary-container px-3 py-1 comic-shadow">
+                <span class="font-label-lg text-xs text-on-secondary-container uppercase font-bold tracking-widest">TRILINGUAL [EN / AR / JP]</span>
+              </div>
+              <div class="bg-surface-container-highest px-3 py-1 comic-shadow">
+                <span class="font-label-lg text-xs text-secondary uppercase font-semibold tracking-wider">SOFTWARE ENGINEER @ E-JUST</span>
+              </div>
+              <div class="bg-primary-container px-3 py-1 text-on-primary-container font-label-sm text-xs font-bold uppercase tracking-widest comic-shadow">FULL-STACK & EMBEDDED</div>
             </div>
-            <div class="p5-palace-links">
-              <a href="https://github.com/LuigiLuigi2401/esp-32-Fruit-Spoilage-Detector" target="_blank" class="p5-btn-action" style="text-decoration: none; font-size: 0.9rem;">
+
+            <div class="relative py-2 select-none">
+              <h1 class="font-display-xl text-6xl lg:text-8xl uppercase tracking-tighter text-primary-container absolute top-1.5 left-1.5 opacity-90 -skew-x-6 leading-none pointer-events-none">
+                MOHAMMAD<br/>ELSHERBINY
+              </h1>
+              <h1 class="relative font-display-xl text-6xl lg:text-8xl uppercase tracking-tighter text-secondary -skew-x-6 leading-none filter drop-shadow-[4px_4px_0px_#000000]">
+                MOHAMMAD<br/>
+                <span class="text-secondary-fixed bg-surface-container-lowest px-3 py-0 inline-block -skew-x-3 comic-shadow">ELSHERBINY</span>
+              </h1>
+            </div>
+
+            <div class="relative bg-surface-container-low p-4 -skew-x-3 comic-shadow max-w-2xl border-l-4 border-primary-container">
+              <p class="font-body-md text-lg text-on-surface leading-relaxed">
+                Trilingual Full-Stack Developer & Software Systems Engineer at Egypt-Japan University of Science and Technology (E-JUST). Building high-throughput web platforms, PyTorch edge AI computer vision, and cycle-accurate 16-bit emulators.
+              </p>
+            </div>
+
+            <div class="flex flex-wrap items-center gap-4 pt-2">
+              <button class="px-6 py-3 bg-primary-container text-on-primary-container font-headline-sm text-xl uppercase tracking-wider -skew-x-6 comic-shadow transition-transform hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[8px_8px_0px_#ffe16d] flex items-center gap-2" onclick="document.getElementById('palaces-section').scrollIntoView({behavior:'smooth'})">
+                <span>EXPLORE PALACES (PROJECTS)</span>
+                <span class="material-symbols-outlined">arrow_forward</span>
+              </button>
+
+              <a href="assets/Mohammad Elsherbiny.pdf" target="_blank" class="px-6 py-3 bg-secondary-container text-on-secondary-container font-headline-sm text-xl uppercase tracking-wider -skew-x-6 comic-shadow transition-transform hover:-translate-x-1 hover:-translate-y-1 hover:bg-secondary flex items-center gap-2 text-decoration-none">
+                <span>DOWNLOAD RESUME (CV)</span>
+                <span class="material-symbols-outlined">download</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Joker Persona Cut-In Card -->
+          <div class="lg:col-span-5 relative flex justify-center z-10">
+            <div class="absolute inset-0 bg-primary-container -skew-x-6 translate-x-3 translate-y-3 -z-10 comic-shadow"></div>
+            <div class="w-full bg-surface-container-lowest p-4 -skew-x-6 comic-shadow flex flex-col gap-3">
+              <div class="relative w-full aspect-square overflow-hidden bg-surface-container-high border-b-4 border-primary-container group">
+                <svg class="w-full h-full object-cover" viewBox="0 0 400 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M0 0H400V500H0V0Z" fill="#121212"/>
+                  <path d="M50 0L400 350V500H200L0 150V0H50Z" fill="#E60012" opacity="0.85"/>
+                  <path d="M120 220C150 180 250 180 280 220C260 250 200 270 200 270C200 270 140 250 120 220Z" fill="#FFFFFF"/>
+                  <circle cx="160" cy="225" r="15" fill="#121212"/>
+                  <circle cx="240" cy="225" r="15" fill="#121212"/>
+                  <path d="M80 320L200 480L320 320" stroke="#FFFFFF" stroke-width="8"/>
+                </svg>
+
+                <div class="absolute bottom-2 left-2 bg-primary-container text-on-primary-container font-headline-sm text-lg px-3 py-0.5 -skew-x-6 comic-shadow uppercase">
+                  ARSÈNE.CODE // AWAKENED
+                </div>
+                <div class="absolute top-2 left-2 bg-surface-container-lowest/90 px-2 py-0.5 text-secondary-fixed font-label-sm text-xs font-bold -skew-x-3">
+                  LEVEL 99 FULL-STACK
+                </div>
+              </div>
+
+              <!-- Persona Stats Meters -->
+              <div class="flex flex-col gap-2 font-label-sm text-xs">
+                <div class="flex items-center justify-between gap-2">
+                  <div class="flex-1 bg-surface-container p-2 -skew-x-3">
+                    <div class="flex justify-between text-secondary font-bold">
+                      <span class="text-primary-container">HP</span>
+                      <span>999 / 999</span>
+                    </div>
+                    <div class="w-full h-2 bg-surface-container-lowest"><div class="w-full h-full bg-primary-container"></div></div>
+                  </div>
+                  <div class="flex-1 bg-surface-container p-2 -skew-x-3">
+                    <div class="flex justify-between text-secondary font-bold">
+                      <span class="text-secondary-fixed">SP</span>
+                      <span>999 / 999</span>
+                    </div>
+                    <div class="w-full h-2 bg-surface-container-lowest"><div class="w-full h-full bg-secondary-fixed"></div></div>
+                  </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-2 pt-1">
+                  <div class="bg-surface-container-low p-2 flex items-center gap-2">
+                    <span class="material-symbols-outlined text-primary-container text-sm">translate</span>
+                    <span class="truncate">Trilingual Diplomat</span>
+                  </div>
+                  <div class="bg-surface-container-low p-2 flex items-center gap-2">
+                    <span class="material-symbols-outlined text-secondary-container text-sm">neurology</span>
+                    <span class="truncate">PyTorch / OpenCV</span>
+                  </div>
+                  <div class="bg-surface-container-low p-2 flex items-center gap-2">
+                    <span class="material-symbols-outlined text-primary text-sm">memory</span>
+                    <span class="truncate">x86 Assembly</span>
+                  </div>
+                  <div class="bg-surface-container-low p-2 flex items-center gap-2">
+                    <span class="material-symbols-outlined text-secondary-fixed text-sm">database</span>
+                    <span class="truncate">Django REST / React</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ------------------------------------------------------------------------
+           01. STATS & DIPLOMATIC CAREER SECTION
+           ------------------------------------------------------------------------ -->
+      <section id="stats-section" class="relative z-10 w-full px-8 py-12 flex flex-col gap-8">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-3">
+            <span class="bg-primary-container text-on-primary-container font-headline-md text-2xl px-3 py-1 -skew-x-6">01</span>
+            <h2 class="font-headline-lg text-4xl uppercase text-secondary -skew-x-6 drop-shadow-[2px_2px_0px_#000]">
+              STATS, ACADEMICS & DIPLOMATIC FEATS
+            </h2>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <!-- Card 1: E-JUST CS -->
+          <div class="bg-surface-container-lowest p-6 -skew-x-6 comic-shadow flex flex-col justify-between border-t-4 border-primary-container">
+            <div class="space-y-3">
+              <span class="font-label-sm text-xs text-primary font-bold uppercase tracking-wider block">EGYPT-JAPAN UNIV. OF SCIENCE & TECH</span>
+              <h3 class="font-headline-md text-2xl uppercase text-secondary">COMPUTER SCIENCE & INFORMATICS</h3>
+              <p class="font-body-md text-sm text-on-surface-variant">
+                Pursuing B.Sc. Computer Science & Engineering (2024–Present) with a focus on modern web architecture, artificial intelligence, and embedded systems.
+              </p>
+            </div>
+          </div>
+
+          <!-- Card 2: 4th E-JUST Matsuri Diplomatic Translator -->
+          <div class="bg-surface-container-lowest p-6 -skew-x-6 comic-shadow flex flex-col justify-between border-t-4 border-secondary-container">
+            <div class="space-y-3">
+              <span class="font-label-sm text-xs text-secondary-fixed font-bold uppercase tracking-wider block">OFFICIAL DIPLOMATIC TRANSLATION</span>
+              <h3 class="font-headline-md text-2xl uppercase text-secondary">4TH E-JUST MATSURI EVENT HOST</h3>
+              <p class="font-body-md text-sm text-on-surface-variant">
+                Served as Event Host & Official Japanese/English Translator for <strong>Ambassador Fumio Iwai</strong> (Ambassador of Japan to Egypt) at the 4th E-JUST Matsuri.
+              </p>
+            </div>
+          </div>
+
+          <!-- Card 3: EJS Storytelling supervised by Mrs. Itsuyo Fukuda -->
+          <div class="bg-surface-container-lowest p-6 -skew-x-6 comic-shadow flex flex-col justify-between border-t-4 border-primary-container">
+            <div class="space-y-3">
+              <span class="font-label-sm text-xs text-primary font-bold uppercase tracking-wider block">CULTURAL LIAISON & STORYTELLING</span>
+              <h3 class="font-headline-md text-2xl uppercase text-secondary">EJS STORYTELLING PROGRAM</h3>
+              <p class="font-body-md text-sm text-on-surface-variant">
+                Translator & Storyteller at Egypt-Japan Schools (EJS) under the distinguished guidance and supervision of <strong>Mrs. Itsuyo Fukuda</strong>, spouse of former IEEE President Prof. Toshio Fukuda.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pentagon Stat Radar & Trilingual Fluency -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start pt-4">
+          <!-- Pentagon Radar -->
+          <div class="lg:col-span-5 bg-surface-container-lowest p-6 -skew-x-6 comic-shadow relative flex flex-col items-center">
+            <div class="absolute top-2 left-2 bg-primary-container px-2 py-0.5 text-on-primary-container font-label-sm text-xs font-bold -skew-x-6">
+              PARAM: ALL MAX (5/5)
+            </div>
+            <div class="relative w-64 h-64 flex items-center justify-center pt-4">
+              <svg class="w-full h-full text-primary-container" fill="none" viewBox="0 0 240 240">
+                <polygon points="120,30 206,92 173,194 67,194 34,92" stroke="#353534" stroke-dasharray="3 3" stroke-width="1.5"></polygon>
+                <polygon points="120,32 204,93 171,192 69,192 36,93" fill="#e60012" fill-opacity="0.45" stroke="#e60012" stroke-width="3"></polygon>
+                <circle cx="120" cy="32" fill="#ffdb3c" r="5"></circle>
+                <circle cx="204" cy="93" fill="#ffdb3c" r="5"></circle>
+                <circle cx="171" cy="192" fill="#ffdb3c" r="5"></circle>
+                <circle cx="69" cy="192" fill="#ffdb3c" r="5"></circle>
+                <circle cx="36" cy="93" fill="#ffdb3c" r="5"></circle>
+              </svg>
+              <div class="absolute top-1 font-headline-sm text-secondary text-sm">KNOWLEDGE <span class="bg-primary-container px-1 text-xs">MAX</span></div>
+              <div class="absolute top-20 right-0 font-headline-sm text-secondary text-sm">GUTS <span class="bg-primary-container px-1 text-xs">MAX</span></div>
+              <div class="absolute bottom-1 right-4 font-headline-sm text-secondary text-sm">PROFICIENCY <span class="bg-primary-container px-1 text-xs">MAX</span></div>
+              <div class="absolute bottom-1 left-4 font-headline-sm text-secondary text-sm">KINDNESS <span class="bg-primary-container px-1 text-xs">MAX</span></div>
+              <div class="absolute top-20 left-0 font-headline-sm text-secondary text-sm">CHARM <span class="bg-primary-container px-1 text-xs">MAX</span></div>
+            </div>
+          </div>
+
+          <!-- Trilingual Meters & P5 Dialogue Box -->
+          <div class="lg:col-span-7 bg-surface-container-lowest p-6 -skew-x-6 comic-shadow space-y-4 border-2 border-primary-container">
+            <div class="border-b border-surface-variant pb-2 flex justify-between items-center">
+              <span class="font-headline-sm text-xl text-secondary">TRILINGUAL LINGUISTIC ARSENAL (EN / AR / JP)</span>
+            </div>
+
+            <div class="space-y-2 font-label-sm text-xs">
+              <div>
+                <div class="flex justify-between"><span class="font-bold text-secondary">&gt; ENGLISH (C2 FLUENT)</span><span class="text-primary font-bold">100% CEFR C2</span></div>
+                <div class="w-full h-3 bg-surface-container-high"><div class="h-full bg-primary-container w-full"></div></div>
+              </div>
+              <div>
+                <div class="flex justify-between"><span class="font-bold text-secondary">&gt; ARABIC (NATIVE)</span><span class="text-secondary-fixed font-bold">100% MOTHER TONGUE</span></div>
+                <div class="w-full h-3 bg-surface-container-high"><div class="h-full bg-secondary-container w-full"></div></div>
+              </div>
+              <div>
+                <div class="flex justify-between"><span class="font-bold text-secondary">&gt; JAPANESE (JLPT DIPLOMATIC INTERPRETATION)</span><span class="text-primary font-bold">94% STATE INTERPRETATION</span></div>
+                <div class="w-full h-3 bg-surface-container-high"><div class="h-full bg-primary-container w-[94%]"></div></div>
+              </div>
+            </div>
+
+            <!-- Live P5 Dialogue UI Box -->
+            <div class="p-4 bg-surface-container-low -skew-x-3 border-l-4 border-secondary-container">
+              <p class="font-headline-sm text-lg text-secondary">
+                「岩井大使をお迎えし、エジプト・日本科学技術大学（E-JUST）の架け橋として両国の未来を紡ぐ光栄をここに宣言いたします。」
+              </p>
+              <p class="font-body-md text-xs text-on-surface-variant pt-2">
+                "Welcoming His Excellency Ambassador Fumio Iwai to E-JUST, it is our distinct honor to bridge the scientific, cultural, and technological futures of Japan and Egypt."
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ------------------------------------------------------------------------
+           02. PALACES SECTION (FEATURED PROJECTS)
+           ------------------------------------------------------------------------ -->
+      <section id="palaces-section" class="relative z-10 w-full px-8 py-12 flex flex-col gap-8">
+        <div class="flex items-center gap-3">
+          <span class="bg-primary-container text-on-primary-container font-headline-md text-2xl px-3 py-1 -skew-x-6">02</span>
+          <h2 class="font-headline-lg text-4xl uppercase text-secondary -skew-x-6 drop-shadow-[2px_2px_0px_#000]">
+            FEATURED PALACES (PROJECTS)
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <!-- Palace 1: ESP32-CAM AI Fruit Spoilage Detector -->
+          <div class="bg-surface-container-lowest p-6 -skew-x-3 comic-shadow border-t-4 border-primary-container flex flex-col justify-between">
+            <div class="space-y-3">
+              <div class="flex justify-between items-center">
+                <span class="px-2 py-0.5 bg-primary-container text-on-primary-container font-headline-sm text-xs -skew-x-6">PALACE #01</span>
+                <span class="font-label-sm text-xs text-secondary-fixed">94.2% ACCURACY</span>
+              </div>
+              <h3 class="font-headline-md text-2xl uppercase text-secondary">ESP32-CAM AI FRUIT SPOILAGE DETECTOR</h3>
+              <p class="font-body-md text-sm text-on-surface-variant">
+                Real-time edge AI computer vision system featuring OpenCV region proposal, PyTorch MobileNetV2 inference (~22ms latency), PyQt6 glassmorphism desktop GUI, and Flask mobile streaming server.
+              </p>
+            </div>
+            <div class="pt-4">
+              <a href="https://github.com/LuigiLuigi2401/esp-32-Fruit-Spoilage-Detector" target="_blank" class="px-4 py-2 bg-primary-container text-on-primary-container font-headline-sm text-sm uppercase -skew-x-6 comic-shadow flex items-center gap-2 text-decoration-none w-fit">
+                <i class="ri-github-fill"></i> <span>VIEW REPO</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Palace 2: El3yada Clinic ERP -->
+          <div class="bg-surface-container-lowest p-6 -skew-x-3 comic-shadow border-t-4 border-secondary-container flex flex-col justify-between">
+            <div class="space-y-3">
+              <div class="flex justify-between items-center">
+                <span class="px-2 py-0.5 bg-secondary-container text-on-secondary-container font-headline-sm text-xs -skew-x-6">PALACE #02</span>
+                <span class="font-label-sm text-xs text-primary">&lt;38ms TTFB</span>
+              </div>
+              <h3 class="font-headline-md text-2xl uppercase text-secondary">EL3YADA CLINIC ERP SYSTEM</h3>
+              <p class="font-body-md text-sm text-on-surface-variant">
+                Patient & Clinic Management System built with Django REST Framework, SimpleJWT authentication, patient debt ledgers, and doctor appointment scheduling.
+              </p>
+            </div>
+            <div class="pt-4">
+              <a href="https://github.com/LuigiLuigi2401/El3yada" target="_blank" class="px-4 py-2 bg-secondary-container text-on-secondary-container font-headline-sm text-sm uppercase -skew-x-6 comic-shadow flex items-center gap-2 text-decoration-none w-fit">
+                <i class="ri-github-fill"></i> <span>VIEW REPO</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Palace 3: i8086EMU Microprocessor Emulator -->
+          <div class="bg-surface-container-lowest p-6 -skew-x-3 comic-shadow border-t-4 border-inverse-surface flex flex-col justify-between">
+            <div class="space-y-3">
+              <div class="flex justify-between items-center">
+                <span class="px-2 py-0.5 bg-inverse-surface text-inverse-on-surface font-headline-sm text-xs -skew-x-6">PALACE #03</span>
+                <span class="font-label-sm text-xs text-secondary">99.8% OPCODES</span>
+              </div>
+              <h3 class="font-headline-md text-2xl uppercase text-secondary">i8086EMU MICROPROCESSOR EMULATOR</h3>
+              <p class="font-body-md text-sm text-on-surface-variant">
+                Educational Python 16-bit microprocessor emulator modeling Intel 8086 registers (AX, CX, DX, BX, DI, SI, BP, SP), segment pointers, 1MB byte-addressable memory array, and opcode decoder.
+              </p>
+            </div>
+            <div class="pt-4">
+              <a href="https://github.com/LuigiLuigi2401/i8086EMU" target="_blank" class="px-4 py-2 bg-inverse-surface text-inverse-on-surface font-headline-sm text-sm uppercase -skew-x-6 comic-shadow flex items-center gap-2 text-decoration-none w-fit">
                 <i class="ri-github-fill"></i> <span>VIEW REPO</span>
               </a>
             </div>
           </div>
         </div>
+      </section>
 
-        <!-- Palace 2: El3yada Clinic ERP -->
-        <div class="p5-palace-card">
-          <div class="p5-palace-header">
-            <span>PALACE II</span>
-            <i class="ri-hospital-line"></i>
-          </div>
-          <div class="p5-palace-body">
-            <h3 class="p5-palace-title">El3yada Patient Management System</h3>
-            <p class="p5-palace-desc">
-              Comprehensive backend ERP system built for El3yada Clinic. Manages patient admissions, doctor appointment scheduling, patient debt ledgers, and clinic operational expenses with SimpleJWT authentication.
-            </p>
-            <div class="p5-palace-tags">
-              <span class="p5-badge">Django 4.1</span>
-              <span class="p5-badge">DRF</span>
-              <span class="p5-badge">SimpleJWT</span>
-              <span class="p5-badge">SQLite3</span>
-            </div>
-            <div class="p5-palace-links">
-              <a href="https://github.com/LuigiLuigi2401/El3yada" target="_blank" class="p5-btn-action" style="text-decoration: none; font-size: 0.9rem;">
-                <i class="ri-github-fill"></i> <span>VIEW REPO</span>
-              </a>
-            </div>
-          </div>
+      <!-- ------------------------------------------------------------------------
+           03. CONFIDANTS & SKILLS SECTION
+           ------------------------------------------------------------------------ -->
+      <section id="skills-section" class="relative z-10 w-full px-8 py-12 flex flex-col gap-8">
+        <div class="flex items-center gap-3">
+          <span class="bg-primary-container text-on-primary-container font-headline-md text-2xl px-3 py-1 -skew-x-6">03</span>
+          <h2 class="font-headline-lg text-4xl uppercase text-secondary -skew-x-6 drop-shadow-[2px_2px_0px_#000]">
+            CONFIDANTS & TECH SKILLS
+          </h2>
         </div>
 
-        <!-- Palace 3: Intel 8086 Emulator -->
-        <div class="p5-palace-card">
-          <div class="p5-palace-header">
-            <span>PALACE III</span>
-            <i class="ri-cpu-line"></i>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div class="bg-surface-container-lowest p-4 -skew-x-6 comic-shadow border border-primary-container">
+            <span class="font-label-sm text-xs text-secondary-fixed block">RANK: MAX</span>
+            <span class="font-headline-sm text-xl text-secondary block">PYTHON & PYTORCH</span>
           </div>
-          <div class="p5-palace-body">
-            <h3 class="p5-palace-title">i8086EMU Microprocessor Emulator</h3>
-            <p class="p5-palace-desc">
-              Educational Python 16-bit microprocessor emulator modeling Intel 8086 registers (AX, CX, DX, BX, DI, SI, BP, SP), segment pointers, 1MB byteaddressable memory space, and opcode decoder.
-            </p>
-            <div class="p5-palace-tags">
-              <span class="p5-badge">Python 3</span>
-              <span class="p5-badge">x86 Assembly</span>
-              <span class="p5-badge">Emulator</span>
-            </div>
-            <div class="p5-palace-links">
-              <a href="https://github.com/LuigiLuigi2401/i8086EMU" target="_blank" class="p5-btn-action" style="text-decoration: none; font-size: 0.9rem;">
-                <i class="ri-github-fill"></i> <span>VIEW REPO</span>
-              </a>
-            </div>
+          <div class="bg-surface-container-lowest p-4 -skew-x-6 comic-shadow border border-primary-container">
+            <span class="font-label-sm text-xs text-secondary-fixed block">RANK: MAX</span>
+            <span class="font-headline-sm text-xl text-secondary block">DJANGO & REST APIS</span>
+          </div>
+          <div class="bg-surface-container-lowest p-4 -skew-x-6 comic-shadow border border-primary-container">
+            <span class="font-label-sm text-xs text-secondary-fixed block">RANK: 9</span>
+            <span class="font-headline-sm text-xl text-secondary block">JAVASCRIPT & REACT</span>
+          </div>
+          <div class="bg-surface-container-lowest p-4 -skew-x-6 comic-shadow border border-primary-container">
+            <span class="font-label-sm text-xs text-secondary-fixed block">RANK: 8</span>
+            <span class="font-headline-sm text-xl text-secondary block">C / C++ & EMBEDDED</span>
           </div>
         </div>
-      </div>
+      </section>
+
+      <!-- ------------------------------------------------------------------------
+           04. CALLING CARD (CONTACT) SECTION
+           ------------------------------------------------------------------------ -->
+      <section id="calling-card-section" class="relative z-10 w-full px-8 py-8 mb-6">
+        <div class="bg-primary-container p-8 -skew-x-3 comic-shadow border-4 border-white text-center max-w-4xl mx-auto">
+          <h2 class="font-headline-lg text-5xl uppercase text-white drop-shadow-[3px_3px_0px_#000]">
+            ★ TRANSMIT A CALLING CARD ★
+          </h2>
+          <p class="font-body-md text-lg text-white my-4">
+            Ready to steal the hearts of complex full-stack web platforms or edge AI systems? Reach out directly!
+          </p>
+
+          <div class="flex justify-center flex-wrap gap-4 pt-2">
+            <a href="https://www.linkedin.com/in/mohammad-elsherbiny/" target="_blank" class="px-6 py-3 bg-surface-container-lowest text-secondary font-headline-sm text-xl uppercase -skew-x-6 comic-shadow text-decoration-none">
+              <i class="ri-linkedin-fill"></i> <span>LINKEDIN</span>
+            </a>
+            <a href="https://www.upwork.com/freelancers/~01125f44a50d32ba2e" target="_blank" class="px-6 py-3 bg-surface-container-lowest text-secondary font-headline-sm text-xl uppercase -skew-x-6 comic-shadow text-decoration-none">
+              <i class="ri-global-line"></i> <span>UPWORK</span>
+            </a>
+            <a href="https://github.com/LuigiLuigi2401" target="_blank" class="px-6 py-3 bg-surface-container-lowest text-secondary font-headline-sm text-xl uppercase -skew-x-6 comic-shadow text-decoration-none">
+              <i class="ri-github-fill"></i> <span>GITHUB</span>
+            </a>
+          </div>
+        </div>
+      </section>
     </div>
-  </section>
-
-  <!-- ------------------------------------------------------------------------
-       CONFIDANTS & SKILLS SECTION (TECH STACK)
-       ------------------------------------------------------------------------ -->
-  <section id="skills" class="p5-section">
-    <div class="p5-container">
-      <div class="p5-section-title-wrap">
-        <h2 class="p5-section-title">03. CONFIDANTS & <span style="color: var(--p5-red);">SKILLS</span></h2>
-        <div class="p5-section-sub">// TECHNICAL ABILITIES & TOOLKIT</div>
-      </div>
-
-      <div class="p5-skills-grid">
-        <div class="p5-skill-card">
-          <div>
-            <div class="p5-skill-title">PYTHON & PYTORCH</div>
-            <div class="p5-skill-level">RANK: MAX (DEEP LEARNING & BACKEND)</div>
-          </div>
-        </div>
-
-        <div class="p5-skill-card">
-          <div>
-            <div class="p5-skill-title">DJANGO & REST APIS</div>
-            <div class="p5-skill-level">RANK: MAX (FULL-STACK ERP)</div>
-          </div>
-        </div>
-
-        <div class="p5-skill-card">
-          <div>
-            <div class="p5-skill-title">JAVASCRIPT & REACT</div>
-            <div class="p5-skill-level">RANK: RANK 9 (FRONTEND UI/UX)</div>
-          </div>
-        </div>
-
-        <div class="p5-skill-card">
-          <div>
-            <div class="p5-skill-title">C / C++ & EMBEDDED</div>
-            <div class="p5-skill-level">RANK: RANK 8 (ESP32 & HARDWARE)</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ------------------------------------------------------------------------
-       SILENT HILL "DARK CORNERS" BACKEND CODE INSPECTION SECTION
-       ------------------------------------------------------------------------ -->
-  <section id="silent-hill-mode" class="p5-section">
-    <div class="p5-container">
-      <div class="p5-section-title-wrap">
-        <h2 class="p5-section-title">04. DARK CORNERS <span style="color: #33ff66;">[CODE INSPECTION]</span></h2>
-        <div class="p5-section-sub">// SILENT HILL LOW-LEVEL ARCHITECTURE VIEW</div>
-      </div>
-
-      <p style="color: #a3b899; margin-bottom: 20px;">
-        Click "Fog Mode" in the top bar to activate the flashlight spotlight and explore the raw code contracts driving backend architectures:
-      </p>
-
-      <div class="sh-code-box">
-<pre><code>// [i8086EMU.py] Opcode Decoder & Register ALU Loop
-def decode(self):
-    op = self.opcode
-    val16 = self.imm16()
-    cf = self.flag & 0x0001
-    
-    if (op & 0xF8) == 0xB8:  # MOV RG, im16
-        reg = op & 0x07
-        self.regs[reg] = val16
-        self.description = f"MOV {Rg(reg).name}, {format(val16, '04x')}H"
-    elif (op & 0xF0) == 0x50: # PUSH/POP RG
-        reg = op & 0x07
-        if (op & 0x08) == 0: self.stack.append(self.regs[reg])
-        else: self.regs[reg] = self.stack.pop()</code></pre>
-      </div>
-    </div>
-  </section>
-
-  <!-- ------------------------------------------------------------------------
-       CALLING CARD SECTION (CONTACT LINKS)
-       ------------------------------------------------------------------------ -->
-  <section id="calling-card" class="p5-section">
-    <div class="p5-container">
-      <div class="p5-calling-card-box">
-        <h2 class="p5-calling-card-title">★ SEND A CALLING CARD ★</h2>
-        <p class="p5-calling-card-text">
-          Ready to steal the hearts of complex web engineering tasks? Reach out to collaborate on Full-Stack, AI, or Embedded Systems projects!
-        </p>
-
-        <div class="p5-calling-card-btns">
-          <a href="https://www.linkedin.com/in/mohammad-elsherbiny/" target="_blank" class="p5-btn-action" style="text-decoration: none;">
-            <i class="ri-linkedin-fill"></i> <span>LINKEDIN</span>
-          </a>
-
-          <a href="https://www.upwork.com/freelancers/~01125f44a50d32ba2e" target="_blank" class="p5-btn-action" style="text-decoration: none;">
-            <i class="ri-global-line"></i> <span>UPWORK</span>
-          </a>
-
-          <a href="https://github.com/LuigiLuigi2401" target="_blank" class="p5-btn-action" style="text-decoration: none;">
-            <i class="ri-github-fill"></i> <span>GITHUB</span>
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
+  </main>
 
   <!-- ------------------------------------------------------------------------
        P5 PAUSE MENU OVERLAY ("TAKE YOUR TIME")
@@ -349,32 +505,28 @@ def decode(self):
       </div>
 
       <ul class="p5-pause-menu-list">
-        <li class="p5-pause-menu-item" data-target="stats">
-          <span class="p5-pause-item-label">01. STATS (ABOUT)</span>
-          <span class="p5-pause-item-sub">E-JUST & BACKGROUND</span>
+        <li class="p5-pause-menu-item" data-target="stats-section">
+          <span class="p5-pause-item-label">01. STATS (ABOUT & DIPLOMATIC FEATS)</span>
+          <span class="p5-pause-item-sub">E-JUST • AMBASSADOR FUMIO IWAI • MRS. ITSUYO FUKUDA</span>
         </li>
-        <li class="p5-pause-menu-item" data-target="palaces">
+        <li class="p5-pause-menu-item" data-target="palaces-section">
           <span class="p5-pause-item-label">02. PALACES (PROJECTS)</span>
-          <span class="p5-pause-item-sub">FRUIT AI • EL3YADA • I8086</span>
+          <span class="p5-pause-item-sub">ESP32 AI • EL3YADA • I8086</span>
         </li>
-        <li class="p5-pause-menu-item" data-target="skills">
+        <li class="p5-pause-menu-item" data-target="skills-section">
           <span class="p5-pause-item-label">03. CONFIDANTS (SKILLS)</span>
           <span class="p5-pause-item-sub">TECH STACK & RANKS</span>
         </li>
-        <li class="p5-pause-menu-item" data-target="calling-card">
+        <li class="p5-pause-menu-item" data-target="calling-card-section">
           <span class="p5-pause-item-label">04. CALLING CARD (CONTACT)</span>
           <span class="p5-pause-item-sub">LINKEDIN • UPWORK • GITHUB</span>
-        </li>
-        <li class="p5-pause-menu-item" data-target="silent-hill-mode">
-          <span class="p5-pause-item-label">05. SILENT HILL MODE</span>
-          <span class="p5-pause-item-sub">DARK CORNER CODE VIEW</span>
         </li>
       </ul>
     </div>
   </div>
 
   <!-- ------------------------------------------------------------------------
-       JOKER CLI COMMAND PALETTE MODAL
+       JOKER CLI COMMAND PALETTE
        ------------------------------------------------------------------------ -->
   <div id="joker-cli-modal" class="joker-cli-modal">
     <div class="joker-cli-box">
@@ -389,7 +541,7 @@ def decode(self):
           <span class="joker-cli-item-cmd">/palaces</span>
         </li>
         <li class="joker-cli-item" data-cmd="/stats">
-          <span>View Background & Education</span>
+          <span>View Background & Diplomatic Feats</span>
           <span class="joker-cli-item-cmd">/stats</span>
         </li>
         <li class="joker-cli-item" data-cmd="/skills">
@@ -408,7 +560,7 @@ def decode(self):
     </div>
   </div>
 
-  <!-- Script Engine -->
+  <!-- Interactivity Script -->
   <script src="assets/js/p5r_app.js"></script>
 </body>
 </html>
