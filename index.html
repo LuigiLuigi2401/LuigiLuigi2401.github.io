@@ -141,10 +141,11 @@
           <span>PAUSE MENU</span>
         </button>
 
+        <!-- Top Profile Picture Avatar -->
         <div class="flex items-center gap-space-sm pl-space-sm border-l border-outline-variant">
           <div class="relative flex items-center justify-center">
             <div class="w-10 h-10 p-0.5 bg-primary-container -skew-x-3 comic-shadow overflow-hidden">
-              <div class="w-full h-full bg-surface-container-high flex items-center justify-center font-bold text-secondary">ME</div>
+              <img src="assets/images/profile.png" alt="Mohammad Elsherbiny Profile" class="w-full h-full object-cover filter contrast-110" />
             </div>
             <span class="absolute -bottom-2 -right-2 bg-secondary-container text-on-secondary-container font-label-sm text-label-sm px-1 font-bold -skew-x-6 border border-background">LV.99</span>
           </div>
@@ -247,7 +248,7 @@
           </div>
         </div>
 
-        <!-- Cut-In Card Column -->
+        <!-- Cut-In Card Column with User Photo -->
         <div class="lg:col-span-5 relative flex justify-center z-10">
           <div class="absolute inset-0 bg-primary-container -skew-x-6 translate-x-3 translate-y-3 -z-10 comic-shadow"></div>
           <div class="absolute -top-4 -right-4 px-3 py-1 bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-bold -skew-x-6 comic-shadow z-30 uppercase tracking-widest">
@@ -256,11 +257,7 @@
 
           <div class="w-full bg-surface-container-lowest p-space-sm -skew-x-6 comic-shadow flex flex-col gap-space-sm">
             <div class="relative w-full aspect-square overflow-hidden bg-surface-container-high border-b-4 border-primary-container group flex items-center justify-center">
-              <div class="p-8 text-center bg-gradient-to-br from-primary-container/40 to-black w-full h-full flex flex-col items-center justify-center">
-                <i class="ri-user-star-fill text-7xl text-secondary-container mb-2"></i>
-                <span class="font-headline-md text-2xl text-secondary">MOHAMMAD ELSHERBINY</span>
-                <span class="font-label-sm text-primary-container uppercase tracking-widest mt-1 font-bold">FULL-STACK & EMBEDDED OPERATIVE</span>
-              </div>
+              <img src="assets/images/profile.png" alt="Mohammad Elsherbiny Persona Card" class="w-full h-full object-cover object-top filter contrast-110 group-hover:scale-105 transition-transform duration-500" />
               <div class="absolute bottom-2 left-2 bg-primary-container text-on-primary-container font-headline-sm text-headline-sm px-3 py-0.5 -skew-x-6 comic-shadow uppercase">
                 ARSÈNE.CODE // AWAKENED
               </div>
@@ -534,38 +531,42 @@
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-center">
-        <!-- Pentagon Stat Radar SVG -->
+        <!-- Pentagon Stat Radar SVG (Smaller & Scaled Zero Overflow) -->
         <div class="lg:col-span-5 bg-surface-container-lowest p-space-md -skew-x-3 comic-shadow border-l-4 border-secondary-container flex flex-col items-center justify-center">
-          <div class="w-full flex justify-between items-center mb-4">
+          <div class="w-full flex justify-between items-center mb-2">
             <span class="font-headline-sm text-headline-sm text-secondary">PENTAGON STAT RADAR</span>
-            <span class="font-label-sm text-secondary-fixed">ALL MAX</span>
+            <span class="font-label-sm text-secondary-fixed font-bold">ALL MAX 5/5</span>
           </div>
           
-          <div class="relative w-full aspect-square flex items-center justify-center p-4">
-            <svg class="w-full h-full overflow-visible" viewBox="0 0 200 200">
-              <polygon points="100,20 176,75 147,165 53,165 24,75" fill="none" stroke="#353534" stroke-width="1.5"></polygon>
-              <polygon points="100,45 152,83 133,145 67,145 48,83" fill="none" stroke="#353534" stroke-dasharray="3 3" stroke-width="1"></polygon>
+          <div class="relative w-full flex items-center justify-center p-2">
+            <svg class="w-full h-auto max-h-[260px] overflow-visible" viewBox="0 0 300 240">
+              <!-- Grid Pentagon Outer (Radius 60) -->
+              <polygon points="150,55 207,96.5 185.3,163.5 114.7,163.5 93,96.5" fill="none" stroke="#353534" stroke-width="1.5"></polygon>
+              <!-- Grid Pentagon Inner (Radius 30) -->
+              <polygon points="150,85 178.5,105.7 167.6,139.3 132.4,139.3 121.5,105.7" fill="none" stroke="#353534" stroke-dasharray="3 3" stroke-width="1"></polygon>
               
-              <line x1="100" y1="100" x2="100" y2="20" stroke="#353534" stroke-width="1"></line>
-              <line x1="100" y1="100" x2="176" y2="75" stroke="#353534" stroke-width="1"></line>
-              <line x1="100" y1="100" x2="147" y2="165" stroke="#353534" stroke-width="1"></line>
-              <line x1="100" y1="100" x2="53" y2="165" stroke="#353534" stroke-width="1"></line>
-              <line x1="100" y1="100" x2="24" y2="75" stroke="#353534" stroke-width="1"></line>
+              <line x1="150" y1="115" x2="150" y2="55" stroke="#353534" stroke-width="1"></line>
+              <line x1="150" y1="115" x2="207" y2="96.5" stroke="#353534" stroke-width="1"></line>
+              <line x1="150" y1="115" x2="185.3" y2="163.5" stroke="#353534" stroke-width="1"></line>
+              <line x1="150" y1="115" x2="114.7" y2="163.5" stroke="#353534" stroke-width="1"></line>
+              <line x1="150" y1="115" x2="93" y2="96.5" stroke="#353534" stroke-width="1"></line>
               
-              <!-- MAX Rank Pentagon Polygon -->
-              <polygon points="100,22 173,77 145,163 55,163 27,77" fill="rgba(230,0,18,0.4)" stroke="#e60012" stroke-width="3"></polygon>
+              <!-- MAX Rank Crimson Fill Polygon -->
+              <polygon points="150,55 207,96.5 185.3,163.5 114.7,163.5 93,96.5" fill="rgba(230,0,18,0.4)" stroke="#e60012" stroke-width="3"></polygon>
               
-              <circle cx="100" cy="22" r="5" fill="#ffd700"></circle>
-              <circle cx="173" cy="77" r="5" fill="#ffd700"></circle>
-              <circle cx="145" cy="163" r="5" fill="#ffd700"></circle>
-              <circle cx="55" cy="163" r="5" fill="#ffd700"></circle>
-              <circle cx="27" cy="77" r="5" fill="#ffd700"></circle>
+              <!-- Gold Node Points -->
+              <circle cx="150" cy="55" r="4.5" fill="#ffd700"></circle>
+              <circle cx="207" cy="96.5" r="4.5" fill="#ffd700"></circle>
+              <circle cx="185.3" cy="163.5" r="4.5" fill="#ffd700"></circle>
+              <circle cx="114.7" cy="163.5" r="4.5" fill="#ffd700"></circle>
+              <circle cx="93" cy="96.5" r="4.5" fill="#ffd700"></circle>
               
-              <text x="100" y="10" fill="#fff9ef" font-family="'Anton', sans-serif" font-size="12" text-anchor="middle">KNOWLEDGE (MAX)</text>
-              <text x="182" y="78" fill="#fff9ef" font-family="'Anton', sans-serif" font-size="12" text-anchor="start">GUTS (MAX)</text>
-              <text x="150" y="180" fill="#fff9ef" font-family="'Anton', sans-serif" font-size="12" text-anchor="middle">PROFICIENCY (MAX)</text>
-              <text x="50" y="180" fill="#fff9ef" font-family="'Anton', sans-serif" font-size="12" text-anchor="middle">KINDNESS (MAX)</text>
-              <text x="20" y="78" fill="#fff9ef" font-family="'Anton', sans-serif" font-size="12" text-anchor="end">CHARM (MAX)</text>
+              <!-- Perfectly Positioned Non-Clipping Stat Labels -->
+              <text x="150" y="36" fill="#fff9ef" font-family="'Anton', sans-serif" font-size="13" text-anchor="middle">KNOWLEDGE (MAX)</text>
+              <text x="215" y="100" fill="#fff9ef" font-family="'Anton', sans-serif" font-size="13" text-anchor="start">GUTS (MAX)</text>
+              <text x="195" y="185" fill="#fff9ef" font-family="'Anton', sans-serif" font-size="13" text-anchor="middle">PROFICIENCY (MAX)</text>
+              <text x="105" y="185" fill="#fff9ef" font-family="'Anton', sans-serif" font-size="13" text-anchor="middle">KINDNESS (MAX)</text>
+              <text x="85" y="100" fill="#fff9ef" font-family="'Anton', sans-serif" font-size="13" text-anchor="end">CHARM (MAX)</text>
             </svg>
           </div>
         </div>
@@ -698,45 +699,54 @@
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-start">
-        <!-- Sacred Phantom Thieves Ransom Letter -->
+        <!-- Sacred Phantom Thieves Ransom Letter (100% Cutout Magazine Stickers) -->
         <div class="lg:col-span-7 flex flex-col relative group">
           <div class="absolute inset-0 bg-primary-container translate-x-3 translate-y-3 -skew-x-2 shadow-2xl"></div>
           <div class="relative bg-surface-container-lowest p-space-lg md:p-space-xl -skew-x-2 shadow-2xl flex flex-col gap-space-md overflow-hidden">
             <div class="flex items-center justify-between border-b-4 border-dashed border-primary-container pb-space-sm">
-              <span class="font-label-md text-label-md text-secondary font-bold tracking-widest uppercase">TRANSMISSION FREQUENCY // 404.METAVERSE</span>
-              <span class="bg-primary-container text-secondary font-label-sm text-label-sm px-2 py-0.5 font-bold uppercase -skew-x-12">DESIRE: LEVEL 99</span>
+              <div class="flex flex-wrap items-center gap-1">
+                <span class="bg-surface-container-high text-secondary font-label-sm text-label-sm px-2 py-0.5 -rotate-1 font-bold">TRANSMISSION</span>
+                <span class="bg-secondary-container text-on-secondary-container font-label-sm text-label-sm px-2 py-0.5 rotate-2 font-bold">FREQUENCY</span>
+                <span class="bg-primary-container text-secondary font-label-sm text-label-sm px-2 py-0.5 -rotate-2 font-bold">// 404.METAVERSE</span>
+              </div>
+              <span class="bg-primary-container text-secondary font-label-sm text-label-sm px-2.5 py-0.5 font-bold uppercase -skew-x-12 shadow-md">DESIRE: LEVEL 99</span>
             </div>
 
             <div class="flex flex-col gap-space-md my-space-sm leading-relaxed">
               <div class="flex flex-wrap items-center gap-1.5 md:gap-2">
-                <span class="bg-secondary text-surface-container-lowest font-headline-md text-headline-md px-2 py-0.5 -rotate-2 shadow-md">SIR</span>
-                <span class="text-secondary font-headline-md text-headline-md px-1">/</span>
-                <span class="bg-surface-container-high text-secondary font-headline-md text-headline-md px-2 py-0.5 rotate-3 shadow-md">MADAM</span>
+                <span class="bg-secondary text-surface-container-lowest font-headline-md text-headline-md px-2.5 py-0.5 -rotate-2 shadow-md">SIR</span>
+                <span class="bg-surface-container-high text-secondary font-headline-md text-headline-md px-2 py-0.5 rotate-3 shadow-md">/ MADAM</span>
                 <span class="bg-primary-container text-secondary font-headline-md text-headline-md px-3 py-0.5 -rotate-1 shadow-lg">VISITOR:</span>
               </div>
               
-              <div class="flex flex-wrap items-center gap-1.5 md:gap-2 font-body-lg text-body-lg text-on-surface">
-                <span class="bg-secondary text-surface-container-lowest font-label-lg text-label-lg px-2 py-0.5 font-bold -rotate-1">WE HAVE OBSERVED</span>
-                <span>your innermost desire for</span>
-                <span class="bg-primary-container text-secondary font-headline-sm text-headline-sm px-2 py-0.5 rotate-1">EXCEPTIONAL FULL-STACK</span>
-                <span>architectures and autonomous</span>
-                <span class="bg-secondary-container text-surface-container-lowest font-headline-sm text-headline-sm px-2.5 py-0.5 -rotate-2 font-bold">AI SOLUTIONS.</span>
+              <div class="flex flex-wrap items-center gap-1.5 md:gap-2">
+                <span class="bg-secondary text-surface-container-lowest font-headline-sm text-headline-sm px-2.5 py-0.5 font-bold -rotate-1 shadow-md">WE HAVE OBSERVED</span>
+                <span class="bg-surface-container-high text-secondary font-body-md text-body-md px-2 py-0.5 rotate-2 shadow-sm font-bold">YOUR INNERMOST DESIRE</span>
+                <span class="bg-primary-container text-secondary font-headline-sm text-headline-sm px-3 py-0.5 -rotate-2 shadow-lg">FOR EXCEPTIONAL FULL-STACK</span>
+                <span class="bg-surface-container-lowest text-secondary font-body-md text-body-md px-2 py-0.5 rotate-1 border border-primary-container font-bold">ARCHITECTURES</span>
+                <span class="bg-secondary-container text-on-secondary-container font-headline-sm text-headline-sm px-3 py-0.5 -rotate-2 font-bold shadow-md">AND AUTONOMOUS AI SOLUTIONS.</span>
               </div>
 
-              <div class="flex flex-wrap items-center gap-1.5 md:gap-2 font-body-lg text-body-lg text-on-surface">
+              <div class="flex flex-wrap items-center gap-1.5 md:gap-2">
                 <span class="bg-secondary text-surface-container-lowest font-headline-md text-headline-md px-3 py-1 rotate-2 shadow-md">MOHAMMAD</span>
                 <span class="bg-primary-container text-secondary font-headline-md text-headline-md px-3 py-1 -rotate-2 shadow-xl">ELSHERBINY</span>
-                <span>will infiltrate your distorted infrastructure and execute refactorings that</span>
-                <span class="bg-primary-container text-secondary font-headline-sm text-headline-sm px-3 py-0.5 -rotate-1 font-bold">ELEVATE IT TO PERFECTION.</span>
+                <span class="bg-surface-container-high text-secondary font-body-md text-body-md px-2.5 py-0.5 rotate-1 shadow-sm font-bold">WILL INFILTRATE YOUR DISTORTED</span>
+                <span class="bg-secondary-container text-on-secondary-container font-body-md text-body-md px-2.5 py-0.5 -rotate-1 shadow-sm font-bold">INFRASTRUCTURE AND EXECUTE</span>
+                <span class="bg-primary-container text-secondary font-headline-sm text-headline-sm px-3 py-0.5 rotate-2 font-bold shadow-lg">REFACTORINGS THAT ELEVATE IT TO PERFECTION.</span>
               </div>
             </div>
 
             <div class="flex flex-col sm:flex-row items-start sm:items-end justify-between pt-space-md border-t-2 border-surface-variant gap-space-md">
-              <div>
-                <span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">TRANSMITTED FROM THE VELVET TERMINAL</span>
-                <div class="flex items-center gap-2 mt-1">
-                  <span class="bg-secondary text-surface-container-lowest font-headline-sm text-headline-sm px-2 -rotate-2">SIGNED,</span>
-                  <span class="bg-primary-container text-secondary font-headline-sm text-headline-sm px-3 rotate-1 tracking-wider">THE PHANTOM THIEVES OF TECH</span>
+              <div class="flex flex-col gap-2">
+                <div class="flex flex-wrap items-center gap-1">
+                  <span class="bg-secondary text-surface-container-lowest font-label-sm text-label-sm px-2 py-0.5 -rotate-2 shadow-sm font-bold">TRANSMITTED</span>
+                  <span class="bg-surface-container-high text-secondary font-label-sm text-label-sm px-2 py-0.5 rotate-1 shadow-sm font-bold">FROM</span>
+                  <span class="bg-primary-container text-secondary font-label-sm text-label-sm px-2 py-0.5 -rotate-1 shadow-md font-bold">THE VELVET</span>
+                  <span class="bg-secondary-container text-on-secondary-container font-label-sm text-label-sm px-2 py-0.5 rotate-2 shadow-sm font-bold">TERMINAL</span>
+                </div>
+                <div class="flex flex-wrap items-center gap-2 mt-1">
+                  <span class="bg-secondary text-surface-container-lowest font-headline-sm text-headline-sm px-2.5 py-0.5 -rotate-2 shadow-md">SIGNED,</span>
+                  <span class="bg-primary-container text-secondary font-headline-sm text-headline-sm px-3 py-0.5 rotate-1 tracking-wider shadow-lg">THE PHANTOM THIEVES OF TECH</span>
                 </div>
               </div>
               <div class="w-20 h-20 bg-primary-container rounded-full flex flex-col items-center justify-center p-2 text-center shadow-2xl rotate-12 self-end shrink-0 border-4 border-dashed border-secondary">
