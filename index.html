@@ -519,83 +519,82 @@
     <!-- ============================================================== -->
     <!-- 3. STATS & DIPLOMATIC CAREER (PENTAGON RADAR & DIPLOMACY)      -->
     <!-- ============================================================== -->
-    <section class="relative z-10 w-full px-gutter py-12 flex flex-col gap-space-xl border-t-2 border-surface-container-highest" id="stats">
-      <div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md">
-        <div>
+    <section class="relative z-10 w-full px-gutter py-12 flex flex-col gap-space-lg border-t-2 border-surface-container-highest" id="stats">
+      <!-- Section Top Bar with Title + Title-Less Decorative Pentagon Stat Radar Widget -->
+      <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-md bg-surface-container-lowest p-space-md -skew-x-3 comic-shadow border-l-4 border-primary-container">
+        <div class="flex flex-col gap-1">
           <div class="flex items-center gap-space-xs font-label-md text-label-md text-primary-container font-bold tracking-widest uppercase -skew-x-6">
             <span class="material-symbols-outlined text-base">military_tech</span>
             <span>ACADEMIC PALACES & DIPLOMATIC FEATS</span>
           </div>
-          <h2 class="font-headline-lg text-headline-lg uppercase tracking-tight text-secondary -skew-x-6 drop-shadow-[3px_3px_0px_#e60012] mt-1">
+          <h2 class="font-headline-lg text-headline-lg uppercase tracking-tight text-secondary -skew-x-6 drop-shadow-[3px_3px_0px_#e60012]">
             SOCIAL STATS & CULTURAL DIPLOMACY
           </h2>
+          <div class="flex flex-wrap items-center gap-2 mt-1">
+            <span class="px-3 py-0.5 bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-bold comic-shadow -skew-x-6">
+              ALL SOCIAL STATS MAX (RANK 5/5)
+            </span>
+            <span class="text-on-surface-variant font-label-sm text-label-sm">
+              TRILINGUAL DIPLOMAT [EN / AR / JP]
+            </span>
+          </div>
         </div>
-        <div class="flex items-center gap-space-sm -skew-x-6">
-          <span class="px-3 py-1 bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-bold comic-shadow">
-            ALL STATS MAX RANK 5/5
-          </span>
+
+        <!-- Title-Less Decorative Pentagon Stat Radar Widget Shifted to Top -->
+        <div class="shrink-0 flex items-center justify-center p-1 bg-surface-container-low -skew-x-3 border border-surface-container-highest self-center lg:self-auto">
+          <svg class="w-48 h-auto max-h-[140px] overflow-visible" viewBox="0 0 300 240">
+            <!-- Grid Pentagon Outer -->
+            <polygon points="150,55 207,96.5 185.3,163.5 114.7,163.5 93,96.5" fill="none" stroke="#353534" stroke-width="1.5"></polygon>
+            <!-- Grid Pentagon Inner -->
+            <polygon points="150,85 178.5,105.7 167.6,139.3 132.4,139.3 121.5,105.7" fill="none" stroke="#353534" stroke-dasharray="3 3" stroke-width="1"></polygon>
+            
+            <line x1="150" y1="115" x2="150" y2="55" stroke="#353534" stroke-width="1"></line>
+            <line x1="150" y1="115" x2="207" y2="96.5" stroke="#353534" stroke-width="1"></line>
+            <line x1="150" y1="115" x2="185.3" y2="163.5" stroke="#353534" stroke-width="1"></line>
+            <line x1="150" y1="115" x2="114.7" y2="163.5" stroke="#353534" stroke-width="1"></line>
+            <line x1="150" y1="115" x2="93" y2="96.5" stroke="#353534" stroke-width="1"></line>
+            
+            <!-- MAX Rank Crimson Fill Polygon -->
+            <polygon points="150,55 207,96.5 185.3,163.5 114.7,163.5 93,96.5" fill="rgba(230,0,18,0.4)" stroke="#e60012" stroke-width="3"></polygon>
+            
+            <!-- Gold Node Points -->
+            <circle cx="150" cy="55" r="4.5" fill="#ffd700"></circle>
+            <circle cx="207" cy="96.5" r="4.5" fill="#ffd700"></circle>
+            <circle cx="185.3" cy="163.5" r="4.5" fill="#ffd700"></circle>
+            <circle cx="114.7" cy="163.5" r="4.5" fill="#ffd700"></circle>
+            <circle cx="93" cy="96.5" r="4.5" fill="#ffd700"></circle>
+            
+            <!-- Stat Labels -->
+            <text x="150" y="36" fill="#fff9ef" font-family="'Anton', sans-serif" font-size="13" text-anchor="middle">KNOWLEDGE (MAX)</text>
+            <text x="215" y="100" fill="#fff9ef" font-family="'Anton', sans-serif" font-size="13" text-anchor="start">GUTS (MAX)</text>
+            <text x="195" y="185" fill="#fff9ef" font-family="'Anton', sans-serif" font-size="13" text-anchor="middle">PROFICIENCY (MAX)</text>
+            <text x="105" y="185" fill="#fff9ef" font-family="'Anton', sans-serif" font-size="13" text-anchor="middle">KINDNESS (MAX)</text>
+            <text x="85" y="100" fill="#fff9ef" font-family="'Anton', sans-serif" font-size="13" text-anchor="end">CHARM (MAX)</text>
+          </svg>
         </div>
       </div>
 
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-center">
-        <!-- Pentagon Stat Radar SVG (Smaller & Scaled Zero Overflow) -->
-        <div class="lg:col-span-5 bg-surface-container-lowest p-space-md -skew-x-3 comic-shadow border-l-4 border-secondary-container flex flex-col items-center justify-center">
-          <div class="w-full flex justify-between items-center mb-2">
-            <span class="font-headline-sm text-headline-sm text-secondary">PENTAGON STAT RADAR</span>
-            <span class="font-label-sm text-secondary-fixed font-bold">ALL MAX 5/5</span>
-          </div>
-          
-          <div class="relative w-full flex items-center justify-center p-2">
-            <svg class="w-full h-auto max-h-[260px] overflow-visible" viewBox="0 0 300 240">
-              <!-- Grid Pentagon Outer (Radius 60) -->
-              <polygon points="150,55 207,96.5 185.3,163.5 114.7,163.5 93,96.5" fill="none" stroke="#353534" stroke-width="1.5"></polygon>
-              <!-- Grid Pentagon Inner (Radius 30) -->
-              <polygon points="150,85 178.5,105.7 167.6,139.3 132.4,139.3 121.5,105.7" fill="none" stroke="#353534" stroke-dasharray="3 3" stroke-width="1"></polygon>
-              
-              <line x1="150" y1="115" x2="150" y2="55" stroke="#353534" stroke-width="1"></line>
-              <line x1="150" y1="115" x2="207" y2="96.5" stroke="#353534" stroke-width="1"></line>
-              <line x1="150" y1="115" x2="185.3" y2="163.5" stroke="#353534" stroke-width="1"></line>
-              <line x1="150" y1="115" x2="114.7" y2="163.5" stroke="#353534" stroke-width="1"></line>
-              <line x1="150" y1="115" x2="93" y2="96.5" stroke="#353534" stroke-width="1"></line>
-              
-              <!-- MAX Rank Crimson Fill Polygon -->
-              <polygon points="150,55 207,96.5 185.3,163.5 114.7,163.5 93,96.5" fill="rgba(230,0,18,0.4)" stroke="#e60012" stroke-width="3"></polygon>
-              
-              <!-- Gold Node Points -->
-              <circle cx="150" cy="55" r="4.5" fill="#ffd700"></circle>
-              <circle cx="207" cy="96.5" r="4.5" fill="#ffd700"></circle>
-              <circle cx="185.3" cy="163.5" r="4.5" fill="#ffd700"></circle>
-              <circle cx="114.7" cy="163.5" r="4.5" fill="#ffd700"></circle>
-              <circle cx="93" cy="96.5" r="4.5" fill="#ffd700"></circle>
-              
-              <!-- Perfectly Positioned Non-Clipping Stat Labels -->
-              <text x="150" y="36" fill="#fff9ef" font-family="'Anton', sans-serif" font-size="13" text-anchor="middle">KNOWLEDGE (MAX)</text>
-              <text x="215" y="100" fill="#fff9ef" font-family="'Anton', sans-serif" font-size="13" text-anchor="start">GUTS (MAX)</text>
-              <text x="195" y="185" fill="#fff9ef" font-family="'Anton', sans-serif" font-size="13" text-anchor="middle">PROFICIENCY (MAX)</text>
-              <text x="105" y="185" fill="#fff9ef" font-family="'Anton', sans-serif" font-size="13" text-anchor="middle">KINDNESS (MAX)</text>
-              <text x="85" y="100" fill="#fff9ef" font-family="'Anton', sans-serif" font-size="13" text-anchor="end">CHARM (MAX)</text>
-            </svg>
-          </div>
-        </div>
-
-        <!-- Diplomatic Cards -->
-        <div class="lg:col-span-7 flex flex-col gap-space-md">
-          <!-- Diplomatic Card 1 -->
-          <div class="bg-surface-container-lowest p-space-md -skew-x-3 comic-shadow border-l-4 border-primary-container">
+      <!-- Main Diplomatic Accomplishments Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-space-lg items-stretch">
+        <!-- Diplomatic Card 1 -->
+        <div class="bg-surface-container-lowest p-space-md -skew-x-3 comic-shadow border-l-4 border-primary-container flex flex-col justify-between">
+          <div>
             <div class="flex justify-between items-start mb-2">
               <span class="px-2 py-0.5 bg-primary-container text-on-primary-container font-label-sm text-label-sm font-bold -skew-x-6">
                 4TH E-JUST MATSURI DIPLOMATIC TRANSLATOR
               </span>
-              <span class="text-secondary-container font-label-sm font-bold">STATE GUEST PROTOCOL</span>
+              <span class="text-secondary-container font-label-sm text-label-sm font-bold">STATE GUEST PROTOCOL</span>
             </div>
             <h3 class="font-headline-md text-headline-md text-secondary">AMBASSADOR FUMIO IWAI OFFICIAL TRANSLATOR</h3>
             <p class="font-body-md text-body-md text-on-surface-variant mt-1 leading-relaxed">
               Served as Event Host and Official Japanese & English State Translator for <strong>His Excellency Ambassador Fumio Iwai</strong> (Ambassador of Japan to Egypt) during the 4th E-JUST Matsuri. Facilitated bilateral cultural discourse and high-level diplomatic diplomacy.
             </p>
           </div>
+        </div>
 
-          <!-- Diplomatic Card 2 -->
-          <div class="bg-surface-container-lowest p-space-md -skew-x-3 comic-shadow border-l-4 border-secondary-container">
+        <!-- Diplomatic Card 2 -->
+        <div class="bg-surface-container-lowest p-space-md -skew-x-3 comic-shadow border-l-4 border-secondary-container flex flex-col justify-between">
+          <div>
             <div class="flex justify-between items-start mb-2">
               <span class="px-2 py-0.5 bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-bold -skew-x-6">
                 EJS CULTURAL & STORYTELLING PROGRAM
@@ -607,21 +606,21 @@
               Selected as Translator and Storyteller at Egypt-Japan Schools (EJS) under the distinguished guidance and supervision of <strong>Mrs. Itsuyo Fukuda</strong>, spouse of former IEEE President Prof. Toshio Fukuda. Delivered Japanese folklore narratives and cross-cultural workshops.
             </p>
           </div>
-
-          <!-- Live P5 Dialogue UI Box -->
-          <div class="bg-surface-container p-space-md -skew-x-3 comic-shadow border-2 border-primary-container relative">
-            <div class="flex items-center gap-2 mb-2">
-              <span class="w-3 h-3 rounded-full bg-primary-container animate-ping"></span>
-              <span class="font-label-sm text-label-sm text-secondary-fixed uppercase font-bold">LIVE BATTLE DIALOGUE // DIPLOMATIC TRANSMISSION</span>
-            </div>
-            <p class="font-body-lg text-lg text-secondary italic">
-              「岩井大使をお迎えし、エジプト・日本科学技術大学（E-JUST）の架け橋として両国の未来を紡ぐ光栄をここに宣言いたします。」
-            </p>
-            <p class="font-body-sm text-body-sm text-on-surface-variant mt-2 border-t border-surface-container-highest pt-2">
-              <em>"Welcoming His Excellency Ambassador Fumio Iwai to E-JUST, it is our distinct honor to bridge the scientific, cultural, and technological futures of Japan and Egypt."</em>
-            </p>
-          </div>
         </div>
+      </div>
+
+      <!-- Live P5 Dialogue UI Box -->
+      <div class="bg-surface-container p-space-md -skew-x-3 comic-shadow border-2 border-primary-container relative">
+        <div class="flex items-center gap-2 mb-2">
+          <span class="w-3 h-3 rounded-full bg-primary-container animate-ping"></span>
+          <span class="font-label-sm text-label-sm text-secondary-fixed uppercase font-bold">LIVE BATTLE DIALOGUE // DIPLOMATIC TRANSMISSION</span>
+        </div>
+        <p class="font-body-lg text-lg text-secondary italic">
+          「岩井大使をお迎えし、エジプト・日本科学技術大学（E-JUST）の架け橋として両国の未来を紡ぐ光栄をここに宣言いたします。」
+        </p>
+        <p class="font-body-sm text-body-sm text-on-surface-variant mt-2 border-t border-surface-container-highest pt-2">
+          <em>"Welcoming His Excellency Ambassador Fumio Iwai to E-JUST, it is our distinct honor to bridge the scientific, cultural, and technological futures of Japan and Egypt."</em>
+        </p>
       </div>
     </section>
 
