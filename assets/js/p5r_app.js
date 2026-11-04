@@ -1,5 +1,5 @@
 /* ==========================================================================
-   PERSONA 5 ROYAL & SILENT HILL INTERACTIVITY ENGINE
+   PERSONA 5 ROYAL INTERACTIVITY ENGINE
    Developer Portfolio - Mohammad Elsherbiny
    ========================================================================== */
 
@@ -195,16 +195,11 @@
       case '/skills':
       case '/confidants':
       case '/tech':
-        scrollToSection('skills');
+        scrollToSection('confidants');
         break;
       case '/calling-card':
       case '/contact':
         scrollToSection('calling-card');
-        break;
-      case '/silenthill':
-      case '/dark':
-      case '/fog':
-        toggleSilentHillMode();
         break;
       case '/mute':
         const isMuted = soundEngine.toggleMute();
@@ -236,32 +231,6 @@
     if (sec) {
       sec.scrollIntoView({ behavior: 'smooth' });
     }
-  }
-
-  // --------------------------------------------------------------------------
-  // SILENT HILL "DARK CORNERS" FLASHLIGHT MASK
-  // --------------------------------------------------------------------------
-  const spotlightOverlay = document.getElementById('sh-spotlight');
-  const shToggleBtn = document.getElementById('sh-toggle');
-
-  window.addEventListener('mousemove', (e) => {
-    if (document.body.classList.contains('silent-hill-mode')) {
-      document.body.style.setProperty('--sh-x', `${e.clientX}px`);
-      document.body.style.setProperty('--sh-y', `${e.clientY}px`);
-    }
-  });
-
-  function toggleSilentHillMode() {
-    const isSH = document.body.classList.toggle('silent-hill-mode');
-    soundEngine.playClick();
-    const btnSpan = document.getElementById('sh-btn-text');
-    if (btnSpan) {
-      btnSpan.textContent = isSH ? 'P5R Phantom Mode' : 'Silent Hill Fog Mode';
-    }
-  }
-
-  if (shToggleBtn) {
-    shToggleBtn.addEventListener('click', toggleSilentHillMode);
   }
 
   // Attach hover click sound to all buttons

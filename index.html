@@ -12,7 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
   <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet"/>
   
-  <!-- Custom Persona 5 & Silent Hill Base Theme CSS -->
+  <!-- Custom Persona 5 Base Theme CSS -->
   <link href="assets/css/p5r_theme.css" rel="stylesheet"/>
 
   <!-- Tailwind CSS Integration with Exact Google Stitch Design Tokens -->
@@ -109,15 +109,10 @@
 
 <body class="bg-background font-body-md text-on-surface antialiased min-h-screen relative selection:bg-primary-container selection:text-on-primary-container">
 
-  <!-- Silent Hill Shaders & Flashlight Overlays -->
-  <div id="sh-spotlight"></div>
-  <div id="sh-scanlines"></div>
-  <div id="sh-fog"></div>
-  
   <!-- Comic CRT Overlay -->
   <div class="fixed inset-0 scanline-overlay z-40 pointer-events-none opacity-40"></div>
 
-  <!-- TOP HEADER NAVIGATION (STITCH EXACT DESIGN) -->
+  <!-- TOP HEADER NAVIGATION -->
   <header class="fixed top-0 left-0 right-0 z-50 bg-surface-container-lowest/95 backdrop-blur-md border-b-2 border-primary-container">
     <div class="h-20 w-full px-gutter flex items-center justify-between relative overflow-hidden">
       <div class="absolute -left-12 -top-6 w-48 h-32 bg-primary-container -skew-x-12 -z-10 opacity-90"></div>
@@ -134,10 +129,6 @@
         <a class="px-space-md py-space-xs font-label-lg text-label-lg uppercase tracking-wider text-on-surface-variant hover:bg-surface-container hover:text-on-surface -skew-x-6 transition-transform hover:-translate-y-0.5" href="#stats">STATS</a>
         <a class="px-space-md py-space-xs font-label-lg text-label-lg uppercase tracking-wider text-on-surface-variant hover:bg-surface-container hover:text-on-surface -skew-x-6 transition-transform hover:-translate-y-0.5" href="#confidants">CONFIDANTS</a>
         <a class="px-space-md py-space-xs font-label-lg text-label-lg uppercase tracking-wider text-on-surface-variant hover:bg-surface-container hover:text-on-surface -skew-x-6 transition-transform hover:-translate-y-0.5" href="#calling-card">CALLING CARD</a>
-        <button id="sh-toggle" class="px-space-md py-space-xs font-label-lg text-label-lg uppercase tracking-wider text-secondary-container hover:bg-surface-container -skew-x-6 transition-transform hover:-translate-y-0.5 flex items-center gap-1" type="button">
-          <i class="ri-flashlight-line"></i>
-          <span id="sh-btn-text">SILENT HILL FOG</span>
-        </button>
       </nav>
 
       <div class="flex items-center gap-space-md z-10">
@@ -250,7 +241,7 @@
             </div>
             <span class="text-outline-variant select-none">|</span>
             <div class="flex-1 font-label-sm text-label-sm text-on-surface-variant truncate">
-              <span class="text-secondary-fixed">&gt;</span> /palaces &nbsp; /stats &nbsp; /skills &nbsp; /silenthill &nbsp; /take-your-heart
+              <span class="text-secondary-fixed">&gt;</span> /palaces &nbsp; /stats &nbsp; /skills &nbsp; /take-your-heart
             </div>
             <span class="w-2.5 h-4 bg-secondary-fixed animate-pulse inline-block"></span>
           </div>
@@ -797,49 +788,6 @@
       </div>
     </section>
 
-    <!-- ============================================================== -->
-    <!-- 6. SILENT HILL DARK CORNERS LOW-LEVEL DISASSEMBLER            -->
-    <!-- ============================================================== -->
-    <section class="relative z-10 w-full px-gutter py-12 flex flex-col gap-space-xl border-t-2 border-surface-container-highest" id="silent-hill-section">
-      <div class="weathered-panel p-space-sm flex flex-col lg:flex-row items-center justify-between gap-space-md rust-shadow">
-        <div class="flex items-center gap-space-md pl-space-sm">
-          <span class="font-label-sm text-xs text-rust-500 uppercase tracking-widest font-mono border-r border-ash-600 pr-3">
-            LOW-LEVEL CODE DISASSEMBLER
-          </span>
-          <span class="font-headline-sm text-xl text-secondary">COLD-STORE HARDWARE ARTIFACTS</span>
-        </div>
-        
-        <div class="flex items-center gap-2">
-          <button class="px-3 py-1 bg-ash-800 text-secondary font-label-sm border border-ash-600 -skew-x-6" id="sh-flashlight-btn">FLASHLIGHT SPOTLIGHT</button>
-          <button class="px-3 py-1 bg-rust-700 text-secondary font-label-sm border border-rust-500 -skew-x-6" id="sh-scanlines-btn">CRT SCANLINES</button>
-        </div>
-      </div>
-
-      <div class="sh-code-box" id="sh-disassembler">
-        <div class="flex justify-between items-center pb-2 mb-2 border-b border-ash-600">
-          <span class="text-secondary font-bold font-mono">&gt; DISASSEMBLING FIRMWARE: esp32_tinyml_yolo.c</span>
-          <span class="text-secondary-fixed text-xs">VALVE OVERRIDE ACTIVE</span>
-        </div>
-        <pre class="font-mono text-xs text-secondary-fixed leading-relaxed">
-0x00004000:  55                   push   ebp
-0x00004001:  89 e5                mov    ebp, esp
-0x00004003:  83 ec 10             sub    esp, 0x10
-0x00004006:  c7 45 fc 00 00 00 00 mov    DWORD PTR [ebp-0x4], 0x0  ; Init TinyML weights pointer
-0x0000400d:  e8 8e 00 00 00       call   0x40a0                    ; Execute ESP32 DMA camera frame fetch
-0x00004012:  89 45 f8             mov    DWORD PTR [ebp-0x8], eax  ; Store frame buffer descriptor
-0x00004015:  83 7d f8 00          cmp    DWORD PTR [ebp-0x8], 0x0
-0x00004019:  75 05                jne    0x4020                    ; Branch if DMA buffer non-null
-0x0000401b:  e8 40 01 00 00       call   0x4160                    ; Trigger RF 104.7 Radio Static Warning
-0x00004020:  8b 45 f8             mov    eax, DWORD PTR [ebp-0x8]
-0x00004023:  50                   push   eax
-0x00004024:  e8 linear_inference  call   0x4200                    ; Run quantized TinyML YOLOv8 Inference
-0x00004029:  83 c4 04             add    esp, 0x4
-0x0000402c:  c9                   leave
-0x0000402d:  c3                   ret    
-        </pre>
-      </div>
-    </section>
-
   </main>
 
   <!-- FOOTER STRETCH BAR -->
@@ -895,10 +843,6 @@
           <span class="p5-pause-item-label">CALLING CARD</span>
           <span class="p5-pause-item-sub">DISPATCH MISSION BRIEFING</span>
         </li>
-        <li class="p5-pause-menu-item" data-target="silent-hill-section">
-          <span class="p5-pause-item-label">SILENT HILL MODE</span>
-          <span class="p5-pause-item-sub">LOW-LEVEL DISASSEMBLER</span>
-        </li>
       </ul>
     </div>
   </div>
@@ -910,7 +854,7 @@
     <div class="joker-cli-box">
       <div class="joker-cli-input-wrapper">
         <span class="joker-cli-prompt">&gt;</span>
-        <input id="joker-cli-input" class="joker-cli-input" type="text" placeholder="Type a command (/palaces, /stats, /skills, /calling-card, /silenthill, /mute)..." />
+        <input id="joker-cli-input" class="joker-cli-input" type="text" placeholder="Type a command (/palaces, /stats, /skills, /calling-card, /mute)..." />
       </div>
       <ul class="joker-cli-suggestions">
         <li class="joker-cli-item" data-cmd="/palaces">
@@ -928,10 +872,6 @@
         <li class="joker-cli-item" data-cmd="/calling-card">
           <span class="joker-cli-item-cmd">/calling-card</span>
           <span>Transmit a calling card / mission briefing</span>
-        </li>
-        <li class="joker-cli-item" data-cmd="/silenthill">
-          <span class="joker-cli-item-cmd">/silenthill</span>
-          <span>Toggle Silent Hill Fog Mode & Disassembler</span>
         </li>
         <li class="joker-cli-item" data-cmd="/mute">
           <span class="joker-cli-item-cmd">/mute</span>
