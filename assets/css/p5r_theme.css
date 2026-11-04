@@ -5,6 +5,14 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@400;600;800;900&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@400;500;700&display=swap');
 
+@font-face {
+  font-family: 'SlumpStd';
+  src: url('../fonts/FOT-SlumpStd-DB.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --p5-red: #E60012;
   --p5-red-dark: #99000C;
@@ -16,7 +24,7 @@
   --p5-font-display: 'Bebas Neue', 'Outfit', sans-serif;
   --p5-font-head: 'Outfit', sans-serif;
   --p5-font-body: 'DM Sans', sans-serif;
-  --p5-font-japanese: 'RocknRoll One', 'Hiragino Kaku Gothic Pro', 'Meiryo', sans-serif;
+  --p5-font-japanese: 'SlumpStd', 'RocknRoll One', 'Hiragino Kaku Gothic Pro', 'Meiryo', sans-serif;
 }
 
 /* Persona 5 Japanese Slump Font Style */
