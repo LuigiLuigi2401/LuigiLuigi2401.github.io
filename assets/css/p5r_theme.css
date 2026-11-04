@@ -348,25 +348,37 @@ h1, h2, h3, .p5-title {
   display: flex;
   align-items: center;
   gap: 12px;
-  border-b: 2px solid var(--p5-white);
-  padding-bottom: 10px;
+  border-b: 3px solid var(--p5-red);
+  padding: 10px 14px;
   margin-bottom: 16px;
+  background: #131313;
+  border-radius: 4px;
 }
 
 .joker-cli-prompt {
   font-family: var(--p5-font-display);
-  font-size: 1.8rem;
+  font-size: 2rem;
   color: var(--p5-red);
+  font-weight: bold;
 }
 
 .joker-cli-input {
   width: 100%;
-  background: transparent;
-  border: none;
-  color: var(--p5-white);
-  font-family: var(--p5-font-mono);
-  font-size: 1.1rem;
-  outline: none;
+  background: transparent !important;
+  border: none !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  font-family: var(--p5-font-mono) !important;
+  font-size: 1.2rem !important;
+  font-weight: 600 !important;
+  outline: none !important;
+  caret-color: #e60012 !important;
+}
+
+.joker-cli-input::placeholder {
+  color: #af8782 !important;
+  -webkit-text-fill-color: #af8782 !important;
+  opacity: 0.8;
 }
 
 .joker-cli-suggestions {

@@ -212,6 +212,20 @@
   }
 
   if (cliInput) {
+    cliInput.addEventListener('input', (e) => {
+      soundEngine.playClick();
+      const query = e.target.value.trim().toLowerCase();
+      cliSuggestions.forEach((item) => {
+        const cmd = item.getAttribute('data-cmd') || '';
+        const text = item.textContent.toLowerCase();
+        if (cmd.includes(query) || text.includes(query)) {
+          item.style.display = 'flex';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    });
+
     cliInput.addEventListener('keydown', (e) => {
       if (e.key === 'Enter') {
         executeCommand(cliInput.value);
