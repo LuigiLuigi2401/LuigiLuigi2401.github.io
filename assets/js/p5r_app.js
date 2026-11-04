@@ -368,6 +368,40 @@
     });
   }
 
+  // --------------------------------------------------------------------------
+  // GLOBAL SMOOTH SCROLL ENGINE FOR ALL NAV & HERO BUTTONS
+  // --------------------------------------------------------------------------
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener('click', (e) => {
+      const href = anchor.getAttribute('href');
+      if (!href) return;
+      
+      const targetId = href.slice(1);
+      if (targetId === '' || targetId === '#') {
+        e.preventDefault();
+        soundEngine.playWhoosh();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        return;
+      }
+      
+      const targetEl = document.getElementById(targetId);
+      if (targetEl) {
+        e.preventDefault();
+        soundEngine.playWhoosh();
+        
+        // Calculate offset for fixed top header (80px)
+        const headerOffset = 80;
+        const elementPosition = targetEl.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
+    });
+  });
+
   // Attach hover click sound to all buttons
   document.querySelectorAll('button, .p5-btn-action, a').forEach((el) => {
     el.addEventListener('mouseenter', () => soundEngine.playClick());
