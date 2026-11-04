@@ -16,7 +16,13 @@
   --p5-font-display: 'Bebas Neue', 'Outfit', sans-serif;
   --p5-font-head: 'Outfit', sans-serif;
   --p5-font-body: 'DM Sans', sans-serif;
-  --p5-font-mono: 'Space Mono', monospace;
+  --p5-font-japanese: 'RocknRoll One', 'Hiragino Kaku Gothic Pro', 'Meiryo', sans-serif;
+}
+
+/* Persona 5 Japanese Slump Font Style */
+.font-japanese, [lang="ja"], .p5-slump {
+  font-family: var(--p5-font-japanese) !important;
+  letter-spacing: 0.04em;
 }
 
 /* --------------------------------------------------------------------------
