@@ -3,16 +3,19 @@
 <head>
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <title>TAKE YOUR HEART // MOHAMMAD ELSHERBINY PORTFOLIO</title>
+  <title>TAKE YOUR HEART // MOHAMMAD ELSHERBINY - DEV PORTFOLIO</title>
   
-  <!-- Google Fonts -->
+  <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect"/>
   <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=JetBrains+Mono:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Space+Grotesk:wght@400;500;700&family=Special+Elite&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=JetBrains+Mono:ital,wght@0,400;0,600;0,700;1,400&family=Space+Grotesk:wght@400;500;700&family=Special+Elite&display=swap" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
   <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet"/>
+  
+  <!-- Custom Persona 5 & Silent Hill Base Theme CSS -->
+  <link href="assets/css/p5r_theme.css" rel="stylesheet"/>
 
-  <!-- Tailwind CSS -->
+  <!-- Tailwind CSS Integration with Exact Google Stitch Design Tokens -->
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   <script id="tailwind-config">
     tailwind.config = {
@@ -20,547 +23,926 @@
       theme: {
         extend: {
           "colors": {
-            "surface": "#131313",
-            "surface-dim": "#131313",
-            "surface-bright": "#393939",
+            "on-primary-fixed-variant": "#930007",
             "surface-container-lowest": "#0e0e0e",
-            "surface-container-low": "#1c1b1b",
+            "error-container": "#93000a",
             "surface-container": "#201f1f",
-            "surface-container-high": "#2a2a2a",
-            "surface-container-highest": "#353534",
-            "on-surface": "#e5e2e1",
-            "on-surface-variant": "#e9bcb6",
-            "primary-container": "#e60012",
-            "on-primary-container": "#fff7f6",
-            "secondary": "#fff9ef",
-            "secondary-container": "#ffdb3c",
-            "on-secondary-container": "#725f00",
-            "secondary-fixed": "#ffe16d",
-            "outline-variant": "#5f3f3b",
+            "surface-bright": "#393939",
             "background": "#131313",
-            "rust": {
-              "900": "#3b1a0d", "800": "#5c2b15", "700": "#8c4826", "600": "#b05c2a", "500": "#c06536", "400": "#d98255"
-            },
-            "copper": {
-              "900": "#101e1b", "800": "#1c322d", "700": "#2c4c47", "600": "#3a5f57", "500": "#527e74"
-            },
-            "ash": {
-              "900": "#141312", "800": "#1e1c1a", "700": "#2a2724", "600": "#3d3935", "500": "#554f49"
-            }
+            "surface-container-low": "#1c1b1b",
+            "on-surface-variant": "#e9bcb6",
+            "surface-variant": "#353534",
+            "primary-container": "#e60012",
+            "secondary": "#fff9ef",
+            "secondary-fixed": "#ffe16d",
+            "inverse-surface": "#e5e2e1",
+            "tertiary-fixed-dim": "#ffb3ad",
+            "surface-container-high": "#2a2a2a",
+            "on-tertiary-fixed": "#410003",
+            "primary-fixed-dim": "#ffb4aa",
+            "error": "#ffb4ab",
+            "inverse-on-surface": "#313030",
+            "surface-dim": "#131313",
+            "on-primary-fixed": "#410001",
+            "primary-fixed": "#ffdad5",
+            "on-secondary-container": "#725f00",
+            "surface-tint": "#ffb4aa",
+            "on-tertiary": "#680008",
+            "outline": "#af8782",
+            "inverse-primary": "#c0000d",
+            "tertiary": "#ffb3ad",
+            "on-tertiary-container": "#fff7f6",
+            "on-error": "#690005",
+            "surface-container-highest": "#353534",
+            "on-error-container": "#ffdad6",
+            "primary": "#ffb4aa",
+            "outline-variant": "#5f3f3b",
+            "on-tertiary-fixed-variant": "#8f1016",
+            "secondary-container": "#ffdb3c",
+            "surface": "#131313",
+            "on-primary-container": "#fff7f6",
+            "on-secondary": "#3a3000",
+            "on-secondary-fixed-variant": "#544600",
+            "on-background": "#e5e2e1",
+            "tertiary-container": "#cc403b",
+            "tertiary-fixed": "#ffdad6",
+            "on-surface": "#e5e2e1",
+            "on-secondary-fixed": "#221b00",
+            "on-primary": "#690003",
+            "secondary-fixed-dim": "#e9c400"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-lg": "1.75rem",
+            "space-xl": "2.5rem",
+            "margin": "3rem",
+            "space-md": "1rem",
+            "gutter-mobile": "1rem",
+            "margin-mobile": "1.25rem",
+            "gutter": "1.5rem",
+            "space-sm": "0.5rem",
+            "space-xs": "0.25rem"
           },
           "fontFamily": {
             "headline-lg": ["Anton", "sans-serif"],
             "label-sm": ["JetBrains Mono", "monospace"],
             "display-xl": ["Anton", "sans-serif"],
             "body-md": ["Space Grotesk", "sans-serif"],
+            "body-sm": ["Space Grotesk", "sans-serif"],
             "label-lg": ["JetBrains Mono", "monospace"],
             "label-md": ["JetBrains Mono", "monospace"],
+            "headline-md": ["Anton", "sans-serif"],
             "headline-sm": ["Anton", "sans-serif"],
-            "archive": ["Special Elite", "monospace"]
+            "body-lg": ["Space Grotesk", "sans-serif"],
+            "archive": ["Special Elite", "Courier New", "monospace"]
           }
         }
       }
     };
   </script>
-
-  <style>
-    @layer base { html, body { margin: 0; padding: 0; } body { overscroll-behavior: none; } }
-    ::-webkit-scrollbar { display: none; }
-    .comic-shadow { box-shadow: 4px 4px 0px #000000; }
-    .rust-shadow { box-shadow: 4px 4px 0px #090908, inset 0 1px 0 rgba(255,255,255,0.04); }
-    .scanline-overlay {
-      background: linear-gradient(rgba(18,16,16,0) 50%, rgba(0,0,0,0.25) 50%), linear-gradient(90deg, rgba(255,0,0,0.06), rgba(0,255,0,0.02), rgba(0,0,255,0.06));
-      background-size: 100% 2px, 3px 100%;
-      pointer-events: none;
-    }
-  </style>
-
-  <!-- P5 Custom Interactivity Stylesheet -->
-  <link rel="stylesheet" href="assets/css/p5r_theme.css" />
 </head>
 
 <body class="bg-background font-body-md text-on-surface antialiased min-h-screen relative selection:bg-primary-container selection:text-on-primary-container">
 
-  <!-- Scanline & Fog Shaders -->
-  <div class="fixed inset-0 scanline-overlay z-40 pointer-events-none opacity-40"></div>
+  <!-- Silent Hill Shaders & Flashlight Overlays -->
   <div id="sh-spotlight"></div>
   <div id="sh-scanlines"></div>
   <div id="sh-fog"></div>
+  
+  <!-- Comic CRT Overlay -->
+  <div class="fixed inset-0 scanline-overlay z-40 pointer-events-none opacity-40"></div>
 
-  <!-- ------------------------------------------------------------------------
-       HEADER NAVIGATION BAR
-       ------------------------------------------------------------------------ -->
+  <!-- TOP HEADER NAVIGATION (STITCH EXACT DESIGN) -->
   <header class="fixed top-0 left-0 right-0 z-50 bg-surface-container-lowest/95 backdrop-blur-md border-b-2 border-primary-container">
-    <div class="h-20 w-full px-6 flex items-center justify-between relative overflow-hidden">
+    <div class="h-20 w-full px-gutter flex items-center justify-between relative overflow-hidden">
       <div class="absolute -left-12 -top-6 w-48 h-32 bg-primary-container -skew-x-12 -z-10 opacity-90"></div>
       
-      <div class="flex items-center gap-4 z-10">
-        <a href="#" class="flex flex-col text-decoration-none">
-          <span class="font-headline-sm text-2xl uppercase tracking-wider text-secondary -skew-x-6 drop-shadow-[2px_2px_0px_#000000]">
-            ★ MOHAMMAD ELSHERBINY
-          </span>
-          <span class="font-label-sm text-xs uppercase tracking-widest text-primary-container font-bold -skew-x-6">
-            DEV PORTFOLIO // VER 5.0R
-          </span>
+      <div class="flex items-center gap-space-md z-10">
+        <a href="#" class="flex items-center gap-space-md text-decoration-none">
+          <span class="font-headline-sm text-headline-sm uppercase tracking-wider text-secondary -skew-x-6 drop-shadow-[2px_2px_0px_#000000]">TAKE YOUR HEART</span>
+          <span class="font-label-sm text-label-sm uppercase tracking-widest text-primary font-bold -skew-x-6">MOHAMMAD ELSHERBINY // VER 5.0R</span>
         </a>
       </div>
 
-      <nav class="hidden xl:flex items-center gap-2 z-10">
-        <button class="px-4 py-1.5 uppercase font-headline-sm text-lg text-secondary hover:bg-primary-container hover:text-on-primary-container -skew-x-6 transition-transform hover:-translate-y-0.5" onclick="document.getElementById('palaces-section').scrollIntoView({behavior:'smooth'})">PALACES</button>
-        <button class="px-4 py-1.5 uppercase font-headline-sm text-lg text-secondary hover:bg-primary-container hover:text-on-primary-container -skew-x-6 transition-transform hover:-translate-y-0.5" onclick="document.getElementById('stats-section').scrollIntoView({behavior:'smooth'})">STATS</button>
-        <button class="px-4 py-1.5 uppercase font-headline-sm text-lg text-secondary hover:bg-primary-container hover:text-on-primary-container -skew-x-6 transition-transform hover:-translate-y-0.5" onclick="document.getElementById('skills-section').scrollIntoView({behavior:'smooth'})">CONFIDANTS</button>
-        <button class="px-4 py-1.5 uppercase font-headline-sm text-lg text-secondary hover:bg-primary-container hover:text-on-primary-container -skew-x-6 transition-transform hover:-translate-y-0.5" onclick="document.getElementById('calling-card-section').scrollIntoView({behavior:'smooth'})">CALLING CARD</button>
-        <button id="sh-toggle" class="px-4 py-1.5 uppercase font-headline-sm text-lg bg-rust-800 text-secondary border border-rust-500 -skew-x-6 transition-transform hover:-translate-y-0.5">SILENT HILL FOG</button>
+      <nav class="hidden xl:flex items-center gap-space-sm z-10">
+        <a class="px-space-md py-space-xs font-label-lg text-label-lg uppercase tracking-wider text-on-surface-variant hover:bg-surface-container hover:text-on-surface -skew-x-6 transition-transform hover:-translate-y-0.5" href="#palaces">PALACES</a>
+        <a class="px-space-md py-space-xs font-label-lg text-label-lg uppercase tracking-wider text-on-surface-variant hover:bg-surface-container hover:text-on-surface -skew-x-6 transition-transform hover:-translate-y-0.5" href="#stats">STATS</a>
+        <a class="px-space-md py-space-xs font-label-lg text-label-lg uppercase tracking-wider text-on-surface-variant hover:bg-surface-container hover:text-on-surface -skew-x-6 transition-transform hover:-translate-y-0.5" href="#confidants">CONFIDANTS</a>
+        <a class="px-space-md py-space-xs font-label-lg text-label-lg uppercase tracking-wider text-on-surface-variant hover:bg-surface-container hover:text-on-surface -skew-x-6 transition-transform hover:-translate-y-0.5" href="#calling-card">CALLING CARD</a>
+        <button id="sh-toggle" class="px-space-md py-space-xs font-label-lg text-label-lg uppercase tracking-wider text-secondary-container hover:bg-surface-container -skew-x-6 transition-transform hover:-translate-y-0.5 flex items-center gap-1" type="button">
+          <i class="ri-flashlight-line"></i>
+          <span id="sh-btn-text">SILENT HILL FOG</span>
+        </button>
       </nav>
 
-      <div class="flex items-center gap-4 z-10">
-        <button id="joker-cli-toggle" class="hidden sm:flex items-center gap-2 px-4 py-1.5 bg-primary-container text-on-primary-container font-label-md text-xs -skew-x-6 comic-shadow transition-transform hover:-translate-x-0.5 hover:-translate-y-0.5" type="button">
+      <div class="flex items-center gap-space-md z-10">
+        <button id="joker-cli-toggle" class="hidden sm:flex items-center gap-space-xs px-space-md py-space-xs bg-primary-container text-on-primary-container font-label-md text-label-md -skew-x-6 comic-shadow transition-transform hover:-translate-x-0.5 hover:-translate-y-0.5 cursor-pointer" type="button">
           <span class="material-symbols-outlined text-sm font-bold">terminal</span>
-          <span>JOKER CLI (Ctrl+K)</span>
+          <span>JOKER CLI</span>
         </button>
 
-        <button id="p5-menu-toggle" class="flex items-center gap-2 px-4 py-1.5 bg-secondary-container text-on-secondary-container font-headline-sm text-lg -skew-x-6 comic-shadow" type="button">
-          <i class="ri-menu-4-line"></i>
-          <span>MENU (ESC)</span>
+        <button id="p5-menu-toggle" class="p5-btn-action p5-btn-menu cursor-pointer" type="button">
+          <span>PAUSE MENU</span>
         </button>
+
+        <div class="flex items-center gap-space-sm pl-space-sm border-l border-outline-variant">
+          <div class="relative flex items-center justify-center">
+            <div class="w-10 h-10 p-0.5 bg-primary-container -skew-x-3 comic-shadow overflow-hidden">
+              <div class="w-full h-full bg-surface-container-high flex items-center justify-center font-bold text-secondary">ME</div>
+            </div>
+            <span class="absolute -bottom-2 -right-2 bg-secondary-container text-on-secondary-container font-label-sm text-label-sm px-1 font-bold -skew-x-6 border border-background">LV.99</span>
+          </div>
+        </div>
       </div>
     </div>
   </header>
 
-  <!-- ------------------------------------------------------------------------
-       MAIN HERO SECTION
-       ------------------------------------------------------------------------ -->
   <main class="w-full pt-20 pb-16 bg-surface min-h-[calc(100vh-4rem)]">
-    <div class="flex flex-col w-full relative overflow-hidden select-none">
+    
+    <!-- ============================================================== -->
+    <!-- 1. HERO SECTION: JAGGED HEADLINE & JOKER CUT-IN STAT CARD      -->
+    <!-- ============================================================== -->
+    <section class="relative z-10 w-full px-gutter pt-8 pb-16 flex flex-col gap-space-lg" id="hero">
       <div class="absolute inset-0 pointer-events-none opacity-20 z-0" style="background-image: radial-gradient(#e60012 1.5px, transparent 1.5px); background-size: 14px 14px;"></div>
+      <div class="absolute -top-32 -left-32 w-[650px] h-[650px] bg-primary-container/15 rounded-full blur-[140px] pointer-events-none -z-10"></div>
+      <div class="absolute top-96 -right-40 w-[600px] h-[600px] bg-secondary-container/10 rounded-full blur-[160px] pointer-events-none -z-10"></div>
 
-      <section class="relative z-10 w-full px-8 pt-8 pb-16 flex flex-col gap-6">
-        <!-- Status Ribbon Bar -->
-        <div class="flex flex-wrap items-center justify-between gap-4">
-          <div class="flex items-center gap-2 -skew-x-6">
-            <span class="px-3 py-1 bg-surface-container-lowest text-secondary font-label-md text-xs tracking-wider border-l-4 border-primary-container comic-shadow">
-              MISSION STATUS: <span class="text-primary-container font-bold animate-pulse">PALACE INFILTRATION IN PROGRESS</span>
+      <!-- Top Metadata Status Bar -->
+      <div class="flex flex-wrap items-center justify-between gap-space-md">
+        <div class="flex items-center gap-space-sm -skew-x-6">
+          <span class="px-3 py-1 bg-surface-container-lowest text-secondary font-label-md text-label-md tracking-wider border-l-4 border-primary-container comic-shadow">
+            MISSION STATUS: <span class="text-primary-container font-bold animate-pulse">PALACE INFILTRATION IN PROGRESS</span>
+          </span>
+          <span class="hidden sm:inline-flex px-3 py-1 bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm">
+            TARGET: THE META-WEB
+          </span>
+        </div>
+
+        <div class="flex items-center gap-space-xs -skew-x-6 bg-surface-container-lowest px-3 py-1 comic-shadow border-r-4 border-secondary-container">
+          <span class="material-symbols-outlined text-secondary-container text-base animate-spin" style="animation-duration: 9s;">progress_activity</span>
+          <span class="font-headline-sm text-headline-sm tracking-widest text-secondary text-sm">TAKE YOUR TIME</span>
+        </div>
+      </div>
+
+      <!-- Main Grid: Kinetic Typography Left / Joker Cut-In Right -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-center">
+        <div class="lg:col-span-7 flex flex-col gap-space-md z-20">
+          <div class="flex flex-wrap items-center gap-space-xs -skew-x-6">
+            <div class="bg-secondary-container px-3 py-1 comic-shadow">
+              <span class="font-label-lg text-label-lg text-on-secondary-container uppercase font-bold tracking-widest">
+                TRILINGUAL [EN / AR / JP]
+              </span>
+            </div>
+            <div class="bg-surface-container-highest px-3 py-1 comic-shadow">
+              <span class="font-label-lg text-label-lg text-secondary uppercase font-semibold tracking-wider">
+                SOFTWARE ENGINEER @ E-JUST
+              </span>
+            </div>
+            <div class="bg-primary-container px-2.5 py-1 text-on-primary-container font-label-sm text-label-sm font-bold uppercase tracking-widest comic-shadow">
+              FULL-STACK DEV
+            </div>
+          </div>
+
+          <!-- Colossal Persona 5 Jagged Name Header -->
+          <div class="relative py-2 select-none">
+            <h1 class="font-display-xl text-display-xl uppercase tracking-tighter text-primary-container absolute top-1.5 left-1.5 opacity-90 -skew-x-6 leading-none pointer-events-none select-none">
+              MOHAMMAD<br/>ELSHERBINY
+            </h1>
+            <h1 class="relative font-display-xl text-display-xl uppercase tracking-tighter text-secondary -skew-x-6 leading-none filter drop-shadow-[4px_4px_0px_#000000]">
+              MOHAMMAD<br/>
+              <span class="text-secondary-fixed bg-surface-container-lowest px-3 py-0 inline-block -skew-x-3 comic-shadow">
+                ELSHERBINY
+              </span>
+            </h1>
+          </div>
+
+          <div class="relative bg-surface-container-low p-space-md -skew-x-3 comic-shadow max-w-2xl border-l-4 border-primary-container">
+            <p class="font-body-lg text-body-lg text-on-surface leading-relaxed">
+              Architecting cognitive full-stack applications and high-fidelity embedded systems where clean code confronts the uncanny distortion of the digital metaverse. Unraveling systemic corruption with low-level precision.
+            </p>
+            <div class="mt-space-xs flex items-center gap-space-sm font-label-sm text-label-sm text-on-surface-variant">
+              <span class="text-secondary-container font-bold">&gt; LOC:</span> EGYPT-JAPAN UNIVERSITY OF SCIENCE AND TECHNOLOGY
+              <span class="text-primary-container">●</span>
+              <span>COGNITIVE CORE: ONLINE</span>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-space-md pt-2">
+            <a class="group relative px-space-lg py-space-sm bg-primary-container text-on-primary-container font-headline-sm text-headline-sm uppercase tracking-wider -skew-x-6 comic-shadow transition-transform hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[8px_8px_0px_#ffe16d] flex items-center gap-space-xs" href="#palaces">
+              <span>EXPLORE PALACES (PROJECTS)</span>
+              <span class="material-symbols-outlined transition-transform group-hover:translate-x-1">arrow_forward</span>
+            </a>
+            <a class="group px-space-lg py-space-sm bg-surface-container-highest text-secondary font-headline-sm text-headline-sm uppercase tracking-wider -skew-x-6 comic-shadow transition-transform hover:-translate-x-1 hover:-translate-y-1 hover:bg-secondary hover:text-surface-container-lowest flex items-center gap-space-xs" href="assets/Mohammad Elsherbiny.pdf" target="_blank">
+              <span>DOWNLOAD RESUME (CV)</span>
+              <span class="material-symbols-outlined transition-transform group-hover:translate-y-0.5">download</span>
+            </a>
+          </div>
+
+          <div class="mt-space-sm bg-surface-container-lowest p-space-sm -skew-x-3 comic-shadow max-w-2xl flex items-center gap-space-sm">
+            <div class="flex items-center gap-1 font-label-md text-label-md text-primary-container font-bold">
+              <span class="material-symbols-outlined text-sm">terminal</span>
+              <span>JOKER CLI</span>
+            </div>
+            <span class="text-outline-variant select-none">|</span>
+            <div class="flex-1 font-label-sm text-label-sm text-on-surface-variant truncate">
+              <span class="text-secondary-fixed">&gt;</span> /palaces &nbsp; /stats &nbsp; /skills &nbsp; /silenthill &nbsp; /take-your-heart
+            </div>
+            <span class="w-2.5 h-4 bg-secondary-fixed animate-pulse inline-block"></span>
+          </div>
+        </div>
+
+        <!-- Cut-In Card Column -->
+        <div class="lg:col-span-5 relative flex justify-center z-10">
+          <div class="absolute inset-0 bg-primary-container -skew-x-6 translate-x-3 translate-y-3 -z-10 comic-shadow"></div>
+          <div class="absolute -top-4 -right-4 px-3 py-1 bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-bold -skew-x-6 comic-shadow z-30 uppercase tracking-widest">
+            COGNITIVE SPEC: ARCHITECT
+          </div>
+
+          <div class="w-full bg-surface-container-lowest p-space-sm -skew-x-6 comic-shadow flex flex-col gap-space-sm">
+            <div class="relative w-full aspect-square overflow-hidden bg-surface-container-high border-b-4 border-primary-container group flex items-center justify-center">
+              <div class="p-8 text-center bg-gradient-to-br from-primary-container/40 to-black w-full h-full flex flex-col items-center justify-center">
+                <i class="ri-user-star-fill text-7xl text-secondary-container mb-2"></i>
+                <span class="font-headline-md text-2xl text-secondary">MOHAMMAD ELSHERBINY</span>
+                <span class="font-label-sm text-primary-container uppercase tracking-widest mt-1 font-bold">FULL-STACK & EMBEDDED OPERATIVE</span>
+              </div>
+              <div class="absolute bottom-2 left-2 bg-primary-container text-on-primary-container font-headline-sm text-headline-sm px-3 py-0.5 -skew-x-6 comic-shadow uppercase">
+                ARSÈNE.CODE // AWAKENED
+              </div>
+              <div class="absolute top-2 left-2 bg-surface-container-lowest/90 px-2 py-0.5 text-secondary-fixed font-label-sm text-label-sm font-bold -skew-x-3">
+                LEVEL 99
+              </div>
+            </div>
+
+            <div class="flex flex-col gap-space-xs px-space-xs pb-space-xs font-label-sm text-label-sm">
+              <div class="flex items-center justify-between gap-space-sm pt-1">
+                <div class="flex-1 bg-surface-container p-1.5 -skew-x-3 flex flex-col gap-0.5">
+                  <div class="flex justify-between text-secondary font-bold font-label-xs">
+                    <span class="text-primary-container">HP</span>
+                    <span>999 / 999</span>
+                  </div>
+                  <div class="w-full h-2 bg-surface-container-lowest overflow-hidden">
+                    <div class="w-full h-full bg-primary-container"></div>
+                  </div>
+                </div>
+                <div class="flex-1 bg-surface-container p-1.5 -skew-x-3 flex flex-col gap-0.5">
+                  <div class="flex justify-between text-secondary font-bold font-label-xs">
+                    <span class="text-secondary-fixed">SP</span>
+                    <span>999 / 999</span>
+                  </div>
+                  <div class="w-full h-2 bg-surface-container-lowest overflow-hidden">
+                    <div class="w-full h-full bg-secondary-fixed"></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-2 gap-space-xs pt-1">
+                <div class="bg-surface-container-low px-2 py-1 flex items-center gap-1.5">
+                  <span class="material-symbols-outlined text-primary-container text-sm">translate</span>
+                  <span class="text-on-surface truncate">Trilingual Diplomat</span>
+                </div>
+                <div class="bg-surface-container-low px-2 py-1 flex items-center gap-1.5">
+                  <span class="material-symbols-outlined text-secondary-container text-sm">neurology</span>
+                  <span class="text-on-surface truncate">PyTorch / TinyML</span>
+                </div>
+                <div class="bg-surface-container-low px-2 py-1 flex items-center gap-1.5">
+                  <span class="material-symbols-outlined text-primary text-sm">memory</span>
+                  <span class="text-on-surface truncate">x86 Assembly Guru</span>
+                </div>
+                <div class="bg-surface-container-low px-2 py-1 flex items-center gap-1.5">
+                  <span class="material-symbols-outlined text-secondary-fixed text-sm">database</span>
+                  <span class="text-on-surface truncate">Full-Stack Django</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================== -->
+    <!-- 2. PALACES INFILTRATION GRID (PROJECT SHOWCASE)                -->
+    <!-- ============================================================== -->
+    <section class="relative z-10 w-full px-gutter py-12 flex flex-col gap-space-xl" id="palaces">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md relative">
+        <div class="flex flex-col">
+          <div class="flex items-center gap-space-xs font-label-md text-label-md text-primary-container font-bold tracking-widest uppercase -skew-x-6">
+            <span class="material-symbols-outlined text-base">radar</span>
+            <span>COGNITIVE TARGET DATABASE // ARCHIVES</span>
+          </div>
+          <div class="relative inline-block mt-1">
+            <span class="font-headline-lg text-headline-lg uppercase tracking-tight text-secondary -skew-x-6 drop-shadow-[3px_3px_0px_#e60012]">
+              FEATURED PALACES (PROJECTS)
             </span>
           </div>
+        </div>
+        <div class="flex items-center gap-space-sm -skew-x-6">
+          <span class="px-3 py-1.5 bg-surface-container-lowest text-on-surface font-label-sm text-label-sm comic-shadow">
+            TREASURE SECURITY LEVEL: <strong class="text-primary-container">ALERT STATUS CRITICAL</strong>
+          </span>
+        </div>
+      </div>
 
-          <div class="flex items-center gap-2 -skew-x-6 bg-surface-container-lowest px-3 py-1 comic-shadow border-r-4 border-secondary-container">
-            <span class="material-symbols-outlined text-secondary-container text-base animate-spin" style="animation-duration: 9s;">progress_activity</span>
-            <span class="font-headline-sm tracking-widest text-secondary text-sm">TAKE YOUR TIME</span>
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-space-lg items-stretch">
+        <!-- PALACE 01: ESP32-CAM AI FRUIT SPOILAGE DETECTOR -->
+        <div class="group relative flex flex-col bg-surface-container-lowest p-space-md -skew-x-3 comic-shadow transition-all duration-300 hover:-translate-y-2 hover:shadow-[10px_10px_0px_#e60012] border-t-4 border-primary-container">
+          <div class="flex items-center justify-between pb-space-sm border-b border-surface-container-highest">
+            <span class="px-2 py-0.5 bg-primary-container text-on-primary-container font-headline-sm text-headline-sm text-xs -skew-x-6">
+              PALACE #01
+            </span>
+            <div class="flex items-center gap-1 font-label-sm text-label-sm text-secondary-fixed">
+              <span class="material-symbols-outlined text-sm">lock_clock</span>
+              <span>SEC. 94.2%</span>
+            </div>
+          </div>
+          
+          <div class="py-space-md flex flex-col gap-space-xs flex-grow">
+            <div class="font-label-sm text-label-sm text-primary font-bold tracking-widest uppercase">
+              EMBEDDED EDGE AI // COMPUTER VISION
+            </div>
+            <h3 class="font-headline-md text-headline-md uppercase text-secondary tracking-tight group-hover:text-primary-container transition-colors">
+              ESP32-CAM AI FRUIT SPOILAGE DETECTOR
+            </h3>
+            <p class="font-body-md text-body-md text-on-surface-variant mt-2 leading-relaxed">
+              Trained custom TinyML models deployed at the extreme edge. Real-time vision classification identifying ethylene degradation and fungal onset on embedded microcontrollers with ultra-low latency.
+            </p>
+
+            <div class="my-space-sm p-space-sm bg-surface-container-low -skew-x-3 flex flex-col gap-space-xs border-l-2 border-secondary-container">
+              <div class="flex justify-between items-center font-label-sm text-label-sm">
+                <span class="text-on-surface font-semibold">TINYML INFERENCE ACCURACY</span>
+                <span class="font-bold text-secondary-fixed">94.2%</span>
+              </div>
+              <div class="w-full h-2.5 bg-surface-container-lowest overflow-hidden flex gap-0.5">
+                <div class="h-full bg-secondary-fixed w-[94.2%]"></div>
+                <div class="h-full bg-primary-container flex-1 animate-pulse"></div>
+              </div>
+              <div class="flex justify-between font-label-sm text-label-sm text-on-surface-variant text-[11px] pt-1">
+                <span>MODEL: YOLOv8-NANO</span>
+                <span>CHIP: ESP32-WROVER</span>
+              </div>
+            </div>
+
+            <div class="flex flex-wrap gap-1.5 pt-2">
+              <span class="px-2 py-0.5 bg-surface-container font-label-sm text-label-sm text-secondary-fixed-dim">&gt; ESP32</span>
+              <span class="px-2 py-0.5 bg-surface-container font-label-sm text-label-sm text-secondary-fixed-dim">&gt; PyTorch</span>
+              <span class="px-2 py-0.5 bg-surface-container font-label-sm text-label-sm text-secondary-fixed-dim">&gt; Edge Impulse</span>
+              <span class="px-2 py-0.5 bg-surface-container font-label-sm text-label-sm text-secondary-fixed-dim">&gt; C++</span>
+            </div>
+          </div>
+
+          <div class="pt-space-sm flex items-center justify-between border-t border-surface-container-highest">
+            <div class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">
+              TREASURE: <span class="text-secondary font-bold">EDGE VISION MODEL</span>
+            </div>
+            <a class="px-3 py-1 bg-surface-container-highest text-secondary hover:bg-primary-container hover:text-on-primary-container font-headline-sm text-headline-sm text-xs -skew-x-6 comic-shadow transition-colors flex items-center gap-1" href="https://github.com/LuigiLuigi2401/esp-32-Fruit-Spoilage-Detector" target="_blank">
+              <span>INFILTRATE</span>
+              <span class="material-symbols-outlined text-xs">open_in_new</span>
+            </a>
           </div>
         </div>
 
-        <!-- Kinetic Headline Grid -->
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-          <div class="lg:col-span-7 flex flex-col gap-4 z-20">
-            <div class="flex flex-wrap items-center gap-2 -skew-x-6">
-              <div class="bg-secondary-container px-3 py-1 comic-shadow">
-                <span class="font-label-lg text-xs text-on-secondary-container uppercase font-bold tracking-widest">TRILINGUAL [EN / AR / JP]</span>
-              </div>
-              <div class="bg-surface-container-highest px-3 py-1 comic-shadow">
-                <span class="font-label-lg text-xs text-secondary uppercase font-semibold tracking-wider">SOFTWARE ENGINEER @ E-JUST</span>
-              </div>
-              <div class="bg-primary-container px-3 py-1 text-on-primary-container font-label-sm text-xs font-bold uppercase tracking-widest comic-shadow">FULL-STACK & EMBEDDED</div>
-            </div>
-
-            <div class="relative py-2 select-none">
-              <h1 class="font-display-xl text-6xl lg:text-8xl uppercase tracking-tighter text-primary-container absolute top-1.5 left-1.5 opacity-90 -skew-x-6 leading-none pointer-events-none">
-                MOHAMMAD<br/>ELSHERBINY
-              </h1>
-              <h1 class="relative font-display-xl text-6xl lg:text-8xl uppercase tracking-tighter text-secondary -skew-x-6 leading-none filter drop-shadow-[4px_4px_0px_#000000]">
-                MOHAMMAD<br/>
-                <span class="text-secondary-fixed bg-surface-container-lowest px-3 py-0 inline-block -skew-x-3 comic-shadow">ELSHERBINY</span>
-              </h1>
-            </div>
-
-            <div class="relative bg-surface-container-low p-4 -skew-x-3 comic-shadow max-w-2xl border-l-4 border-primary-container">
-              <p class="font-body-md text-lg text-on-surface leading-relaxed">
-                Trilingual Full-Stack Developer & Software Systems Engineer at Egypt-Japan University of Science and Technology (E-JUST). Building high-throughput web platforms, PyTorch edge AI computer vision, and cycle-accurate 16-bit emulators.
-              </p>
-            </div>
-
-            <div class="flex flex-wrap items-center gap-4 pt-2">
-              <button class="px-6 py-3 bg-primary-container text-on-primary-container font-headline-sm text-xl uppercase tracking-wider -skew-x-6 comic-shadow transition-transform hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[8px_8px_0px_#ffe16d] flex items-center gap-2" onclick="document.getElementById('palaces-section').scrollIntoView({behavior:'smooth'})">
-                <span>EXPLORE PALACES (PROJECTS)</span>
-                <span class="material-symbols-outlined">arrow_forward</span>
-              </button>
-
-              <a href="assets/Mohammad Elsherbiny.pdf" target="_blank" class="px-6 py-3 bg-secondary-container text-on-secondary-container font-headline-sm text-xl uppercase tracking-wider -skew-x-6 comic-shadow transition-transform hover:-translate-x-1 hover:-translate-y-1 hover:bg-secondary flex items-center gap-2 text-decoration-none">
-                <span>DOWNLOAD RESUME (CV)</span>
-                <span class="material-symbols-outlined">download</span>
-              </a>
+        <!-- PALACE 02: EL3YADA CLINIC ERP SYSTEM -->
+        <div class="group relative flex flex-col bg-surface-container-lowest p-space-md -skew-x-3 comic-shadow transition-all duration-300 hover:-translate-y-2 hover:shadow-[10px_10px_0px_#ffdb3c] border-t-4 border-secondary-container">
+          <div class="flex items-center justify-between pb-space-sm border-b border-surface-container-highest">
+            <span class="px-2 py-0.5 bg-secondary-container text-on-secondary-container font-headline-sm text-headline-sm text-xs -skew-x-6 font-bold">
+              PALACE #02
+            </span>
+            <div class="flex items-center gap-1 font-label-sm text-label-sm text-primary">
+              <span class="material-symbols-outlined text-sm">healing</span>
+              <span>CLINICAL ERP</span>
             </div>
           </div>
 
-          <!-- Joker Persona Cut-In Card -->
-          <div class="lg:col-span-5 relative flex justify-center z-10">
-            <div class="absolute inset-0 bg-primary-container -skew-x-6 translate-x-3 translate-y-3 -z-10 comic-shadow"></div>
-            <div class="w-full bg-surface-container-lowest p-4 -skew-x-6 comic-shadow flex flex-col gap-3">
-              <div class="relative w-full aspect-square overflow-hidden bg-surface-container-high border-b-4 border-primary-container group">
-                <svg class="w-full h-full object-cover" viewBox="0 0 400 500" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M0 0H400V500H0V0Z" fill="#121212"/>
-                  <path d="M50 0L400 350V500H200L0 150V0H50Z" fill="#E60012" opacity="0.85"/>
-                  <path d="M120 220C150 180 250 180 280 220C260 250 200 270 200 270C200 270 140 250 120 220Z" fill="#FFFFFF"/>
-                  <circle cx="160" cy="225" r="15" fill="#121212"/>
-                  <circle cx="240" cy="225" r="15" fill="#121212"/>
-                  <path d="M80 320L200 480L320 320" stroke="#FFFFFF" stroke-width="8"/>
-                </svg>
+          <div class="py-space-md flex flex-col gap-space-xs flex-grow">
+            <div class="font-label-sm text-label-sm text-secondary-fixed font-bold tracking-widest uppercase">
+              FULL-STACK HEALTHCARE // EMR
+            </div>
+            <h3 class="font-headline-md text-headline-md uppercase text-secondary tracking-tight group-hover:text-secondary-fixed transition-colors">
+              EL3YADA CLINIC ERP SYSTEM
+            </h3>
+            <p class="font-body-md text-body-md text-on-surface-variant mt-2 leading-relaxed">
+              Enterprise-grade clinic operation engine. Integrates multi-tenant role isolation, synchronized doctor appointment calendars, automated diagnostic invoicing, and encrypted patient electronic records.
+            </p>
 
-                <div class="absolute bottom-2 left-2 bg-primary-container text-on-primary-container font-headline-sm text-lg px-3 py-0.5 -skew-x-6 comic-shadow uppercase">
-                  ARSÈNE.CODE // AWAKENED
-                </div>
-                <div class="absolute top-2 left-2 bg-surface-container-lowest/90 px-2 py-0.5 text-secondary-fixed font-label-sm text-xs font-bold -skew-x-3">
-                  LEVEL 99 FULL-STACK
-                </div>
+            <div class="my-space-sm p-space-sm bg-surface-container-low -skew-x-3 flex flex-col gap-space-xs border-l-2 border-primary-container">
+              <div class="flex justify-between items-center font-label-sm text-label-sm">
+                <span class="text-on-surface font-semibold">QUERY & LATENCY BENCHMARK</span>
+                <span class="font-bold text-primary">&lt; 38ms TTFB</span>
               </div>
-
-              <!-- Persona Stats Meters -->
-              <div class="flex flex-col gap-2 font-label-sm text-xs">
-                <div class="flex items-center justify-between gap-2">
-                  <div class="flex-1 bg-surface-container p-2 -skew-x-3">
-                    <div class="flex justify-between text-secondary font-bold">
-                      <span class="text-primary-container">HP</span>
-                      <span>999 / 999</span>
-                    </div>
-                    <div class="w-full h-2 bg-surface-container-lowest"><div class="w-full h-full bg-primary-container"></div></div>
-                  </div>
-                  <div class="flex-1 bg-surface-container p-2 -skew-x-3">
-                    <div class="flex justify-between text-secondary font-bold">
-                      <span class="text-secondary-fixed">SP</span>
-                      <span>999 / 999</span>
-                    </div>
-                    <div class="w-full h-2 bg-surface-container-lowest"><div class="w-full h-full bg-secondary-fixed"></div></div>
-                  </div>
-                </div>
-
-                <div class="grid grid-cols-2 gap-2 pt-1">
-                  <div class="bg-surface-container-low p-2 flex items-center gap-2">
-                    <span class="material-symbols-outlined text-primary-container text-sm">translate</span>
-                    <span class="truncate">Trilingual Diplomat</span>
-                  </div>
-                  <div class="bg-surface-container-low p-2 flex items-center gap-2">
-                    <span class="material-symbols-outlined text-secondary-container text-sm">neurology</span>
-                    <span class="truncate">PyTorch / OpenCV</span>
-                  </div>
-                  <div class="bg-surface-container-low p-2 flex items-center gap-2">
-                    <span class="material-symbols-outlined text-primary text-sm">memory</span>
-                    <span class="truncate">x86 Assembly</span>
-                  </div>
-                  <div class="bg-surface-container-low p-2 flex items-center gap-2">
-                    <span class="material-symbols-outlined text-secondary-fixed text-sm">database</span>
-                    <span class="truncate">Django REST / React</span>
-                  </div>
-                </div>
+              <div class="w-full h-2.5 bg-surface-container-lowest overflow-hidden flex gap-0.5">
+                <div class="h-full bg-primary-container w-[88%]"></div>
+                <div class="h-full bg-secondary-fixed flex-1"></div>
+              </div>
+              <div class="flex justify-between font-label-sm text-label-sm text-on-surface-variant text-[11px] pt-1">
+                <span>BACKEND: DJANGO REST</span>
+                <span>DB: POSTGRESQL ACID</span>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
 
-      <!-- ------------------------------------------------------------------------
-           01. STATS & DIPLOMATIC CAREER SECTION
-           ------------------------------------------------------------------------ -->
-      <section id="stats-section" class="relative z-10 w-full px-8 py-12 flex flex-col gap-8">
-        <div class="flex items-center justify-between">
-          <div class="flex items-center gap-3">
-            <span class="bg-primary-container text-on-primary-container font-headline-md text-2xl px-3 py-1 -skew-x-6">01</span>
-            <h2 class="font-headline-lg text-4xl uppercase text-secondary -skew-x-6 drop-shadow-[2px_2px_0px_#000]">
-              STATS, ACADEMICS & DIPLOMATIC FEATS
-            </h2>
+            <div class="flex flex-wrap gap-1.5 pt-2">
+              <span class="px-2 py-0.5 bg-surface-container font-label-sm text-label-sm text-secondary-fixed-dim">&gt; Django</span>
+              <span class="px-2 py-0.5 bg-surface-container font-label-sm text-label-sm text-secondary-fixed-dim">&gt; React 18</span>
+              <span class="px-2 py-0.5 bg-surface-container font-label-sm text-label-sm text-secondary-fixed-dim">&gt; PostgreSQL</span>
+              <span class="px-2 py-0.5 bg-surface-container font-label-sm text-label-sm text-secondary-fixed-dim">&gt; Tailwind</span>
+            </div>
+          </div>
+
+          <div class="pt-space-sm flex items-center justify-between border-t border-surface-container-highest">
+            <div class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">
+              TREASURE: <span class="text-secondary font-bold">EMR RECORD VAULT</span>
+            </div>
+            <a class="px-3 py-1 bg-surface-container-highest text-secondary hover:bg-secondary-container hover:text-on-secondary-container font-headline-sm text-headline-sm text-xs -skew-x-6 comic-shadow transition-colors flex items-center gap-1" href="https://github.com/LuigiLuigi2401/El3yada" target="_blank">
+              <span>INFILTRATE</span>
+              <span class="material-symbols-outlined text-xs">open_in_new</span>
+            </a>
           </div>
         </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          <!-- Card 1: E-JUST CS -->
-          <div class="bg-surface-container-lowest p-6 -skew-x-6 comic-shadow flex flex-col justify-between border-t-4 border-primary-container">
-            <div class="space-y-3">
-              <span class="font-label-sm text-xs text-primary font-bold uppercase tracking-wider block">EGYPT-JAPAN UNIV. OF SCIENCE & TECH</span>
-              <h3 class="font-headline-md text-2xl uppercase text-secondary">COMPUTER SCIENCE & INFORMATICS</h3>
-              <p class="font-body-md text-sm text-on-surface-variant">
-                Pursuing B.Sc. Computer Science & Engineering (2024–Present) with a focus on modern web architecture, artificial intelligence, and embedded systems.
-              </p>
+        <!-- PALACE 03: i8086EMU MICROPROCESSOR EMULATOR -->
+        <div class="group relative flex flex-col bg-surface-container-lowest p-space-md -skew-x-3 comic-shadow transition-all duration-300 hover:-translate-y-2 hover:shadow-[10px_10px_0px_#e5e2e1] border-t-4 border-inverse-surface">
+          <div class="flex items-center justify-between pb-space-sm border-b border-surface-container-highest">
+            <span class="px-2 py-0.5 bg-inverse-surface text-inverse-on-surface font-headline-sm text-headline-sm text-xs -skew-x-6 font-bold">
+              PALACE #03
+            </span>
+            <div class="flex items-center gap-1 font-label-sm text-label-sm text-on-surface-variant">
+              <span class="material-symbols-outlined text-sm">terminal</span>
+              <span>LOW-LEVEL ARCH</span>
             </div>
           </div>
 
-          <!-- Card 2: 4th E-JUST Matsuri Diplomatic Translator -->
-          <div class="bg-surface-container-lowest p-6 -skew-x-6 comic-shadow flex flex-col justify-between border-t-4 border-secondary-container">
-            <div class="space-y-3">
-              <span class="font-label-sm text-xs text-secondary-fixed font-bold uppercase tracking-wider block">OFFICIAL DIPLOMATIC TRANSLATION</span>
-              <h3 class="font-headline-md text-2xl uppercase text-secondary">4TH E-JUST MATSURI EVENT HOST</h3>
-              <p class="font-body-md text-sm text-on-surface-variant">
-                Served as Event Host & Official Japanese/English Translator for <strong>Ambassador Fumio Iwai</strong> (Ambassador of Japan to Egypt) at the 4th E-JUST Matsuri.
-              </p>
+          <div class="py-space-md flex flex-col gap-space-xs flex-grow">
+            <div class="font-label-sm text-label-sm text-tertiary-fixed-dim font-bold tracking-widest uppercase">
+              SYSTEMS ENGINEERING // C++ EMULATION
+            </div>
+            <h3 class="font-headline-md text-headline-md uppercase text-secondary tracking-tight group-hover:text-primary transition-colors">
+              i8086EMU MICROPROCESSOR EMULATOR
+            </h3>
+            <p class="font-body-md text-body-md text-on-surface-variant mt-2 leading-relaxed">
+              Cycle-accurate Intel 8086 architectural emulator written in modern C++. Full 1MB segmented memory simulation, 16-bit register debugger, ALU flag recalculation, and visual opcode disassembly execution.
+            </p>
+
+            <div class="my-space-sm p-space-sm bg-surface-container-low -skew-x-3 flex flex-col gap-space-xs border-l-2 border-inverse-surface">
+              <div class="flex justify-between items-center font-label-sm text-label-sm">
+                <span class="text-on-surface font-semibold">OPCODE INSTRUCTION COVERAGE</span>
+                <span class="font-bold text-secondary">99.8% INTR</span>
+              </div>
+              <div class="w-full h-2.5 bg-surface-container-lowest overflow-hidden flex gap-0.5">
+                <div class="h-full bg-secondary w-[99%]"></div>
+                <div class="h-full bg-primary-container flex-1"></div>
+              </div>
+              <div class="flex justify-between font-label-sm text-label-sm text-on-surface-variant text-[11px] pt-1">
+                <span>SEGMENTS: CS, DS, SS, ES</span>
+                <span>FLAGS: CF, ZF, SF, OF</span>
+              </div>
+            </div>
+
+            <div class="flex flex-wrap gap-1.5 pt-2">
+              <span class="px-2 py-0.5 bg-surface-container font-label-sm text-label-sm text-secondary-fixed-dim">&gt; Modern C++20</span>
+              <span class="px-2 py-0.5 bg-surface-container font-label-sm text-label-sm text-secondary-fixed-dim">&gt; x86 Assembly</span>
+              <span class="px-2 py-0.5 bg-surface-container font-label-sm text-label-sm text-secondary-fixed-dim">&gt; Memory Segments</span>
+              <span class="px-2 py-0.5 bg-surface-container font-label-sm text-label-sm text-secondary-fixed-dim">&gt; GDB Tracing</span>
             </div>
           </div>
 
-          <!-- Card 3: EJS Storytelling supervised by Mrs. Itsuyo Fukuda -->
-          <div class="bg-surface-container-lowest p-6 -skew-x-6 comic-shadow flex flex-col justify-between border-t-4 border-primary-container">
-            <div class="space-y-3">
-              <span class="font-label-sm text-xs text-primary font-bold uppercase tracking-wider block">CULTURAL LIAISON & STORYTELLING</span>
-              <h3 class="font-headline-md text-2xl uppercase text-secondary">EJS STORYTELLING PROGRAM</h3>
-              <p class="font-body-md text-sm text-on-surface-variant">
-                Translator & Storyteller at Egypt-Japan Schools (EJS) under the distinguished guidance and supervision of <strong>Mrs. Itsuyo Fukuda</strong>, spouse of former IEEE President Prof. Toshio Fukuda.
-              </p>
+          <div class="pt-space-sm flex items-center justify-between border-t border-surface-container-highest">
+            <div class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">
+              TREASURE: <span class="text-secondary font-bold">16-BIT KERNEL CORE</span>
             </div>
+            <a class="px-3 py-1 bg-surface-container-highest text-secondary hover:bg-inverse-surface hover:text-inverse-on-surface font-headline-sm text-headline-sm text-xs -skew-x-6 comic-shadow transition-colors flex items-center gap-1" href="https://github.com/LuigiLuigi2401/i8086EMU" target="_blank">
+              <span>INFILTRATE</span>
+              <span class="material-symbols-outlined text-xs">open_in_new</span>
+            </a>
           </div>
         </div>
+      </div>
+    </section>
 
-        <!-- Pentagon Stat Radar & Trilingual Fluency -->
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start pt-4">
-          <!-- Pentagon Radar -->
-          <div class="lg:col-span-5 bg-surface-container-lowest p-6 -skew-x-6 comic-shadow relative flex flex-col items-center">
-            <div class="absolute top-2 left-2 bg-primary-container px-2 py-0.5 text-on-primary-container font-label-sm text-xs font-bold -skew-x-6">
-              PARAM: ALL MAX (5/5)
-            </div>
-            <div class="relative w-64 h-64 flex items-center justify-center pt-4">
-              <svg class="w-full h-full text-primary-container" fill="none" viewBox="0 0 240 240">
-                <polygon points="120,30 206,92 173,194 67,194 34,92" stroke="#353534" stroke-dasharray="3 3" stroke-width="1.5"></polygon>
-                <polygon points="120,32 204,93 171,192 69,192 36,93" fill="#e60012" fill-opacity="0.45" stroke="#e60012" stroke-width="3"></polygon>
-                <circle cx="120" cy="32" fill="#ffdb3c" r="5"></circle>
-                <circle cx="204" cy="93" fill="#ffdb3c" r="5"></circle>
-                <circle cx="171" cy="192" fill="#ffdb3c" r="5"></circle>
-                <circle cx="69" cy="192" fill="#ffdb3c" r="5"></circle>
-                <circle cx="36" cy="93" fill="#ffdb3c" r="5"></circle>
-              </svg>
-              <div class="absolute top-1 font-headline-sm text-secondary text-sm">KNOWLEDGE <span class="bg-primary-container px-1 text-xs">MAX</span></div>
-              <div class="absolute top-20 right-0 font-headline-sm text-secondary text-sm">GUTS <span class="bg-primary-container px-1 text-xs">MAX</span></div>
-              <div class="absolute bottom-1 right-4 font-headline-sm text-secondary text-sm">PROFICIENCY <span class="bg-primary-container px-1 text-xs">MAX</span></div>
-              <div class="absolute bottom-1 left-4 font-headline-sm text-secondary text-sm">KINDNESS <span class="bg-primary-container px-1 text-xs">MAX</span></div>
-              <div class="absolute top-20 left-0 font-headline-sm text-secondary text-sm">CHARM <span class="bg-primary-container px-1 text-xs">MAX</span></div>
-            </div>
+    <!-- ============================================================== -->
+    <!-- 3. STATS & DIPLOMATIC CAREER (PENTAGON RADAR & DIPLOMACY)      -->
+    <!-- ============================================================== -->
+    <section class="relative z-10 w-full px-gutter py-12 flex flex-col gap-space-xl border-t-2 border-surface-container-highest" id="stats">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md">
+        <div>
+          <div class="flex items-center gap-space-xs font-label-md text-label-md text-primary-container font-bold tracking-widest uppercase -skew-x-6">
+            <span class="material-symbols-outlined text-base">military_tech</span>
+            <span>ACADEMIC PALACES & DIPLOMATIC FEATS</span>
           </div>
-
-          <!-- Trilingual Meters & P5 Dialogue Box -->
-          <div class="lg:col-span-7 bg-surface-container-lowest p-6 -skew-x-6 comic-shadow space-y-4 border-2 border-primary-container">
-            <div class="border-b border-surface-variant pb-2 flex justify-between items-center">
-              <span class="font-headline-sm text-xl text-secondary">TRILINGUAL LINGUISTIC ARSENAL (EN / AR / JP)</span>
-            </div>
-
-            <div class="space-y-2 font-label-sm text-xs">
-              <div>
-                <div class="flex justify-between"><span class="font-bold text-secondary">&gt; ENGLISH (C2 FLUENT)</span><span class="text-primary font-bold">100% CEFR C2</span></div>
-                <div class="w-full h-3 bg-surface-container-high"><div class="h-full bg-primary-container w-full"></div></div>
-              </div>
-              <div>
-                <div class="flex justify-between"><span class="font-bold text-secondary">&gt; ARABIC (NATIVE)</span><span class="text-secondary-fixed font-bold">100% MOTHER TONGUE</span></div>
-                <div class="w-full h-3 bg-surface-container-high"><div class="h-full bg-secondary-container w-full"></div></div>
-              </div>
-              <div>
-                <div class="flex justify-between"><span class="font-bold text-secondary">&gt; JAPANESE (JLPT DIPLOMATIC INTERPRETATION)</span><span class="text-primary font-bold">94% STATE INTERPRETATION</span></div>
-                <div class="w-full h-3 bg-surface-container-high"><div class="h-full bg-primary-container w-[94%]"></div></div>
-              </div>
-            </div>
-
-            <!-- Live P5 Dialogue UI Box -->
-            <div class="p-4 bg-surface-container-low -skew-x-3 border-l-4 border-secondary-container">
-              <p class="font-headline-sm text-lg text-secondary">
-                「岩井大使をお迎えし、エジプト・日本科学技術大学（E-JUST）の架け橋として両国の未来を紡ぐ光栄をここに宣言いたします。」
-              </p>
-              <p class="font-body-md text-xs text-on-surface-variant pt-2">
-                "Welcoming His Excellency Ambassador Fumio Iwai to E-JUST, it is our distinct honor to bridge the scientific, cultural, and technological futures of Japan and Egypt."
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ------------------------------------------------------------------------
-           02. PALACES SECTION (FEATURED PROJECTS)
-           ------------------------------------------------------------------------ -->
-      <section id="palaces-section" class="relative z-10 w-full px-8 py-12 flex flex-col gap-8">
-        <div class="flex items-center gap-3">
-          <span class="bg-primary-container text-on-primary-container font-headline-md text-2xl px-3 py-1 -skew-x-6">02</span>
-          <h2 class="font-headline-lg text-4xl uppercase text-secondary -skew-x-6 drop-shadow-[2px_2px_0px_#000]">
-            FEATURED PALACES (PROJECTS)
+          <h2 class="font-headline-lg text-headline-lg uppercase tracking-tight text-secondary -skew-x-6 drop-shadow-[3px_3px_0px_#e60012] mt-1">
+            SOCIAL STATS & CULTURAL DIPLOMACY
           </h2>
         </div>
+        <div class="flex items-center gap-space-sm -skew-x-6">
+          <span class="px-3 py-1 bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-bold comic-shadow">
+            ALL STATS MAX RANK 5/5
+          </span>
+        </div>
+      </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          <!-- Palace 1: ESP32-CAM AI Fruit Spoilage Detector -->
-          <div class="bg-surface-container-lowest p-6 -skew-x-3 comic-shadow border-t-4 border-primary-container flex flex-col justify-between">
-            <div class="space-y-3">
-              <div class="flex justify-between items-center">
-                <span class="px-2 py-0.5 bg-primary-container text-on-primary-container font-headline-sm text-xs -skew-x-6">PALACE #01</span>
-                <span class="font-label-sm text-xs text-secondary-fixed">94.2% ACCURACY</span>
-              </div>
-              <h3 class="font-headline-md text-2xl uppercase text-secondary">ESP32-CAM AI FRUIT SPOILAGE DETECTOR</h3>
-              <p class="font-body-md text-sm text-on-surface-variant">
-                Real-time edge AI computer vision system featuring OpenCV region proposal, PyTorch MobileNetV2 inference (~22ms latency), PyQt6 glassmorphism desktop GUI, and Flask mobile streaming server.
-              </p>
-            </div>
-            <div class="pt-4">
-              <a href="https://github.com/LuigiLuigi2401/esp-32-Fruit-Spoilage-Detector" target="_blank" class="px-4 py-2 bg-primary-container text-on-primary-container font-headline-sm text-sm uppercase -skew-x-6 comic-shadow flex items-center gap-2 text-decoration-none w-fit">
-                <i class="ri-github-fill"></i> <span>VIEW REPO</span>
-              </a>
-            </div>
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-center">
+        <!-- Pentagon Stat Radar SVG -->
+        <div class="lg:col-span-5 bg-surface-container-lowest p-space-md -skew-x-3 comic-shadow border-l-4 border-secondary-container flex flex-col items-center justify-center">
+          <div class="w-full flex justify-between items-center mb-4">
+            <span class="font-headline-sm text-headline-sm text-secondary">PENTAGON STAT RADAR</span>
+            <span class="font-label-sm text-secondary-fixed">ALL MAX</span>
           </div>
-
-          <!-- Palace 2: El3yada Clinic ERP -->
-          <div class="bg-surface-container-lowest p-6 -skew-x-3 comic-shadow border-t-4 border-secondary-container flex flex-col justify-between">
-            <div class="space-y-3">
-              <div class="flex justify-between items-center">
-                <span class="px-2 py-0.5 bg-secondary-container text-on-secondary-container font-headline-sm text-xs -skew-x-6">PALACE #02</span>
-                <span class="font-label-sm text-xs text-primary">&lt;38ms TTFB</span>
-              </div>
-              <h3 class="font-headline-md text-2xl uppercase text-secondary">EL3YADA CLINIC ERP SYSTEM</h3>
-              <p class="font-body-md text-sm text-on-surface-variant">
-                Patient & Clinic Management System built with Django REST Framework, SimpleJWT authentication, patient debt ledgers, and doctor appointment scheduling.
-              </p>
-            </div>
-            <div class="pt-4">
-              <a href="https://github.com/LuigiLuigi2401/El3yada" target="_blank" class="px-4 py-2 bg-secondary-container text-on-secondary-container font-headline-sm text-sm uppercase -skew-x-6 comic-shadow flex items-center gap-2 text-decoration-none w-fit">
-                <i class="ri-github-fill"></i> <span>VIEW REPO</span>
-              </a>
-            </div>
-          </div>
-
-          <!-- Palace 3: i8086EMU Microprocessor Emulator -->
-          <div class="bg-surface-container-lowest p-6 -skew-x-3 comic-shadow border-t-4 border-inverse-surface flex flex-col justify-between">
-            <div class="space-y-3">
-              <div class="flex justify-between items-center">
-                <span class="px-2 py-0.5 bg-inverse-surface text-inverse-on-surface font-headline-sm text-xs -skew-x-6">PALACE #03</span>
-                <span class="font-label-sm text-xs text-secondary">99.8% OPCODES</span>
-              </div>
-              <h3 class="font-headline-md text-2xl uppercase text-secondary">i8086EMU MICROPROCESSOR EMULATOR</h3>
-              <p class="font-body-md text-sm text-on-surface-variant">
-                Educational Python 16-bit microprocessor emulator modeling Intel 8086 registers (AX, CX, DX, BX, DI, SI, BP, SP), segment pointers, 1MB byte-addressable memory array, and opcode decoder.
-              </p>
-            </div>
-            <div class="pt-4">
-              <a href="https://github.com/LuigiLuigi2401/i8086EMU" target="_blank" class="px-4 py-2 bg-inverse-surface text-inverse-on-surface font-headline-sm text-sm uppercase -skew-x-6 comic-shadow flex items-center gap-2 text-decoration-none w-fit">
-                <i class="ri-github-fill"></i> <span>VIEW REPO</span>
-              </a>
-            </div>
+          
+          <div class="relative w-full aspect-square flex items-center justify-center p-4">
+            <svg class="w-full h-full overflow-visible" viewBox="0 0 200 200">
+              <polygon points="100,20 176,75 147,165 53,165 24,75" fill="none" stroke="#353534" stroke-width="1.5"></polygon>
+              <polygon points="100,45 152,83 133,145 67,145 48,83" fill="none" stroke="#353534" stroke-dasharray="3 3" stroke-width="1"></polygon>
+              
+              <line x1="100" y1="100" x2="100" y2="20" stroke="#353534" stroke-width="1"></line>
+              <line x1="100" y1="100" x2="176" y2="75" stroke="#353534" stroke-width="1"></line>
+              <line x1="100" y1="100" x2="147" y2="165" stroke="#353534" stroke-width="1"></line>
+              <line x1="100" y1="100" x2="53" y2="165" stroke="#353534" stroke-width="1"></line>
+              <line x1="100" y1="100" x2="24" y2="75" stroke="#353534" stroke-width="1"></line>
+              
+              <!-- MAX Rank Pentagon Polygon -->
+              <polygon points="100,22 173,77 145,163 55,163 27,77" fill="rgba(230,0,18,0.4)" stroke="#e60012" stroke-width="3"></polygon>
+              
+              <circle cx="100" cy="22" r="5" fill="#ffd700"></circle>
+              <circle cx="173" cy="77" r="5" fill="#ffd700"></circle>
+              <circle cx="145" cy="163" r="5" fill="#ffd700"></circle>
+              <circle cx="55" cy="163" r="5" fill="#ffd700"></circle>
+              <circle cx="27" cy="77" r="5" fill="#ffd700"></circle>
+              
+              <text x="100" y="10" fill="#fff9ef" font-family="'Anton', sans-serif" font-size="12" text-anchor="middle">KNOWLEDGE (MAX)</text>
+              <text x="182" y="78" fill="#fff9ef" font-family="'Anton', sans-serif" font-size="12" text-anchor="start">GUTS (MAX)</text>
+              <text x="150" y="180" fill="#fff9ef" font-family="'Anton', sans-serif" font-size="12" text-anchor="middle">PROFICIENCY (MAX)</text>
+              <text x="50" y="180" fill="#fff9ef" font-family="'Anton', sans-serif" font-size="12" text-anchor="middle">KINDNESS (MAX)</text>
+              <text x="20" y="78" fill="#fff9ef" font-family="'Anton', sans-serif" font-size="12" text-anchor="end">CHARM (MAX)</text>
+            </svg>
           </div>
         </div>
-      </section>
 
-      <!-- ------------------------------------------------------------------------
-           03. CONFIDANTS & SKILLS SECTION
-           ------------------------------------------------------------------------ -->
-      <section id="skills-section" class="relative z-10 w-full px-8 py-12 flex flex-col gap-8">
-        <div class="flex items-center gap-3">
-          <span class="bg-primary-container text-on-primary-container font-headline-md text-2xl px-3 py-1 -skew-x-6">03</span>
-          <h2 class="font-headline-lg text-4xl uppercase text-secondary -skew-x-6 drop-shadow-[2px_2px_0px_#000]">
-            CONFIDANTS & TECH SKILLS
+        <!-- Diplomatic Cards -->
+        <div class="lg:col-span-7 flex flex-col gap-space-md">
+          <!-- Diplomatic Card 1 -->
+          <div class="bg-surface-container-lowest p-space-md -skew-x-3 comic-shadow border-l-4 border-primary-container">
+            <div class="flex justify-between items-start mb-2">
+              <span class="px-2 py-0.5 bg-primary-container text-on-primary-container font-label-sm text-label-sm font-bold -skew-x-6">
+                4TH E-JUST MATSURI DIPLOMATIC TRANSLATOR
+              </span>
+              <span class="text-secondary-container font-label-sm font-bold">STATE GUEST PROTOCOL</span>
+            </div>
+            <h3 class="font-headline-md text-headline-md text-secondary">AMBASSADOR FUMIO IWAI OFFICIAL TRANSLATOR</h3>
+            <p class="font-body-md text-body-md text-on-surface-variant mt-1 leading-relaxed">
+              Served as Event Host and Official Japanese & English State Translator for <strong>His Excellency Ambassador Fumio Iwai</strong> (Ambassador of Japan to Egypt) during the 4th E-JUST Matsuri. Facilitated bilateral cultural discourse and high-level diplomatic diplomacy.
+            </p>
+          </div>
+
+          <!-- Diplomatic Card 2 -->
+          <div class="bg-surface-container-lowest p-space-md -skew-x-3 comic-shadow border-l-4 border-secondary-container">
+            <div class="flex justify-between items-start mb-2">
+              <span class="px-2 py-0.5 bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-bold -skew-x-6">
+                EJS CULTURAL & STORYTELLING PROGRAM
+              </span>
+              <span class="text-primary font-label-sm font-bold">DISTINGUISHED SUPERVISION</span>
+            </div>
+            <h3 class="font-headline-md text-headline-md text-secondary">MRS. ITSUYO FUKUDA SUPERVISED STORYTELLER</h3>
+            <p class="font-body-md text-body-md text-on-surface-variant mt-1 leading-relaxed">
+              Selected as Translator and Storyteller at Egypt-Japan Schools (EJS) under the distinguished guidance and supervision of <strong>Mrs. Itsuyo Fukuda</strong>, spouse of former IEEE President Prof. Toshio Fukuda. Delivered Japanese folklore narratives and cross-cultural workshops.
+            </p>
+          </div>
+
+          <!-- Live P5 Dialogue UI Box -->
+          <div class="bg-surface-container p-space-md -skew-x-3 comic-shadow border-2 border-primary-container relative">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="w-3 h-3 rounded-full bg-primary-container animate-ping"></span>
+              <span class="font-label-sm text-label-sm text-secondary-fixed uppercase font-bold">LIVE BATTLE DIALOGUE // DIPLOMATIC TRANSMISSION</span>
+            </div>
+            <p class="font-body-lg text-lg text-secondary italic">
+              「岩井大使をお迎えし、エジプト・日本科学技術大学（E-JUST）の架け橋として両国の未来を紡ぐ光栄をここに宣言いたします。」
+            </p>
+            <p class="font-body-sm text-body-sm text-on-surface-variant mt-2 border-t border-surface-container-highest pt-2">
+              <em>"Welcoming His Excellency Ambassador Fumio Iwai to E-JUST, it is our distinct honor to bridge the scientific, cultural, and technological futures of Japan and Egypt."</em>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================== -->
+    <!-- 4. CONFIDANTS NETWORK & COMBAT SKILLS                          -->
+    <!-- ============================================================== -->
+    <section class="relative z-10 w-full px-gutter py-12 flex flex-col gap-space-xl border-t-2 border-surface-container-highest" id="confidants">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md">
+        <div>
+          <div class="flex items-center gap-space-xs font-label-md text-label-md text-primary-container font-bold tracking-widest uppercase -skew-x-6">
+            <span class="material-symbols-outlined text-base">military_tech</span>
+            <span>COOPERATION ARCHIVE // FILE_03</span>
+          </div>
+          <h2 class="font-headline-lg text-headline-lg uppercase tracking-tight text-secondary -skew-x-6 drop-shadow-[3px_3px_0px_#e60012] mt-1">
+            CONFIDANT NETWORK & COMBAT SKILLS
           </h2>
         </div>
-
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-          <div class="bg-surface-container-lowest p-4 -skew-x-6 comic-shadow border border-primary-container">
-            <span class="font-label-sm text-xs text-secondary-fixed block">RANK: MAX</span>
-            <span class="font-headline-sm text-xl text-secondary block">PYTHON & PYTORCH</span>
-          </div>
-          <div class="bg-surface-container-lowest p-4 -skew-x-6 comic-shadow border border-primary-container">
-            <span class="font-label-sm text-xs text-secondary-fixed block">RANK: MAX</span>
-            <span class="font-headline-sm text-xl text-secondary block">DJANGO & REST APIS</span>
-          </div>
-          <div class="bg-surface-container-lowest p-4 -skew-x-6 comic-shadow border border-primary-container">
-            <span class="font-label-sm text-xs text-secondary-fixed block">RANK: 9</span>
-            <span class="font-headline-sm text-xl text-secondary block">JAVASCRIPT & REACT</span>
-          </div>
-          <div class="bg-surface-container-lowest p-4 -skew-x-6 comic-shadow border border-primary-container">
-            <span class="font-label-sm text-xs text-secondary-fixed block">RANK: 8</span>
-            <span class="font-headline-sm text-xl text-secondary block">C / C++ & EMBEDDED</span>
-          </div>
+        <div class="flex items-center gap-space-sm -skew-x-6">
+          <span class="px-3 py-1 bg-surface-container-lowest text-on-surface font-label-sm text-label-sm comic-shadow">
+            OPERATIVE: <strong class="text-secondary-fixed">MOHAMMAD ELSHERBINY</strong>
+          </span>
         </div>
-      </section>
+      </div>
 
-      <!-- ------------------------------------------------------------------------
-           04. CALLING CARD (CONTACT) SECTION
-           ------------------------------------------------------------------------ -->
-      <section id="calling-card-section" class="relative z-10 w-full px-8 py-8 mb-6">
-        <div class="bg-primary-container p-8 -skew-x-3 comic-shadow border-4 border-white text-center max-w-4xl mx-auto">
-          <h2 class="font-headline-lg text-5xl uppercase text-white drop-shadow-[3px_3px_0px_#000]">
-            ★ TRANSMIT A CALLING CARD ★
-          </h2>
-          <p class="font-body-md text-lg text-white my-4">
-            Ready to steal the hearts of complex full-stack web platforms or edge AI systems? Reach out directly!
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-space-lg">
+        <!-- Confidant Card 1 -->
+        <div class="bg-surface-container-lowest p-space-md -skew-x-3 comic-shadow border-t-4 border-primary-container">
+          <div class="flex justify-between items-center mb-2">
+            <span class="px-2 py-0.5 bg-primary-container text-on-primary-container font-label-sm font-bold">ARCANA I: THE MAGICIAN</span>
+            <span class="text-secondary-fixed font-label-sm font-bold">RANK 10 MAX</span>
+          </div>
+          <h3 class="font-headline-md text-headline-md text-secondary">PYTHON & PYTORCH</h3>
+          <p class="font-body-sm text-body-sm text-on-surface-variant mt-2">
+            Deep Learning vision models, CNN backbones, TensorRT optimization, and automated dataset synthesis.
           </p>
+        </div>
 
-          <div class="flex justify-center flex-wrap gap-4 pt-2">
-            <a href="https://www.linkedin.com/in/mohammad-elsherbiny/" target="_blank" class="px-6 py-3 bg-surface-container-lowest text-secondary font-headline-sm text-xl uppercase -skew-x-6 comic-shadow text-decoration-none">
-              <i class="ri-linkedin-fill"></i> <span>LINKEDIN</span>
-            </a>
-            <a href="https://www.upwork.com/freelancers/~01125f44a50d32ba2e" target="_blank" class="px-6 py-3 bg-surface-container-lowest text-secondary font-headline-sm text-xl uppercase -skew-x-6 comic-shadow text-decoration-none">
-              <i class="ri-global-line"></i> <span>UPWORK</span>
-            </a>
-            <a href="https://github.com/LuigiLuigi2401" target="_blank" class="px-6 py-3 bg-surface-container-lowest text-secondary font-headline-sm text-xl uppercase -skew-x-6 comic-shadow text-decoration-none">
-              <i class="ri-github-fill"></i> <span>GITHUB</span>
-            </a>
+        <!-- Confidant Card 2 -->
+        <div class="bg-surface-container-lowest p-space-md -skew-x-3 comic-shadow border-t-4 border-secondary-container">
+          <div class="flex justify-between items-center mb-2">
+            <span class="px-2 py-0.5 bg-secondary-container text-on-secondary-container font-label-sm font-bold">ARCANA IV: THE EMPEROR</span>
+            <span class="text-secondary-fixed font-label-sm font-bold">RANK 9</span>
+          </div>
+          <h3 class="font-headline-md text-headline-md text-secondary">C / C++ & LOW-LEVEL SYSTEMS</h3>
+          <p class="font-body-sm text-body-sm text-on-surface-variant mt-2">
+            Raw memory pointers, cycle-accurate microprocessor simulation, custom RTOS scheduling, and firmware.
+          </p>
+        </div>
+
+        <!-- Confidant Card 3 -->
+        <div class="bg-surface-container-lowest p-space-md -skew-x-3 comic-shadow border-t-4 border-inverse-surface">
+          <div class="flex justify-between items-center mb-2">
+            <span class="px-2 py-0.5 bg-inverse-surface text-inverse-on-surface font-label-sm font-bold">ARCANA VII: THE CHARIOT</span>
+            <span class="text-secondary-fixed font-label-sm font-bold">RANK 10 MAX</span>
+          </div>
+          <h3 class="font-headline-md text-headline-md text-secondary">REACT & MODERN WEB</h3>
+          <p class="font-body-sm text-body-sm text-on-surface-variant mt-2">
+            Next.js 15, Canvas micro-engines, kinetic styling systems, and zero-jank interactive frontends.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================== -->
+    <!-- 5. CALLING CARD & CONTACT DISPATCH                             -->
+    <!-- ============================================================== -->
+    <section class="relative z-10 w-full px-gutter py-12 flex flex-col gap-space-xl border-t-2 border-surface-container-highest" id="calling-card">
+      <div class="flex flex-col items-center justify-center text-center relative py-space-md">
+        <div class="inline-block bg-surface-container-lowest px-6 py-2 -skew-x-12 shadow-2xl mb-space-sm border-2 border-primary-container">
+          <span class="font-label-lg text-label-lg text-primary tracking-widest uppercase font-bold">PROTOCOL // 100% DISTORTION PURGE</span>
+        </div>
+        <div class="relative inline-flex flex-wrap justify-center items-center gap-2 max-w-4xl">
+          <span class="bg-secondary text-surface-container-lowest font-headline-lg text-headline-lg px-3 py-1 -rotate-3 inline-block shadow-lg">THE</span>
+          <span class="bg-primary-container text-secondary font-headline-lg text-headline-lg px-4 py-1 rotate-2 inline-block shadow-2xl">CALLING</span>
+          <span class="bg-surface-container-lowest text-secondary font-headline-lg text-headline-lg px-4 py-1 -rotate-6 inline-block shadow-xl">CARD</span>
+          <span class="bg-secondary-container text-on-secondary-container font-headline-lg text-headline-lg px-3 py-1 rotate-3 inline-block shadow-lg">IS</span>
+          <span class="bg-primary-container text-secondary font-headline-lg text-headline-lg px-5 py-1 -rotate-2 inline-block shadow-2xl">POSTED.</span>
+        </div>
+        <p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest mt-space-sm -skew-x-6">
+          PREPARE TO CONFESS YOUR INEFFICIENCIES & RELINQUISH YOUR TECHNICAL DEBT
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-start">
+        <!-- Sacred Phantom Thieves Ransom Letter -->
+        <div class="lg:col-span-7 flex flex-col relative group">
+          <div class="absolute inset-0 bg-primary-container translate-x-3 translate-y-3 -skew-x-2 shadow-2xl"></div>
+          <div class="relative bg-surface-container-lowest p-space-lg md:p-space-xl -skew-x-2 shadow-2xl flex flex-col gap-space-md overflow-hidden">
+            <div class="flex items-center justify-between border-b-4 border-dashed border-primary-container pb-space-sm">
+              <span class="font-label-md text-label-md text-secondary font-bold tracking-widest uppercase">TRANSMISSION FREQUENCY // 404.METAVERSE</span>
+              <span class="bg-primary-container text-secondary font-label-sm text-label-sm px-2 py-0.5 font-bold uppercase -skew-x-12">DESIRE: LEVEL 99</span>
+            </div>
+
+            <div class="flex flex-col gap-space-md my-space-sm leading-relaxed">
+              <div class="flex flex-wrap items-center gap-1.5 md:gap-2">
+                <span class="bg-secondary text-surface-container-lowest font-headline-md text-headline-md px-2 py-0.5 -rotate-2 shadow-md">SIR</span>
+                <span class="text-secondary font-headline-md text-headline-md px-1">/</span>
+                <span class="bg-surface-container-high text-secondary font-headline-md text-headline-md px-2 py-0.5 rotate-3 shadow-md">MADAM</span>
+                <span class="bg-primary-container text-secondary font-headline-md text-headline-md px-3 py-0.5 -rotate-1 shadow-lg">VISITOR:</span>
+              </div>
+              
+              <div class="flex flex-wrap items-center gap-1.5 md:gap-2 font-body-lg text-body-lg text-on-surface">
+                <span class="bg-secondary text-surface-container-lowest font-label-lg text-label-lg px-2 py-0.5 font-bold -rotate-1">WE HAVE OBSERVED</span>
+                <span>your innermost desire for</span>
+                <span class="bg-primary-container text-secondary font-headline-sm text-headline-sm px-2 py-0.5 rotate-1">EXCEPTIONAL FULL-STACK</span>
+                <span>architectures and autonomous</span>
+                <span class="bg-secondary-container text-surface-container-lowest font-headline-sm text-headline-sm px-2.5 py-0.5 -rotate-2 font-bold">AI SOLUTIONS.</span>
+              </div>
+
+              <div class="flex flex-wrap items-center gap-1.5 md:gap-2 font-body-lg text-body-lg text-on-surface">
+                <span class="bg-secondary text-surface-container-lowest font-headline-md text-headline-md px-3 py-1 rotate-2 shadow-md">MOHAMMAD</span>
+                <span class="bg-primary-container text-secondary font-headline-md text-headline-md px-3 py-1 -rotate-2 shadow-xl">ELSHERBINY</span>
+                <span>will infiltrate your distorted infrastructure and execute refactorings that</span>
+                <span class="bg-primary-container text-secondary font-headline-sm text-headline-sm px-3 py-0.5 -rotate-1 font-bold">ELEVATE IT TO PERFECTION.</span>
+              </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row items-start sm:items-end justify-between pt-space-md border-t-2 border-surface-variant gap-space-md">
+              <div>
+                <span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">TRANSMITTED FROM THE VELVET TERMINAL</span>
+                <div class="flex items-center gap-2 mt-1">
+                  <span class="bg-secondary text-surface-container-lowest font-headline-sm text-headline-sm px-2 -rotate-2">SIGNED,</span>
+                  <span class="bg-primary-container text-secondary font-headline-sm text-headline-sm px-3 rotate-1 tracking-wider">THE PHANTOM THIEVES OF TECH</span>
+                </div>
+              </div>
+              <div class="w-20 h-20 bg-primary-container rounded-full flex flex-col items-center justify-center p-2 text-center shadow-2xl rotate-12 self-end shrink-0 border-4 border-dashed border-secondary">
+                <span class="font-headline-sm text-headline-sm text-secondary leading-none">TAKE</span>
+                <span class="font-label-sm text-label-sm text-secondary font-bold leading-none">YOUR</span>
+                <span class="font-headline-sm text-headline-sm text-secondary leading-none">HEART</span>
+              </div>
+            </div>
           </div>
         </div>
-      </section>
-    </div>
+
+        <!-- Infiltration Form & Links -->
+        <div class="lg:col-span-5 flex flex-col gap-space-md">
+          <a class="group relative flex items-center justify-between p-space-md bg-surface-container-high hover:bg-primary-container transition-all -skew-x-6 shadow-xl hover:-translate-x-1 hover:-translate-y-1" href="https://github.com/LuigiLuigi2401" target="_blank">
+            <div class="flex items-center gap-space-sm">
+              <div class="w-10 h-10 bg-surface-container-lowest text-secondary flex items-center justify-center font-headline-sm text-headline-sm">GIT</div>
+              <div class="flex flex-col">
+                <span class="font-headline-sm text-headline-sm text-secondary uppercase tracking-wide">INSPECT GITHUB REPOSITORIES</span>
+                <span class="font-label-sm text-label-sm text-on-surface-variant uppercase">PUBLIC COMMIT VAULT // ARCHITECTURES</span>
+              </div>
+            </div>
+            <span class="material-symbols-outlined text-secondary">open_in_new</span>
+          </a>
+
+          <div class="relative bg-surface-container-low p-space-lg -skew-x-2 shadow-2xl flex flex-col gap-space-md">
+            <div class="bg-secondary text-surface-container-lowest px-3 py-1 font-headline-sm text-headline-sm -rotate-2 inline-block">
+              DIRECT DISPATCH TERMINAL
+            </div>
+
+            <form class="flex flex-col gap-space-md" onsubmit="event.preventDefault(); alert('Calling Card transmitted directly to Mohammad Elsherbiny!');">
+              <div class="flex flex-col gap-space-xs">
+                <label class="font-label-md text-label-md text-on-surface uppercase tracking-wider">&gt; CODENAME / ALIAS</label>
+                <input class="w-full bg-surface-container-lowest text-secondary font-body-md px-space-md py-space-sm outline-none border-b-4 border-primary-container" placeholder="e.g. Chief Technical Officer" required="" type="text"/>
+              </div>
+              <div class="flex flex-col gap-space-xs">
+                <label class="font-label-md text-label-md text-on-surface uppercase tracking-wider">&gt; EMAIL FREQUENCY</label>
+                <input class="w-full bg-surface-container-lowest text-secondary font-body-md px-space-md py-space-sm outline-none border-b-4 border-primary-container" placeholder="ruler@domain.com" required="" type="email"/>
+              </div>
+              <div class="flex flex-col gap-space-xs">
+                <label class="font-label-md text-label-md text-on-surface uppercase tracking-wider">&gt; MISSION BRIEFING</label>
+                <textarea class="w-full bg-surface-container-lowest text-secondary font-body-md px-space-md py-space-sm outline-none border-b-4 border-primary-container resize-none" placeholder="Describe project scope or technical challenge..." required="" rows="3"></textarea>
+              </div>
+              <button class="w-full py-space-md bg-primary-container hover:bg-secondary-container text-on-primary-container font-headline-md text-headline-md uppercase tracking-wider transition-all -skew-x-6 cursor-pointer" type="submit">
+                <span>SEND CALLING CARD</span> 💥
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================== -->
+    <!-- 6. SILENT HILL DARK CORNERS LOW-LEVEL DISASSEMBLER            -->
+    <!-- ============================================================== -->
+    <section class="relative z-10 w-full px-gutter py-12 flex flex-col gap-space-xl border-t-2 border-surface-container-highest" id="silent-hill-section">
+      <div class="weathered-panel p-space-sm flex flex-col lg:flex-row items-center justify-between gap-space-md rust-shadow">
+        <div class="flex items-center gap-space-md pl-space-sm">
+          <span class="font-label-sm text-xs text-rust-500 uppercase tracking-widest font-mono border-r border-ash-600 pr-3">
+            LOW-LEVEL CODE DISASSEMBLER
+          </span>
+          <span class="font-headline-sm text-xl text-secondary">COLD-STORE HARDWARE ARTIFACTS</span>
+        </div>
+        
+        <div class="flex items-center gap-2">
+          <button class="px-3 py-1 bg-ash-800 text-secondary font-label-sm border border-ash-600 -skew-x-6" id="sh-flashlight-btn">FLASHLIGHT SPOTLIGHT</button>
+          <button class="px-3 py-1 bg-rust-700 text-secondary font-label-sm border border-rust-500 -skew-x-6" id="sh-scanlines-btn">CRT SCANLINES</button>
+        </div>
+      </div>
+
+      <div class="sh-code-box" id="sh-disassembler">
+        <div class="flex justify-between items-center pb-2 mb-2 border-b border-ash-600">
+          <span class="text-secondary font-bold font-mono">&gt; DISASSEMBLING FIRMWARE: esp32_tinyml_yolo.c</span>
+          <span class="text-secondary-fixed text-xs">VALVE OVERRIDE ACTIVE</span>
+        </div>
+        <pre class="font-mono text-xs text-secondary-fixed leading-relaxed">
+0x00004000:  55                   push   ebp
+0x00004001:  89 e5                mov    ebp, esp
+0x00004003:  83 ec 10             sub    esp, 0x10
+0x00004006:  c7 45 fc 00 00 00 00 mov    DWORD PTR [ebp-0x4], 0x0  ; Init TinyML weights pointer
+0x0000400d:  e8 8e 00 00 00       call   0x40a0                    ; Execute ESP32 DMA camera frame fetch
+0x00004012:  89 45 f8             mov    DWORD PTR [ebp-0x8], eax  ; Store frame buffer descriptor
+0x00004015:  83 7d f8 00          cmp    DWORD PTR [ebp-0x8], 0x0
+0x00004019:  75 05                jne    0x4020                    ; Branch if DMA buffer non-null
+0x0000401b:  e8 40 01 00 00       call   0x4160                    ; Trigger RF 104.7 Radio Static Warning
+0x00004020:  8b 45 f8             mov    eax, DWORD PTR [ebp-0x8]
+0x00004023:  50                   push   eax
+0x00004024:  e8 linear_inference  call   0x4200                    ; Run quantized TinyML YOLOv8 Inference
+0x00004029:  83 c4 04             add    esp, 0x4
+0x0000402c:  c9                   leave
+0x0000402d:  c3                   ret    
+        </pre>
+      </div>
+    </section>
+
   </main>
 
-  <!-- ------------------------------------------------------------------------
-       P5 PAUSE MENU OVERLAY ("TAKE YOUR TIME")
-       ------------------------------------------------------------------------ -->
+  <!-- FOOTER STRETCH BAR -->
+  <footer class="fixed bottom-0 left-0 right-0 z-50 h-10 bg-surface-container-lowest border-t border-outline-variant flex items-center justify-between px-gutter select-none">
+    <div class="flex items-center gap-space-md">
+      <div class="flex items-center gap-space-xs px-2 py-0.5 bg-secondary-container text-on-secondary-container -skew-x-6 font-label-sm text-label-sm font-bold">
+        <span class="material-symbols-outlined text-sm">calendar_today</span>
+        <span>4/11</span>
+      </div>
+      <div class="flex items-center gap-space-xs font-label-sm text-label-sm text-secondary -skew-x-3">
+        <span class="material-symbols-outlined text-sm text-secondary-fixed">cloud</span>
+        <span class="hidden sm:inline uppercase tracking-widest text-on-surface-variant">CLOUDY //</span>
+        <span class="text-primary-container font-bold uppercase tracking-wider animate-pulse">METAVERSE INFILTRATION ACTIVE</span>
+      </div>
+    </div>
+    <div class="flex items-center gap-space-md">
+      <div class="hidden md:flex items-center gap-space-xs font-label-sm text-label-sm text-on-surface-variant">
+        <span class="w-2 h-2 rounded-full bg-primary-container inline-block animate-ping"></span>
+        <span>SECURITY LEVEL: 99%</span>
+      </div>
+      <span class="font-label-sm text-label-sm text-on-surface">BGM: ON</span>
+    </div>
+  </footer>
+
+  <!-- ============================================================== -->
+  <!-- MODAL 1: P5 PAUSE MENU ("TAKE YOUR TIME")                      -->
+  <!-- ============================================================== -->
   <div id="p5-pause-menu" class="p5-pause-modal">
     <div class="p5-pause-backdrop-slash"></div>
     <div class="p5-pause-content">
       <div class="p5-pause-header">
         <h2 class="p5-pause-title">TAKE YOUR TIME</h2>
-        <button id="p5-pause-close" class="p5-pause-close">CLOSE [ESC]</button>
+        <button id="p5-pause-close" class="p5-pause-close cursor-pointer" type="button">CLOSE (ESC)</button>
       </div>
-
       <ul class="p5-pause-menu-list">
-        <li class="p5-pause-menu-item" data-target="stats-section">
-          <span class="p5-pause-item-label">01. STATS (ABOUT & DIPLOMATIC FEATS)</span>
-          <span class="p5-pause-item-sub">E-JUST • AMBASSADOR FUMIO IWAI • MRS. ITSUYO FUKUDA</span>
+        <li class="p5-pause-menu-item" data-target="hero">
+          <span class="p5-pause-item-label">SYSTEM OVERVIEW</span>
+          <span class="p5-pause-item-sub">JOKER HERO STATUS</span>
         </li>
-        <li class="p5-pause-menu-item" data-target="palaces-section">
-          <span class="p5-pause-item-label">02. PALACES (PROJECTS)</span>
-          <span class="p5-pause-item-sub">ESP32 AI • EL3YADA • I8086</span>
+        <li class="p5-pause-menu-item" data-target="palaces">
+          <span class="p5-pause-item-label">PALACES</span>
+          <span class="p5-pause-item-sub">FEATURED PROJECTS</span>
         </li>
-        <li class="p5-pause-menu-item" data-target="skills-section">
-          <span class="p5-pause-item-label">03. CONFIDANTS (SKILLS)</span>
-          <span class="p5-pause-item-sub">TECH STACK & RANKS</span>
+        <li class="p5-pause-menu-item" data-target="stats">
+          <span class="p5-pause-item-label">DIPLOMACY & STATS</span>
+          <span class="p5-pause-item-sub">AMBASSADOR TRANSLATION & RADAR</span>
         </li>
-        <li class="p5-pause-menu-item" data-target="calling-card-section">
-          <span class="p5-pause-item-label">04. CALLING CARD (CONTACT)</span>
-          <span class="p5-pause-item-sub">LINKEDIN • UPWORK • GITHUB</span>
+        <li class="p5-pause-menu-item" data-target="confidants">
+          <span class="p5-pause-item-label">CONFIDANTS</span>
+          <span class="p5-pause-item-sub">TECH SKILLS ARCANA</span>
+        </li>
+        <li class="p5-pause-menu-item" data-target="calling-card">
+          <span class="p5-pause-item-label">CALLING CARD</span>
+          <span class="p5-pause-item-sub">DISPATCH MISSION BRIEFING</span>
+        </li>
+        <li class="p5-pause-menu-item" data-target="silent-hill-section">
+          <span class="p5-pause-item-label">SILENT HILL MODE</span>
+          <span class="p5-pause-item-sub">LOW-LEVEL DISASSEMBLER</span>
         </li>
       </ul>
     </div>
   </div>
 
-  <!-- ------------------------------------------------------------------------
-       JOKER CLI COMMAND PALETTE
-       ------------------------------------------------------------------------ -->
+  <!-- ============================================================== -->
+  <!-- MODAL 2: JOKER CLI COMMAND PALETTE                             -->
+  <!-- ============================================================== -->
   <div id="joker-cli-modal" class="joker-cli-modal">
     <div class="joker-cli-box">
       <div class="joker-cli-input-wrapper">
         <span class="joker-cli-prompt">&gt;</span>
-        <input type="text" id="joker-cli-input" class="joker-cli-input" placeholder="Type a command (/palaces, /skills, /silenthill, /contact)..." />
+        <input id="joker-cli-input" class="joker-cli-input" type="text" placeholder="Type a command (/palaces, /stats, /skills, /calling-card, /silenthill, /mute)..." />
       </div>
-
       <ul class="joker-cli-suggestions">
         <li class="joker-cli-item" data-cmd="/palaces">
-          <span>Explore Featured Projects</span>
           <span class="joker-cli-item-cmd">/palaces</span>
+          <span>Infiltrate featured projects (ESP32-CAM AI, El3yada, i8086EMU)</span>
         </li>
         <li class="joker-cli-item" data-cmd="/stats">
-          <span>View Background & Diplomatic Feats</span>
           <span class="joker-cli-item-cmd">/stats</span>
+          <span>View Ambassador Fumio Iwai diplomatic translation & pentagon radar</span>
         </li>
         <li class="joker-cli-item" data-cmd="/skills">
-          <span>View Technical Stack & Ranks</span>
           <span class="joker-cli-item-cmd">/skills</span>
+          <span>Inspect Confidant network & combat skill tree</span>
         </li>
         <li class="joker-cli-item" data-cmd="/calling-card">
-          <span>Contact & Social Links</span>
           <span class="joker-cli-item-cmd">/calling-card</span>
+          <span>Transmit a calling card / mission briefing</span>
         </li>
         <li class="joker-cli-item" data-cmd="/silenthill">
-          <span>Toggle Silent Hill Fog Mode</span>
           <span class="joker-cli-item-cmd">/silenthill</span>
+          <span>Toggle Silent Hill Fog Mode & Disassembler</span>
+        </li>
+        <li class="joker-cli-item" data-cmd="/mute">
+          <span class="joker-cli-item-cmd">/mute</span>
+          <span>Toggle Web Audio API UI sound effects</span>
         </li>
       </ul>
     </div>
   </div>
 
-  <!-- Interactivity Script -->
+  <!-- Core JavaScript Interactivity Engine -->
   <script src="assets/js/p5r_app.js"></script>
+
 </body>
 </html>
