@@ -578,9 +578,44 @@
     });
   }
 
+  let wasPlayingBeforeLossOfFocus = false;
+
+  function handleFocusLoss() {
+    if (loFiBGM.isPlaying) {
+      wasPlayingBeforeLossOfFocus = true;
+      loFiBGM.stop();
+    }
+  }
+
+  function handleFocusGain() {
+    if (wasPlayingBeforeLossOfFocus) {
+      wasPlayingBeforeLossOfFocus = false;
+      loFiBGM.start();
+    }
+  }
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      handleFocusLoss();
+    } else {
+      handleFocusGain();
+    }
+  });
+
+  window.addEventListener('blur', () => {
+    handleFocusLoss();
+  });
+
+  window.addEventListener('focus', () => {
+    handleFocusGain();
+  });
+
   if (soundToggleBtn) {
     soundToggleBtn.addEventListener('click', () => {
       const playing = loFiBGM.toggle();
+      if (!playing) {
+        wasPlayingBeforeLossOfFocus = false;
+      }
       const statusText = document.getElementById('bgm-status-text');
       if (statusText) {
         statusText.textContent = playing ? 'LO-FI BGM: ON' : 'LO-FI BGM: OFF';
