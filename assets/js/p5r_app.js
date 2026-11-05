@@ -337,6 +337,191 @@
   fetchLiveWeather();
 
   // --------------------------------------------------------------------------
+  // PROCEDURAL 8-BIT CHIPTUNE BGM ENGINE (WEB AUDIO API)
+  // --------------------------------------------------------------------------
+  class ProceduralChiptuneBGM {
+    constructor() {
+      this.ctx = null;
+      this.isPlaying = false;
+      this.timerId = null;
+      this.step = 0;
+      this.tempo = 128;
+      this.masterGain = null;
+
+      // Note frequencies (Hz) for retro chiptune scale (D minor / Persona 5 arcade vibe)
+      this.notes = {
+        'D2': 73.42, 'F2': 87.31, 'G2': 98.00, 'A2': 110.00, 'C3': 130.81,
+        'D3': 146.83, 'F3': 174.61, 'G3': 196.00, 'A3': 220.00, 'Bb3': 233.08, 'C4': 261.63,
+        'D4': 293.66, 'E4': 329.63, 'F4': 349.23, 'G4': 392.00, 'A4': 440.00,
+        'Bb4': 466.16, 'C5': 523.25, 'D5': 587.33, 'E5': 659.25, 'F5': 698.46,
+        'G5': 783.99, 'A5': 880.00, 'OFF': 0
+      };
+
+      // 16-step bassline pattern (Triangle wave)
+      this.bassPattern = [
+        'D2', 'D2', 'F2', 'D2',  'G2', 'D2', 'A2', 'C3',
+        'D2', 'D2', 'F2', 'D2',  'A2', 'G2', 'F2', 'C3'
+      ];
+
+      // Arpeggios (Square wave)
+      this.arpPattern = [
+        ['D3', 'F3', 'A3'], ['F3', 'A3', 'D4'], ['G3', 'Bb3', 'D4'], ['A3', 'C4', 'E4'],
+        ['D3', 'F3', 'A3'], ['F3', 'A3', 'D4'], ['G3', 'Bb3', 'D4'], ['A3', 'C4', 'E4']
+      ];
+
+      // 32-step Lead Melody Motif (Square wave)
+      this.leadPattern = [
+        'D5', 'OFF', 'F5', 'D5',  'A5', 'OFF', 'G5', 'F5',
+        'D5', 'E5', 'F5', 'G5',   'A5', 'Bb4', 'A5', 'C5',
+        'D5', 'OFF', 'F5', 'D5',  'A5', 'G5', 'F5', 'E5',
+        'D5', 'F5', 'E5', 'C5',   'D5', 'OFF', 'OFF', 'OFF'
+      ];
+
+      // 16-step Drum pattern (Noise & sweep)
+      this.drumPattern = [
+        'KICK', 'HAT', 'SNARE', 'HAT', 'KICK', 'HAT', 'SNARE', 'HAT',
+        'KICK', 'HAT', 'SNARE', 'HAT', 'KICK', 'KICK', 'SNARE', 'OPEN_HAT'
+      ];
+    }
+
+    initCtx() {
+      if (!this.ctx) {
+        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+        if (AudioCtx) {
+          this.ctx = new AudioCtx();
+          this.masterGain = this.ctx.createGain();
+          this.masterGain.gain.setValueAtTime(0.06, this.ctx.currentTime);
+          this.masterGain.connect(this.ctx.destination);
+        }
+      }
+      if (this.ctx && this.ctx.state === 'suspended') {
+        this.ctx.resume();
+      }
+    }
+
+    playNote(freq, type, duration, volume = 0.04, slideTo = null) {
+      if (!this.ctx || freq <= 0) return;
+      const osc = this.ctx.createOscillator();
+      const gain = this.ctx.createGain();
+      osc.type = type;
+      osc.frequency.setValueAtTime(freq, this.ctx.currentTime);
+
+      if (slideTo) {
+        osc.frequency.exponentialRampToValueAtTime(slideTo, this.ctx.currentTime + duration);
+      }
+
+      gain.gain.setValueAtTime(volume, this.ctx.currentTime);
+      gain.gain.linearRampToValueAtTime(0.001, this.ctx.currentTime + duration);
+
+      osc.connect(gain);
+      gain.connect(this.masterGain);
+      osc.start();
+      osc.stop(this.ctx.currentTime + duration);
+    }
+
+    playDrum(type) {
+      if (!this.ctx) return;
+      if (type === 'KICK') {
+        this.playNote(120, 'square', 0.08, 0.06, 30);
+      } else if (type === 'SNARE') {
+        const bufferSize = Math.floor(this.ctx.sampleRate * 0.04);
+        const buffer = this.ctx.createBuffer(1, bufferSize, this.ctx.sampleRate);
+        const output = buffer.getChannelData(0);
+        for (let i = 0; i < bufferSize; i++) {
+          output[i] = Math.random() * 2 - 1;
+        }
+        const noise = this.ctx.createBufferSource();
+        noise.buffer = buffer;
+        const gain = this.ctx.createGain();
+        gain.gain.setValueAtTime(0.04, this.ctx.currentTime);
+        gain.gain.linearRampToValueAtTime(0.001, this.ctx.currentTime + 0.04);
+        noise.connect(gain);
+        gain.connect(this.masterGain);
+        noise.start();
+      } else if (type === 'HAT' || type === 'OPEN_HAT') {
+        const dur = type === 'OPEN_HAT' ? 0.07 : 0.02;
+        const bufferSize = Math.floor(this.ctx.sampleRate * dur);
+        const buffer = this.ctx.createBuffer(1, bufferSize, this.ctx.sampleRate);
+        const output = buffer.getChannelData(0);
+        for (let i = 0; i < bufferSize; i++) {
+          output[i] = Math.random() * 2 - 1;
+        }
+        const noise = this.ctx.createBufferSource();
+        noise.buffer = buffer;
+        const gain = this.ctx.createGain();
+        gain.gain.setValueAtTime(0.02, this.ctx.currentTime);
+        gain.gain.linearRampToValueAtTime(0.001, this.ctx.currentTime + dur);
+        noise.connect(gain);
+        gain.connect(this.masterGain);
+        noise.start();
+      }
+    }
+
+    tick() {
+      if (!this.isPlaying || !this.ctx) return;
+
+      const step16 = this.step % 16;
+      const step32 = this.step % 32;
+
+      // 1. Play Bassline
+      const bassNote = this.notes[this.bassPattern[step16]];
+      if (bassNote) {
+        this.playNote(bassNote, 'triangle', 0.11, 0.06);
+      }
+
+      // 2. Play Arpeggio
+      const arpChord = this.arpPattern[Math.floor(step16 / 2) % this.arpPattern.length];
+      const arpNoteFreq = this.notes[arpChord[step16 % arpChord.length]];
+      if (arpNoteFreq) {
+        this.playNote(arpNoteFreq, 'square', 0.05, 0.02);
+      }
+
+      // 3. Play Lead Melody
+      const leadNote = this.notes[this.leadPattern[step32]];
+      if (leadNote) {
+        this.playNote(leadNote, 'square', 0.13, 0.035);
+      }
+
+      // 4. Play Drums
+      const drumType = this.drumPattern[step16];
+      if (drumType) {
+        this.playDrum(drumType);
+      }
+
+      this.step++;
+    }
+
+    start() {
+      this.initCtx();
+      if (this.isPlaying) return;
+      this.isPlaying = true;
+      this.step = 0;
+      const intervalMs = (60 / this.tempo / 4) * 1000;
+      this.timerId = setInterval(() => this.tick(), intervalMs);
+    }
+
+    stop() {
+      this.isPlaying = false;
+      if (this.timerId) {
+        clearInterval(this.timerId);
+        this.timerId = null;
+      }
+    }
+
+    toggle() {
+      if (this.isPlaying) {
+        this.stop();
+        return false;
+      } else {
+        this.start();
+        return true;
+      }
+    }
+  }
+
+  const chiptuneBGM = new ProceduralChiptuneBGM();
+
+  // --------------------------------------------------------------------------
   // SCROLL TO TOP & SOUND TOGGLE LISTENERS
   // --------------------------------------------------------------------------
   const scrollTopBtn = document.getElementById('scroll-to-top-btn');
@@ -363,8 +548,12 @@
 
   if (soundToggleBtn) {
     soundToggleBtn.addEventListener('click', () => {
-      const isMuted = soundEngine.toggleMute();
-      soundToggleBtn.textContent = isMuted ? 'BGM: MUTED' : 'BGM: ON';
+      const playing = chiptuneBGM.toggle();
+      const statusText = document.getElementById('bgm-status-text');
+      if (statusText) {
+        statusText.textContent = playing ? '8-BIT BGM: ON' : '8-BIT BGM: OFF';
+      }
+      soundEngine.playClick();
     });
   }
 
