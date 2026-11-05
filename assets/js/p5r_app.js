@@ -337,50 +337,53 @@
   fetchLiveWeather();
 
   // --------------------------------------------------------------------------
-  // PROCEDURAL 8-BIT CHIPTUNE BGM ENGINE (WEB AUDIO API)
+  // PROCEDURAL 8-BIT / LO-FI CHILL BGM ENGINE (WEB AUDIO API)
   // --------------------------------------------------------------------------
-  class ProceduralChiptuneBGM {
+  class ProceduralLoFiBGM {
     constructor() {
       this.ctx = null;
       this.isPlaying = false;
       this.timerId = null;
       this.step = 0;
-      this.tempo = 128;
+      this.tempo = 74; // Chill Lo-Fi Tempo
       this.masterGain = null;
+      this.filterNode = null;
 
-      // Note frequencies (Hz) for retro chiptune scale (D minor / Persona 5 arcade vibe)
+      // Note frequencies (Hz) for Lo-Fi Jazz Scale (D minor 9 / C major 7)
       this.notes = {
-        'D2': 73.42, 'F2': 87.31, 'G2': 98.00, 'A2': 110.00, 'C3': 130.81,
-        'D3': 146.83, 'F3': 174.61, 'G3': 196.00, 'A3': 220.00, 'Bb3': 233.08, 'C4': 261.63,
-        'D4': 293.66, 'E4': 329.63, 'F4': 349.23, 'G4': 392.00, 'A4': 440.00,
-        'Bb4': 466.16, 'C5': 523.25, 'D5': 587.33, 'E5': 659.25, 'F5': 698.46,
-        'G5': 783.99, 'A5': 880.00, 'OFF': 0
+        'C2': 65.41, 'D2': 73.42, 'F2': 87.31, 'G2': 98.00, 'A2': 110.00,
+        'C3': 130.81, 'D3': 146.83, 'E3': 164.81, 'F3': 174.61, 'G3': 196.00, 'A3': 220.00, 'B3': 246.94,
+        'C4': 261.63, 'D4': 293.66, 'E4': 329.63, 'F4': 349.23, 'G4': 392.00, 'A4': 440.00, 'B4': 493.88,
+        'C5': 523.25, 'D5': 587.33, 'E5': 659.25, 'F5': 698.46, 'G5': 783.99, 'A5': 880.00,
+        'OFF': 0
       };
 
-      // 16-step bassline pattern (Triangle wave)
+      // Spaced-out Jazz Chords (Dm9 -> G13 -> Cmaj7 -> A7alt)
+      this.chords = [
+        ['D3', 'F3', 'A3', 'C4', 'E4'], // Dm9
+        ['G2', 'F3', 'A3', 'B3', 'E4'], // G13
+        ['C3', 'E3', 'G3', 'B3', 'D4'], // Cmaj7
+        ['A2', 'G3', 'C4', 'E4', 'G4']  // A7
+      ];
+
+      // Bassline (Soft Sub-Sine/Triangle wave, playing sustained root notes)
       this.bassPattern = [
-        'D2', 'D2', 'F2', 'D2',  'G2', 'D2', 'A2', 'C3',
-        'D2', 'D2', 'F2', 'D2',  'A2', 'G2', 'F2', 'C3'
+        'D2', 'OFF', 'OFF', 'OFF',   'G2', 'OFF', 'OFF', 'OFF',
+        'C2', 'OFF', 'OFF', 'OFF',   'A2', 'OFF', 'OFF', 'OFF'
       ];
 
-      // Arpeggios (Square wave)
-      this.arpPattern = [
-        ['D3', 'F3', 'A3'], ['F3', 'A3', 'D4'], ['G3', 'Bb3', 'D4'], ['A3', 'C4', 'E4'],
-        ['D3', 'F3', 'A3'], ['F3', 'A3', 'D4'], ['G3', 'Bb3', 'D4'], ['A3', 'C4', 'E4']
-      ];
-
-      // 32-step Lead Melody Motif (Square wave)
+      // Spaced-Out Lead Melody Motif (Soft Sine wave with breathing room)
       this.leadPattern = [
-        'D5', 'OFF', 'F5', 'D5',  'A5', 'OFF', 'G5', 'F5',
-        'D5', 'E5', 'F5', 'G5',   'A5', 'Bb4', 'A5', 'C5',
-        'D5', 'OFF', 'F5', 'D5',  'A5', 'G5', 'F5', 'E5',
-        'D5', 'F5', 'E5', 'C5',   'D5', 'OFF', 'OFF', 'OFF'
+        'A4', 'OFF', 'C5', 'OFF',    'E5', 'OFF', 'D5', 'OFF',
+        'OFF', 'C5', 'OFF', 'A4',    'G4', 'OFF', 'OFF', 'OFF',
+        'F4', 'OFF', 'A4', 'OFF',    'C5', 'OFF', 'E5', 'OFF',
+        'D5', 'OFF', 'C5', 'OFF',    'A4', 'OFF', 'OFF', 'OFF'
       ];
 
-      // 16-step Drum pattern (Noise & sweep)
+      // Lo-Fi Drum Pattern (Soft Kick, Snare Rimshot, Muted Hi-Hat)
       this.drumPattern = [
-        'KICK', 'HAT', 'SNARE', 'HAT', 'KICK', 'HAT', 'SNARE', 'HAT',
-        'KICK', 'HAT', 'SNARE', 'HAT', 'KICK', 'KICK', 'SNARE', 'OPEN_HAT'
+        'KICK', 'HAT', 'OFF', 'HAT',    'SNARE', 'HAT', 'OFF', 'HAT',
+        'OFF', 'HAT', 'KICK', 'HAT',    'SNARE', 'HAT', 'OFF', 'HAT'
       ];
     }
 
@@ -389,8 +392,16 @@
         const AudioCtx = window.AudioContext || window.webkitAudioContext;
         if (AudioCtx) {
           this.ctx = new AudioCtx();
+          
+          // Master Gain & Warm Lowpass Filter for Lo-Fi Tape Saturation Feel
           this.masterGain = this.ctx.createGain();
-          this.masterGain.gain.setValueAtTime(0.06, this.ctx.currentTime);
+          this.masterGain.gain.setValueAtTime(0.08, this.ctx.currentTime);
+
+          this.filterNode = this.ctx.createBiquadFilter();
+          this.filterNode.type = 'lowpass';
+          this.filterNode.frequency.setValueAtTime(1600, this.ctx.currentTime);
+
+          this.filterNode.connect(this.masterGain);
           this.masterGain.connect(this.ctx.destination);
         }
       }
@@ -399,60 +410,82 @@
       }
     }
 
-    playNote(freq, type, duration, volume = 0.04, slideTo = null) {
+    playNote(freq, type, duration, volume = 0.04, attack = 0.02) {
       if (!this.ctx || freq <= 0) return;
       const osc = this.ctx.createOscillator();
       const gain = this.ctx.createGain();
       osc.type = type;
       osc.frequency.setValueAtTime(freq, this.ctx.currentTime);
 
-      if (slideTo) {
-        osc.frequency.exponentialRampToValueAtTime(slideTo, this.ctx.currentTime + duration);
-      }
-
-      gain.gain.setValueAtTime(volume, this.ctx.currentTime);
-      gain.gain.linearRampToValueAtTime(0.001, this.ctx.currentTime + duration);
+      gain.gain.setValueAtTime(0, this.ctx.currentTime);
+      gain.gain.linearRampToValueAtTime(volume, this.ctx.currentTime + attack);
+      gain.gain.exponentialRampToValueAtTime(0.0001, this.ctx.currentTime + duration);
 
       osc.connect(gain);
-      gain.connect(this.masterGain);
+      gain.connect(this.filterNode);
       osc.start();
       osc.stop(this.ctx.currentTime + duration);
+    }
+
+    playChord(chordNotes, duration = 1.6, volume = 0.025) {
+      if (!this.ctx || !chordNotes) return;
+      chordNotes.forEach((noteName, idx) => {
+        const freq = this.notes[noteName];
+        if (freq) {
+          setTimeout(() => {
+            this.playNote(freq, 'triangle', duration, volume, 0.1);
+          }, idx * 25);
+        }
+      });
     }
 
     playDrum(type) {
       if (!this.ctx) return;
       if (type === 'KICK') {
-        this.playNote(120, 'square', 0.08, 0.06, 30);
+        const osc = this.ctx.createOscillator();
+        const gain = this.ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(90, this.ctx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(30, this.ctx.currentTime + 0.15);
+
+        gain.gain.setValueAtTime(0.08, this.ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.15);
+
+        osc.connect(gain);
+        gain.connect(this.masterGain);
+        osc.start();
+        osc.stop(this.ctx.currentTime + 0.15);
       } else if (type === 'SNARE') {
-        const bufferSize = Math.floor(this.ctx.sampleRate * 0.04);
+        const bufferSize = Math.floor(this.ctx.sampleRate * 0.06);
         const buffer = this.ctx.createBuffer(1, bufferSize, this.ctx.sampleRate);
         const output = buffer.getChannelData(0);
         for (let i = 0; i < bufferSize; i++) {
-          output[i] = Math.random() * 2 - 1;
+          output[i] = (Math.random() * 2 - 1) * 0.5;
         }
         const noise = this.ctx.createBufferSource();
         noise.buffer = buffer;
         const gain = this.ctx.createGain();
-        gain.gain.setValueAtTime(0.04, this.ctx.currentTime);
-        gain.gain.linearRampToValueAtTime(0.001, this.ctx.currentTime + 0.04);
+        gain.gain.setValueAtTime(0.03, this.ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.06);
+
         noise.connect(gain);
-        gain.connect(this.masterGain);
+        gain.connect(this.filterNode);
         noise.start();
-      } else if (type === 'HAT' || type === 'OPEN_HAT') {
-        const dur = type === 'OPEN_HAT' ? 0.07 : 0.02;
-        const bufferSize = Math.floor(this.ctx.sampleRate * dur);
+      } else if (type === 'HAT') {
+        const bufferSize = Math.floor(this.ctx.sampleRate * 0.02);
         const buffer = this.ctx.createBuffer(1, bufferSize, this.ctx.sampleRate);
         const output = buffer.getChannelData(0);
         for (let i = 0; i < bufferSize; i++) {
-          output[i] = Math.random() * 2 - 1;
+          output[i] = (Math.random() * 2 - 1) * 0.3;
         }
         const noise = this.ctx.createBufferSource();
         noise.buffer = buffer;
         const gain = this.ctx.createGain();
-        gain.gain.setValueAtTime(0.02, this.ctx.currentTime);
-        gain.gain.linearRampToValueAtTime(0.001, this.ctx.currentTime + dur);
+        gain.gain.setValueAtTime(0.015, this.ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.02);
+
         noise.connect(gain);
-        gain.connect(this.masterGain);
+        gain.connect(this.filterNode);
         noise.start();
       }
     }
@@ -463,26 +496,25 @@
       const step16 = this.step % 16;
       const step32 = this.step % 32;
 
-      // 1. Play Bassline
+      // 1. Play Sustained Jazz Chords every 4 beats (step 0, 4, 8, 12)
+      if (step16 % 4 === 0) {
+        const chordIdx = Math.floor(step16 / 4);
+        this.playChord(this.chords[chordIdx], 1.6, 0.025);
+      }
+
+      // 2. Play Sub-Bass Note
       const bassNote = this.notes[this.bassPattern[step16]];
       if (bassNote) {
-        this.playNote(bassNote, 'triangle', 0.11, 0.06);
+        this.playNote(bassNote, 'sine', 0.8, 0.06, 0.05);
       }
 
-      // 2. Play Arpeggio
-      const arpChord = this.arpPattern[Math.floor(step16 / 2) % this.arpPattern.length];
-      const arpNoteFreq = this.notes[arpChord[step16 % arpChord.length]];
-      if (arpNoteFreq) {
-        this.playNote(arpNoteFreq, 'square', 0.05, 0.02);
-      }
-
-      // 3. Play Lead Melody
+      // 3. Play Spaced-Out Soft Lead Melody
       const leadNote = this.notes[this.leadPattern[step32]];
       if (leadNote) {
-        this.playNote(leadNote, 'square', 0.13, 0.035);
+        this.playNote(leadNote, 'sine', 0.5, 0.035, 0.04);
       }
 
-      // 4. Play Drums
+      // 4. Play Chill Lo-Fi Drums
       const drumType = this.drumPattern[step16];
       if (drumType) {
         this.playDrum(drumType);
@@ -519,7 +551,7 @@
     }
   }
 
-  const chiptuneBGM = new ProceduralChiptuneBGM();
+  const loFiBGM = new ProceduralLoFiBGM();
 
   // --------------------------------------------------------------------------
   // SCROLL TO TOP & SOUND TOGGLE LISTENERS
@@ -548,10 +580,10 @@
 
   if (soundToggleBtn) {
     soundToggleBtn.addEventListener('click', () => {
-      const playing = chiptuneBGM.toggle();
+      const playing = loFiBGM.toggle();
       const statusText = document.getElementById('bgm-status-text');
       if (statusText) {
-        statusText.textContent = playing ? '8-BIT BGM: ON' : '8-BIT BGM: OFF';
+        statusText.textContent = playing ? 'LO-FI BGM: ON' : 'LO-FI BGM: OFF';
       }
       soundEngine.playClick();
     });
